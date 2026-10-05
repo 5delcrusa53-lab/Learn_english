@@ -1,0 +1,1648 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F4F6FB">
+<meta name="description" content="Apprendre l'anglais du niveau A1 au C1 : vocabulaire prononcé, jeux et révision espacée.">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="English Lab">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest" id="manifestLink">
+<link rel="apple-touch-icon" href="apple-touch-icon.png" id="appleIcon">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fff'/%3E%3Crect x='10' y='36' width='44' height='11' rx='2' fill='%23FFE15A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-weight='700' font-size='34' text-anchor='middle' fill='%23141A30'%3Een%3C/text%3E%3C/svg%3E">
+<title>English Lab, apprendre l'anglais</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  color-scheme:light;
+  --paper:#F4F6FB;--surface:#FFFFFF;--sunk:#EEF1F7;--ink:#141A30;--muted:#5B6480;--line:#E0E5EF;
+  --lv:#0E8A68;--lv-soft:#DDF4EC;--lv-ink:#FFFFFF;
+  --marker:#FFE15A;
+  --ok:#0F7A55;--ok-soft:#DDF3E9;--bad:#C0304A;--bad-soft:#FCE4E9;
+  --lift:0 1px 0 rgba(20,26,48,.04),0 18px 40px -26px rgba(20,26,48,.45);
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua","Noto Serif","Droid Serif",Georgia,serif;
+  --ipa:"Charis SIL","Doulos SIL","Gentium Plus","Noto Serif","Segoe UI","Lucida Sans Unicode",Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans","Helvetica Neue",Arial,sans-serif;
+  --r1:12px;--r2:16px;--r3:24px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0C1120;--surface:#151C30;--sunk:#10172A;--ink:#E9EDF8;--muted:#98A2C1;--line:#252F49;
+    --marker:rgba(242,204,58,.38);
+    --ok:#4CC593;--ok-soft:#13332A;--bad:#FF7D93;--bad-soft:#3A1824;
+    --lift:0 1px 0 rgba(0,0,0,.2),0 18px 40px -24px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0C1120;--surface:#151C30;--sunk:#10172A;--ink:#E9EDF8;--muted:#98A2C1;--line:#252F49;
+  --marker:rgba(242,204,58,.38);
+  --ok:#4CC593;--ok-soft:#13332A;--bad:#FF7D93;--bad-soft:#3A1824;
+  --lift:0 1px 0 rgba(0,0,0,.2),0 18px 40px -24px rgba(0,0,0,.8);
+}
+html{background:var(--paper);-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.5 var(--sans);-webkit-font-smoothing:antialiased;min-height:100%}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:50}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit;color:inherit}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--lv);outline-offset:2px}
+.serif{font-family:var(--serif)}
+svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- Shell ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 16px 12px;display:grid;grid-template-columns:1fr auto;grid-template-areas:"brand install" "levels levels";gap:10px 12px;align-items:center}
+.brand{grid-area:brand;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1}
+.logo{width:36px;height:36px;border-radius:11px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font:700 20px/1 var(--serif);color:var(--ink);flex:none}
+.logo span{background:linear-gradient(var(--marker),var(--marker)) no-repeat 0 88%/100% .45em;padding:0 2px}
+.install{grid-area:install;display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px 0 12px;border-radius:999px;border:0;background:var(--lv);color:var(--lv-ink);font-weight:700;font-size:14.5px;cursor:pointer;box-shadow:0 6px 16px -8px var(--lv)}
+.install svg{width:19px;height:19px;stroke-width:2.2}
+.install:active{transform:scale(.97)}
+.levels{grid-area:levels;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.lvl{border:1px solid var(--line);background:var(--surface);border-radius:var(--r1);padding:6px 3px 7px;display:flex;flex-direction:column;align-items:center;line-height:1.15;cursor:pointer;min-width:0;transition:background .2s,color .2s,border-color .2s}
+.lvl b{font-size:16px}
+.lvl span{font-size:11px;line-height:1.4;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.lvl[aria-pressed="true"]{background:var(--lv);color:var(--lv-ink);border-color:var(--lv)}
+.lvl[aria-pressed="true"] span{color:inherit;opacity:.85}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom,0px))}
+.tabs button{border:0;background:none;padding:2px 2px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;color:var(--muted);cursor:pointer;position:relative}
+.tabs .ico{display:grid;place-items:center;width:58px;height:32px;border-radius:16px;transition:background .2s}
+.tabs button[aria-current="page"]{color:var(--ink);font-weight:700}
+.tabs button[aria-current="page"] .ico{background:var(--lv-soft);color:var(--lv)}
+.badge{position:absolute;top:0;left:calc(50% + 8px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--bad);color:#fff;font-size:11px;line-height:18px;font-weight:700;text-align:center}
+main{display:block;padding:18px 16px 112px;max-width:780px;margin:0 auto;outline:none}
+@media (min-width:900px){
+  .app{display:grid;grid-template-columns:230px minmax(0,1fr);grid-template-areas:"top top" "nav main"}
+  .topbar{grid-area:top;grid-template-columns:206px 1fr auto;grid-template-areas:"brand levels install";padding:14px 24px}
+  .levels{max-width:580px}
+  .tabs{grid-area:nav;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;display:flex;flex-direction:column;gap:4px;border:0;background:none;padding:20px 14px}
+  .tabs button{flex-direction:row;gap:10px;font-size:15px;padding:4px 10px 4px 4px;border-radius:20px;justify-content:flex-start}
+  .tabs .ico{width:44px;height:36px;border-radius:18px}
+  .tabs button[aria-current="page"]{background:var(--lv-soft)}
+  .badge{position:static;margin-left:auto}
+  main{grid-area:main;padding:28px 32px 56px;margin:0;width:100%}
+}
+
+/* ---------- Generic ---------- */
+.view-title{font-family:var(--serif);font-size:30px;line-height:1.15;margin:2px 0 6px;letter-spacing:-.015em;font-weight:700}
+.view-sub{color:var(--muted);margin:0 0 16px;font-size:15px;max-width:62ch}
+.sub{font-size:17px;margin:28px 0 10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;border-radius:var(--r1);border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:600;font-size:15px;cursor:pointer;transition:background .15s,border-color .15s,transform .1s;text-decoration:none}
+.btn:active{transform:scale(.98)}
+.btn svg{width:20px;height:20px}
+.btn-primary{background:var(--lv);border-color:var(--lv);color:var(--lv-ink)}
+.btn-quiet{background:transparent;border-color:transparent;color:var(--muted)}
+.btn-quiet[aria-pressed="true"]{color:var(--lv)}
+.btn-ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.btn-bad{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.btn.sm{min-height:38px;padding:0 13px;font-size:14px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.wide{width:100%;margin-top:14px}
+.icon-btn{width:48px;height:48px;flex:none;display:inline-grid;place-items:center;border-radius:50%;border:1px solid var(--line);background:var(--surface);cursor:pointer;color:var(--ink);padding:0}
+.icon-btn svg{width:21px;height:21px}
+.actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.actions .grow{flex:1 1 150px}
+.row-c{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-top:6px}
+.counter{text-align:center;font-size:13px;color:var(--muted);margin:12px 0 0;font-variant-numeric:tabular-nums}
+@media (hover:hover){.only-touch{display:none}}
+@media (hover:none){.only-mouse{display:none}}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px;padding:2px 16px 12px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+@media (min-width:900px){.chips{flex-wrap:wrap;margin:0;padding:2px 0 12px}}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;white-space:nowrap}
+.chip small{opacity:.65;margin-left:6px;font-variant-numeric:tabular-nums}
+.chip[aria-pressed="true"]{background:var(--lv);color:var(--lv-ink);border-color:var(--lv)}
+.toolbar{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:2px 0 14px}
+.tools{display:flex;gap:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:var(--r1);overflow:hidden;background:var(--surface);flex:none}
+.seg button{border:0;background:none;padding:8px 14px;font-size:14px;cursor:pointer;color:var(--muted)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--lv-soft);color:var(--ink);font-weight:700}
+.empty{padding:22px 0 6px}
+.empty p{font-family:var(--serif);font-size:23px;margin:0 0 6px;line-height:1.25}
+.empty span{color:var(--muted)}
+.search{position:relative;margin:0 0 12px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);width:20px;height:20px}
+.search input{width:100%;padding:13px 14px 13px 44px;border:1px solid var(--line);border-radius:var(--r2);background:var(--surface);font-size:16px}
+.search input:focus{outline:none;border-color:var(--lv)}
+
+/* ---------- Today strip ---------- */
+.today{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:center;background:var(--lv-soft);border-radius:var(--r3);padding:12px 16px;margin:0 0 20px}
+.ringwrap{position:relative;width:58px;height:58px}
+.ring{width:58px;height:58px;transform:rotate(-90deg);display:block}
+.ring circle{fill:none;stroke-width:6}
+.ring .bg{stroke:var(--surface)}
+.ring .fg{stroke:var(--lv);stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+.ringwrap span{position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums}
+.today-t{margin:0;font-weight:600;font-size:15px}
+.today-t b{color:var(--lv);font-variant-numeric:tabular-nums}
+.today-s{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+
+/* ---------- Dictionary entry: the signature element ---------- */
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;touch-action:pan-y;box-shadow:var(--lift)}
+.entry.from-r{animation:fromR .28s ease-out}
+.entry.from-l{animation:fromL .28s ease-out}
+@keyframes fromR{from{opacity:0;transform:translateX(26px)}}
+@keyframes fromL{from{opacity:0;transform:translateX(-26px)}}
+.entry-band{display:flex;align-items:center;gap:10px;padding:10px 20px;background:var(--lv-soft);font-size:13px;color:var(--muted);flex-wrap:wrap}
+.entry-body{padding:18px 22px 22px}
+.tag{font-weight:800;color:var(--lv-ink);background:var(--lv);border-radius:7px;padding:2px 8px;font-size:12px}
+.status{margin-left:auto}
+.st-new{color:var(--lv);font-weight:600}
+.st-master{color:var(--ok);font-weight:700}
+.headword{font-family:var(--serif);font-weight:600;font-size:clamp(40px,11vw,64px);line-height:1.1;letter-spacing:-.015em;margin:0;overflow-wrap:anywhere}
+.hl{background-image:linear-gradient(var(--marker),var(--marker));background-repeat:no-repeat;background-size:100% .42em;background-position:0 88%;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 .06em}
+.hl.sweep{animation:sweep .7s cubic-bezier(.3,.7,.2,1)}
+@keyframes sweep{from{background-size:0% .42em}to{background-size:100% .42em}}
+.ipa{font-family:var(--ipa);font-size:20px;color:var(--muted);margin:8px 0 0;letter-spacing:.01em}
+.audio-row{display:flex;gap:10px;margin:18px 0 0;flex-wrap:wrap}
+.meaning{font-size:23px;font-weight:650;margin:20px 0 0;padding-top:16px;border-top:1px dashed var(--line);line-height:1.3}
+.example{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;margin-top:14px;align-items:start}
+.example .icon-btn{grid-row:span 2;width:40px;height:40px}
+.ex-en{margin:0;font-family:var(--serif);font-size:19px;line-height:1.45}
+.ex-en span{border-radius:3px;transition:background .1s}
+.ex-en span.on{background:var(--marker)}
+.ex-fr{margin:0;color:var(--muted);font-size:15px}
+.card-nav{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin-top:14px}
+.card-nav .mid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* ---------- Word list ---------- */
+.wlist{list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.wlist li+li{border-top:1px solid var(--line)}
+.wrow{display:grid;grid-template-columns:38px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:10px 14px;background:none;border:0;text-align:left;cursor:pointer}
+.wrow:active{background:var(--sunk)}
+.spk{width:38px;height:38px;border-radius:50%;background:var(--lv-soft);display:grid;place-items:center;color:var(--lv)}
+.spk svg{width:18px;height:18px}
+.wcol{display:flex;flex-direction:column;min-width:0}
+.wcol .w{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.25}
+.wcol .p{font-family:var(--ipa);color:var(--muted);font-size:14px}
+.wcol .lvtag{font:700 11px var(--sans);color:var(--muted);margin-left:6px}
+.wrow .f{color:var(--muted);font-size:14px;text-align:right;max-width:42vw}
+
+/* ---------- Games ---------- */
+.games{list-style:none;margin:6px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:359px){.games{grid-template-columns:1fr}}
+@media (min-width:700px){.games{grid-template-columns:repeat(3,1fr)}}
+.games li{display:flex}
+.gtile{--g:#2846C8;width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:10px;text-align:left;padding:16px 14px 14px;border-radius:20px;border:1px solid var(--line);background:var(--surface);cursor:pointer;position:relative;overflow:hidden;transition:transform .12s}
+.gtile:active{transform:scale(.98)}
+.gtile::after{content:"";position:absolute;right:-34px;top:-34px;width:104px;height:104px;border-radius:50%;background:var(--g);opacity:.09;pointer-events:none}
+.gtile .gi{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;color:#fff;background:var(--g)}
+.gtile .gt{font-weight:750;font-size:16px;line-height:1.2}
+.gtile .gd{font-size:13px;color:var(--muted);line-height:1.35}
+.gtile .best{margin-top:auto;padding-top:4px;font-size:12px;color:var(--muted)}
+.gtile .best b{color:var(--ink);font-variant-numeric:tabular-nums}
+.gtile[disabled]{opacity:.5;cursor:not-allowed}
+.game-top{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;margin-bottom:12px}
+.game-top h2{margin:0;font-size:18px;line-height:1.2}
+.game-score{font-weight:800;font-variant-numeric:tabular-nums;font-size:15px;background:var(--lv-soft);color:var(--ink);border-radius:999px;padding:5px 12px}
+.game-score:empty{display:none}
+.bar{height:7px;background:var(--sunk);border-radius:4px;overflow:hidden;margin-bottom:18px}
+.bar>span{display:block;height:100%;width:0;background:var(--lv);border-radius:4px;transition:width .3s}
+.bar.low>span{background:var(--bad)}
+.bar.big{height:12px;border-radius:6px;margin:0}
+.prompt{background:var(--surface);border:1px solid var(--line);border-radius:var(--r3);padding:20px;margin-bottom:14px;transition:border-color .2s,background .2s;box-shadow:var(--lift)}
+.prompt.center{text-align:center}
+.ask{font-size:14px;color:var(--muted);margin:0 0 8px}
+.prompt-word{font-family:var(--serif);font-size:clamp(30px,8.5vw,46px);font-weight:600;line-height:1.12;overflow-wrap:anywhere}
+.prompt-fr{font-size:21px;font-weight:650;margin:0 0 6px;line-height:1.35}
+.options{display:grid;gap:10px}
+@media (min-width:600px){.options{grid-template-columns:1fr 1fr}}
+.opt{text-align:left;justify-content:flex-start;min-height:58px;font-weight:500;font-size:16px;padding:10px 14px;line-height:1.3}
+.opt kbd{font:600 12px var(--sans);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--muted);background:var(--sunk);flex:none}
+@media (hover:none){.opt kbd{display:none}}
+.opt .serif{font-size:18px}
+.opt.is-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);opacity:1}
+.opt.is-bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);opacity:1}
+.opt[disabled]{cursor:default}
+.feedback{margin-top:14px;padding:13px 16px;border-radius:var(--r2);font-size:15px;line-height:1.45}
+.feedback:empty{display:none}
+.feedback.ok{background:var(--ok-soft);color:var(--ok)}
+.feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .serif{font-size:17px;font-weight:600}
+.big-play{width:96px;height:96px;border-radius:50%;background:var(--lv);color:var(--lv-ink);border:0;display:grid;place-items:center;margin:6px auto 2px;cursor:pointer;box-shadow:0 12px 26px -12px var(--lv)}
+.big-play svg{width:42px;height:42px}
+.big-play.playing{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06)}}
+.field{width:100%;font:600 22px var(--serif);padding:14px 16px;border:2px solid var(--line);border-radius:var(--r2);background:var(--surface);color:var(--ink);letter-spacing:.02em}
+.field:focus{outline:none;border-color:var(--lv)}
+.field:disabled{opacity:.7}
+.clue{margin:12px 0 0;font-weight:600}
+.clue:empty,.mask:empty{display:none}
+.mask{font-family:var(--serif);font-size:24px;letter-spacing:.22em;margin:10px 0 0;color:var(--muted)}
+.mem{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (min-width:600px){.mem{grid-template-columns:repeat(4,1fr)}}
+.mcard{aspect-ratio:1/1.12;perspective:700px;border:0;background:none;padding:0;cursor:pointer}
+.mcard .in{position:relative;display:block;width:100%;height:100%;transition:transform .35s;transform-style:preserve-3d}
+.mcard.up .in{transform:rotateY(180deg)}
+.mcard .fc,.mcard .bc{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:var(--r2);display:grid;place-items:center;padding:8px;text-align:center}
+.mcard .fc{background:var(--lv) repeating-linear-gradient(135deg,transparent 0 9px,rgba(255,255,255,.1) 9px 18px)}
+.mcard .bc{transform:rotateY(180deg);background:var(--surface);border:1px solid var(--line);font-size:14.5px;font-weight:600;overflow-wrap:anywhere;line-height:1.25}
+.mcard .bc.en{font-family:var(--serif);font-size:17px}
+.mcard .lg{position:absolute;top:6px;left:8px;font:700 10px var(--sans);color:var(--muted)}
+.mcard.done .bc{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.mcard.miss .bc{border-color:var(--bad);background:var(--bad-soft)}
+.slot{min-height:66px;border:2px dashed var(--line);border-radius:var(--r2);padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;margin-bottom:14px}
+.slot.ok{border-style:solid;border-color:var(--ok);background:var(--ok-soft)}
+.slot.bad{border-color:var(--bad);animation:shake .35s}
+.slot-ph{color:var(--muted);font-size:14px;align-self:center;padding:0 4px}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.bank{display:flex;flex-wrap:wrap;gap:8px}
+.tok{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:9px 13px;font:500 18px var(--serif);cursor:pointer;color:var(--ink)}
+.slot .tok{background:var(--lv-soft);border-color:transparent}
+.tok.used{visibility:hidden}
+.pair{padding:10px 0 4px}
+.pair .en{font-family:var(--serif);font-size:clamp(30px,8vw,42px);font-weight:600;line-height:1.15}
+.pair .eq{color:var(--muted);font-size:14px;margin:8px 0}
+.pair .fr{font-size:23px;font-weight:650}
+.prompt.flash-ok{border-color:var(--ok);background:var(--ok-soft)}
+.prompt.flash-bad{border-color:var(--bad);background:var(--bad-soft)}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tf .btn{min-height:78px;font-size:19px}
+.time{text-align:center;font-weight:800;font-size:15px;color:var(--muted);margin:10px 0 0;font-variant-numeric:tabular-nums}
+.combo{min-height:22px;margin:6px 0 0;color:var(--lv);font-weight:700;font-size:14px}
+.hang{display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center}
+.hang svg{width:96px;height:114px;stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round}
+.hang svg .pt{opacity:0;transition:opacity .2s;stroke:var(--bad)}
+.hang svg .pt.on{opacity:1}
+.word-mask{font-family:var(--serif);font-size:clamp(26px,7.5vw,38px);letter-spacing:.16em;font-weight:600;margin:4px 0;overflow-wrap:anywhere;line-height:1.2}
+.lives{color:var(--muted);font-size:14px;margin:0}
+.kb{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:4px}
+.kb button{min-height:46px;border:1px solid var(--line);background:var(--surface);border-radius:10px;font-weight:700;font-size:16px;cursor:pointer;padding:0}
+.kb button.hit{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.kb button.miss{background:var(--bad-soft);color:var(--bad);border-color:transparent}
+.kb button:disabled{cursor:default}
+.kb button:disabled:not(.hit):not(.miss){opacity:.4}
+.mic{width:108px;height:108px;border-radius:50%;border:0;background:var(--ink);color:var(--paper);display:grid;place-items:center;margin:10px auto 4px;cursor:pointer}
+.mic svg{width:44px;height:44px}
+.mic.on{background:var(--bad);color:#fff;animation:pulse 1s ease-in-out infinite}
+.heard{text-align:center;color:var(--muted);min-height:24px;margin:6px 0 0;font-size:15px}
+.end{padding-top:6px}
+.end-score{font-family:var(--serif);font-size:clamp(52px,15vw,78px);font-weight:600;line-height:1;margin:6px 0 10px;letter-spacing:-.02em}
+.end-score small{font-size:.45em;color:var(--muted)}
+.end-msg{font-size:17px;margin:0 0 4px}
+.end-xp{display:inline-block;color:var(--lv);background:var(--lv-soft);font-weight:800;margin:10px 0 0;padding:4px 12px;border-radius:999px}
+.grades{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.grades .btn{flex-direction:column;min-height:64px;gap:1px;padding:0 8px}
+.grades small{font-weight:500;font-size:12px;opacity:.85}
+
+/* ---------- Progress ---------- */
+.goal{background:var(--lv-soft);border-radius:var(--r3);padding:20px}
+.goal p{font-family:var(--serif);font-size:24px;margin:0 0 14px;line-height:1.25}
+.goal .bar.big{background:var(--surface)}
+dl.kv{display:grid;grid-template-columns:1fr auto;margin:18px 0 0}
+dl.kv dt,dl.kv dd{margin:0;padding:12px 0;border-bottom:1px solid var(--line)}
+dl.kv dt{color:var(--muted)}
+dl.kv dd{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--muted);margin:0 0 6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .m,.stack .m{background:var(--ok)}
+.legend .l,.stack .l{background:var(--lv);opacity:.5}
+.lvlrow{display:grid;grid-template-columns:36px 1fr auto;gap:12px;align-items:center;padding:9px 0}
+.lvlrow b{font-size:15px}
+.lvlrow .n{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:62px;text-align:right}
+.stack{height:10px;background:var(--sunk);border-radius:5px;overflow:hidden;display:flex}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;height:150px;margin-top:6px}
+.week .col{display:grid;grid-template-rows:auto 1fr auto;justify-items:center;gap:4px;font-size:12px;color:var(--muted);height:100%;font-variant-numeric:tabular-nums}
+.week .track{position:relative;width:100%;max-width:34px;height:100%}
+.week .track i{position:absolute;left:0;right:0;bottom:0;background:var(--lv);border-radius:7px 7px 3px 3px;min-height:3px;opacity:.55}
+.week .col.today .track i{opacity:1}
+.week .col.today{color:var(--ink);font-weight:700}
+
+/* ---------- Settings ---------- */
+.set-group{margin:0 0 24px}
+.set-group h2{font-size:15px;margin:0 0 8px;color:var(--muted);font-weight:600}
+.set{background:var(--surface);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden}
+.set>*+*{border-top:1px solid var(--line)}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px}
+.lbl{font-weight:600;min-width:0}
+.hint{display:block;font-weight:400;font-size:13px;color:var(--muted);margin-top:1px}
+select{padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--sunk);max-width:52vw;font-size:14px}
+input[type=range]{width:42%;max-width:220px;accent-color:var(--lv)}
+.sw{appearance:none;-webkit-appearance:none;width:48px;height:28px;border-radius:14px;background:var(--line);position:relative;cursor:pointer;flex:none;transition:background .2s;margin:0}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.sw:checked{background:var(--lv)}
+.sw:checked::after{transform:translateX(20px)}
+.note{font-size:13.5px;color:var(--muted);padding:12px 16px;margin:0}
+.note.warn{color:var(--bad)}
+.det{display:block;padding:13px 16px}
+.det summary{cursor:pointer;font-weight:600}
+.det textarea{width:100%;min-height:110px;margin-top:10px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line);border-radius:8px;background:var(--sunk);padding:8px}
+.foot{color:var(--muted);font-size:13px;margin:4px 0 0}
+
+/* ---------- Overlays ---------- */
+#toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:calc(100% - 32px);text-align:center}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (min-width:900px){#toast{bottom:28px}}
+.sheet-bg{position:fixed;inset:0;background:rgba(8,12,26,.5);z-index:80;display:flex;align-items:flex-end;justify-content:center;padding:12px 12px calc(12px + env(safe-area-inset-bottom,0px))}
+@media (min-width:700px){.sheet-bg{align-items:center}}
+.sheet{background:var(--surface);color:var(--ink);border-radius:26px;padding:22px 20px 18px;max-width:520px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,.35);animation:sheetUp .25s ease-out;max-height:90vh;overflow:auto}
+@keyframes sheetUp{from{transform:translateY(30px);opacity:0}}
+.sheet h2{font-family:var(--serif);font-size:25px;margin:0 0 6px;line-height:1.2}
+.sheet p{margin:8px 0;color:var(--muted)}
+.sheet ol{padding-left:22px;margin:10px 0}
+.sheet li{margin:7px 0}
+.sheet .perks{display:grid;gap:8px;margin:14px 0 4px;padding:0;list-style:none}
+.sheet .perks li{display:flex;gap:10px;align-items:flex-start;margin:0}
+.sheet .perks svg{color:var(--lv);margin-top:1px}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:70;width:100%;height:100%}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true"><span>en</span></span>English Lab</div>
+    <button class="install" id="installBtn" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>Installer</button>
+    <div class="levels" id="levels" role="group" aria-label="Niveau"></div>
+  </header>
+  <nav class="tabs" id="tabs" aria-label="Navigation principale"></nav>
+  <main id="view" tabindex="-1"></main>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div class="sheet-bg" id="sheet" hidden><div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetT"><h2 id="sheetT">Installer English Lab</h2><div id="sheetBody"></div><button class="btn btn-primary wide" type="button" id="sheetClose">Compris</button></div></div>
+<script>
+"use strict";
+/* Format : anglais | API (britannique) | français | exemple | traduction de l'exemple */
+const LEVELS=[
+{id:"A1",name:"Débutant",desc:"Les mots du quotidien : saluer, la famille, la nourriture, la maison, les jours, les verbes et adjectifs essentiels.",themes:[
+{id:"bases",name:"Les bases",raw:`
+hello|həˈləʊ|bonjour|Hello, how are you?|Bonjour, comment vas-tu ?
+goodbye|ɡʊdˈbaɪ|au revoir|Goodbye, see you tomorrow.|Au revoir, à demain.
+please|pliːz|s'il vous plaît|A coffee, please.|Un café, s'il vous plaît.
+thank you|ˈθæŋk juː|merci|Thank you for your help.|Merci pour ton aide.
+sorry|ˈsɒri|désolé|Sorry, I'm late.|Désolé, je suis en retard.
+yes|jes|oui|Yes, I understand.|Oui, je comprends.
+no|nəʊ|non|No, thank you.|Non, merci.
+name|neɪm|nom, prénom|My name is Anna.|Je m'appelle Anna.
+friend|frend|ami|She is my best friend.|C'est ma meilleure amie.
+morning|ˈmɔːnɪŋ|matin|Good morning, everyone!|Bonjour à tous ! (le matin)`},
+{id:"famille",name:"La famille",raw:`
+mother|ˈmʌðə|mère|My mother is a teacher.|Ma mère est enseignante.
+father|ˈfɑːðə|père|My father cooks very well.|Mon père cuisine très bien.
+brother|ˈbrʌðə|frère|I have one brother.|J'ai un frère.
+sister|ˈsɪstə|sœur|My sister lives in London.|Ma sœur vit à Londres.
+son|sʌn|fils|Their son is five years old.|Leur fils a cinq ans.
+daughter|ˈdɔːtə|fille (enfant)|Her daughter loves music.|Sa fille adore la musique.
+child|tʃaɪld|enfant|The child is sleeping.|L'enfant dort.
+husband|ˈhʌzbənd|mari|Her husband is a doctor.|Son mari est médecin.
+wife|waɪf|épouse|His wife works at a bank.|Sa femme travaille dans une banque.
+grandmother|ˈɡrænˌmʌðə|grand-mère|My grandmother tells great stories.|Ma grand-mère raconte de super histoires.`},
+{id:"nourriture",name:"La nourriture",raw:`
+bread|bred|pain|I buy bread every morning.|J'achète du pain chaque matin.
+water|ˈwɔːtə|eau|Can I have some water?|Puis-je avoir de l'eau ?
+apple|ˈæpl|pomme|I eat an apple every day.|Je mange une pomme chaque jour.
+cheese|tʃiːz|fromage|France has many kinds of cheese.|La France a beaucoup de sortes de fromage.
+chicken|ˈtʃɪkɪn|poulet|We eat chicken on Sundays.|Nous mangeons du poulet le dimanche.
+egg|eɡ|œuf|I'd like two eggs, please.|Je voudrais deux œufs, s'il vous plaît.
+milk|mɪlk|lait|The milk is in the fridge.|Le lait est dans le frigo.
+breakfast|ˈbrekfəst|petit-déjeuner|Breakfast is ready!|Le petit-déjeuner est prêt !
+rice|raɪs|riz|I cook rice with vegetables.|Je cuisine du riz avec des légumes.
+sugar|ˈʃʊɡə|sucre|No sugar in my tea, please.|Pas de sucre dans mon thé, s'il te plaît.`},
+{id:"couleurs",name:"Couleurs et nombres",raw:`
+red|red|rouge|I have a red car.|J'ai une voiture rouge.
+blue|bluː|bleu|The sky is blue today.|Le ciel est bleu aujourd'hui.
+green|ɡriːn|vert|Green is my favourite colour.|Le vert est ma couleur préférée.
+yellow|ˈjeləʊ|jaune|The bananas are yellow.|Les bananes sont jaunes.
+white|waɪt|blanc|She wears a white shirt.|Elle porte une chemise blanche.
+black|blæk|noir|My cat is black.|Mon chat est noir.
+three|θriː|trois|I have three children.|J'ai trois enfants.
+eight|eɪt|huit|The shop opens at eight.|Le magasin ouvre à huit heures.
+twelve|twelv|douze|There are twelve months in a year.|Il y a douze mois dans une année.
+twenty|ˈtwenti|vingt|He is twenty years old.|Il a vingt ans.`},
+{id:"maison",name:"La maison",raw:`
+house|haʊs|maison|Their house is very big.|Leur maison est très grande.
+kitchen|ˈkɪtʃɪn|cuisine (pièce)|We eat in the kitchen.|Nous mangeons dans la cuisine.
+bedroom|ˈbedruːm|chambre|My bedroom is upstairs.|Ma chambre est à l'étage.
+door|dɔː|porte|Please close the door.|Ferme la porte, s'il te plaît.
+window|ˈwɪndəʊ|fenêtre|Open the window, it's hot.|Ouvre la fenêtre, il fait chaud.
+table|ˈteɪbl|table|The keys are on the table.|Les clés sont sur la table.
+chair|tʃeə|chaise|Take a chair and sit down.|Prends une chaise et assieds-toi.
+bed|bed|lit|I go to bed at ten.|Je me couche à dix heures.
+garden|ˈɡɑːdn|jardin|The children play in the garden.|Les enfants jouent dans le jardin.
+key|kiː|clé|I can't find my key.|Je ne trouve pas ma clé.`},
+{id:"animaux",name:"Les animaux",raw:`
+dog|dɒɡ|chien|My dog loves the park.|Mon chien adore le parc.
+cat|kæt|chat|The cat is on the sofa.|Le chat est sur le canapé.
+bird|bɜːd|oiseau|A bird is singing outside.|Un oiseau chante dehors.
+horse|hɔːs|cheval|She rides a horse every week.|Elle monte à cheval chaque semaine.
+fish|fɪʃ|poisson|We have two fish at home.|Nous avons deux poissons à la maison.
+cow|kaʊ|vache|The cow is in the field.|La vache est dans le pré.
+mouse|maʊs|souris|The cat is chasing a mouse.|Le chat chasse une souris.
+rabbit|ˈræbɪt|lapin|The rabbit eats carrots.|Le lapin mange des carottes.
+sheep|ʃiːp|mouton|There are sheep on the hill.|Il y a des moutons sur la colline.
+bear|beə|ours|Bears sleep in winter.|Les ours dorment en hiver.`},
+{id:"jours",name:"Jours et mois",raw:`
+Monday|ˈmʌndeɪ|lundi|The shop is closed on Monday.|Le magasin est fermé le lundi.
+Tuesday|ˈtjuːzdeɪ|mardi|I play football on Tuesday.|Je joue au foot le mardi.
+Thursday|ˈθɜːzdeɪ|jeudi|See you on Thursday!|À jeudi !
+Friday|ˈfraɪdeɪ|vendredi|Friday is my favourite day.|Le vendredi est mon jour préféré.
+Saturday|ˈsætədeɪ|samedi|We go to the market on Saturday.|Nous allons au marché le samedi.
+Sunday|ˈsʌndeɪ|dimanche|I rest on Sunday.|Je me repose le dimanche.
+January|ˈdʒænjuəri|janvier|It's very cold in January.|Il fait très froid en janvier.
+June|dʒuːn|juin|My birthday is in June.|Mon anniversaire est en juin.
+August|ˈɔːɡəst|août|We go to the sea in August.|Nous allons à la mer en août.
+December|dɪˈsembə|décembre|Christmas is in December.|Noël est en décembre.`},
+{id:"verbes",name:"Verbes essentiels",raw:`
+eat|iːt|manger|We eat at seven.|Nous mangeons à sept heures.
+drink|drɪŋk|boire|Drink some water.|Bois de l'eau.
+sleep|sliːp|dormir|The baby sleeps a lot.|Le bébé dort beaucoup.
+read|riːd|lire|I read before bed.|Je lis avant de dormir.
+write|raɪt|écrire|Write your name here.|Écris ton nom ici.
+speak|spiːk|parler|Do you speak English?|Parles-tu anglais ?
+listen|ˈlɪsn|écouter|Listen to the teacher.|Écoute le professeur.
+walk|wɔːk|marcher|I walk to work.|Je vais au travail à pied.
+buy|baɪ|acheter|I want to buy a new phone.|Je veux acheter un nouveau téléphone.
+help|help|aider|Can you help me?|Peux-tu m'aider ?`},
+{id:"adjectifs",name:"Adjectifs de base",raw:`
+big|bɪɡ|grand, gros|They live in a big city.|Ils vivent dans une grande ville.
+small|smɔːl|petit|I have a small car.|J'ai une petite voiture.
+hot|hɒt|chaud|The soup is too hot.|La soupe est trop chaude.
+cold|kəʊld|froid|It's cold outside.|Il fait froid dehors.
+happy|ˈhæpi|heureux|I'm so happy for you!|Je suis tellement heureux pour toi !
+sad|sæd|triste|Why are you sad?|Pourquoi es-tu triste ?
+new|njuː|nouveau, neuf|I love my new shoes.|J'adore mes nouvelles chaussures.
+old|əʊld|vieux, ancien|This is a very old house.|C'est une très vieille maison.
+easy|ˈiːzi|facile|This exercise is easy.|Cet exercice est facile.
+beautiful|ˈbjuːtɪfl|beau, magnifique|What a beautiful day!|Quelle belle journée !`},
+{id:"ecole",name:"École et objets",raw:`
+school|skuːl|école|The school is near my house.|L'école est près de chez moi.
+teacher|ˈtiːtʃə|professeur|Our teacher is very kind.|Notre professeur est très gentil.
+pen|pen|stylo|Can I use your pen?|Puis-je utiliser ton stylo ?
+pencil|ˈpensl|crayon|I write with a pencil.|J'écris avec un crayon.
+bag|bæɡ|sac|My bag is very heavy.|Mon sac est très lourd.
+phone|fəʊn|téléphone|Where is my phone?|Où est mon téléphone ?
+computer|kəmˈpjuːtə|ordinateur|I work on my computer.|Je travaille sur mon ordinateur.
+desk|desk|bureau (meuble)|The book is on my desk.|Le livre est sur mon bureau.
+paper|ˈpeɪpə|papier|I need a piece of paper.|J'ai besoin d'une feuille de papier.
+lesson|ˈlesn|leçon, cours|The English lesson starts at nine.|Le cours d'anglais commence à neuf heures.`}]},
+
+{id:"A2",name:"Élémentaire",desc:"Se déplacer, faire ses courses, aller au restaurant, parler de son métier, de sa routine et de ses loisirs.",themes:[
+{id:"ville",name:"Ville et transports",raw:`
+street|striːt|rue|I live on a quiet street.|J'habite dans une rue calme.
+station|ˈsteɪʃn|gare|The station is near the bank.|La gare est près de la banque.
+ticket|ˈtɪkɪt|billet|A return ticket to Leeds, please.|Un aller-retour pour Leeds, s'il vous plaît.
+bridge|brɪdʒ|pont|Walk across the bridge.|Traverse le pont à pied.
+train|treɪn|train|The train leaves at nine.|Le train part à neuf heures.
+traffic|ˈtræfɪk|circulation|There is a lot of traffic today.|Il y a beaucoup de circulation aujourd'hui.
+airport|ˈeəpɔːt|aéroport|We arrive at the airport at six.|Nous arrivons à l'aéroport à six heures.
+left|left|gauche|Turn left at the corner.|Tourne à gauche au coin de la rue.
+right|raɪt|droite|The museum is on the right.|Le musée est sur la droite.
+neighbour|ˈneɪbə|voisin|Our neighbour is very friendly.|Notre voisin est très sympathique.`},
+{id:"vetements",name:"Les vêtements",raw:`
+shirt|ʃɜːt|chemise|This shirt is too small.|Cette chemise est trop petite.
+trousers|ˈtraʊzəz|pantalon|I need new trousers.|J'ai besoin d'un nouveau pantalon.
+shoes|ʃuːz|chaussures|These shoes are comfortable.|Ces chaussures sont confortables.
+coat|kəʊt|manteau|Take your coat, it's cold.|Prends ton manteau, il fait froid.
+dress|dres|robe|She bought a long dress.|Elle a acheté une robe longue.
+hat|hæt|chapeau|He always wears a hat.|Il porte toujours un chapeau.
+jacket|ˈdʒækɪt|veste|My jacket is waterproof.|Ma veste est imperméable.
+size|saɪz|taille|What size are you?|Quelle taille faites-vous ?
+wear|weə|porter (un vêtement)|I wear jeans at the weekend.|Je porte un jean le week-end.
+try on|traɪ ˈɒn|essayer (un vêtement)|Can I try on this jacket?|Puis-je essayer cette veste ?`},
+{id:"sante",name:"Corps et santé",raw:`
+head|hed|tête|My head hurts.|J'ai mal à la tête.
+hand|hænd|main|Wash your hands before lunch.|Lave-toi les mains avant le déjeuner.
+eye|aɪ|œil|She has green eyes.|Elle a les yeux verts.
+tooth|tuːθ|dent|I broke a tooth.|Je me suis cassé une dent.
+back|bæk|dos|My back hurts after work.|J'ai mal au dos après le travail.
+doctor|ˈdɒktə|médecin|You should see a doctor.|Tu devrais voir un médecin.
+ill|ɪl|malade|I feel ill today.|Je me sens malade aujourd'hui.
+medicine|ˈmedsn|médicament|Take this medicine twice a day.|Prends ce médicament deux fois par jour.
+cough|kɒf|toux, tousser|He has a bad cough.|Il a une mauvaise toux.
+tired|ˈtaɪəd|fatigué|I'm tired after the trip.|Je suis fatigué après le voyage.`},
+{id:"meteo",name:"Météo et temps",raw:`
+weather|ˈweðə|météo, temps qu'il fait|The weather is lovely today.|Il fait très beau aujourd'hui.
+rain|reɪn|pluie|Take an umbrella, it's going to rain.|Prends un parapluie, il va pleuvoir.
+sunny|ˈsʌni|ensoleillé|It's sunny this afternoon.|C'est ensoleillé cet après-midi.
+cloud|klaʊd|nuage|There isn't a cloud in the sky.|Il n'y a pas un nuage dans le ciel.
+snow|snəʊ|neige|The children play in the snow.|Les enfants jouent dans la neige.
+wind|wɪnd|vent|The wind is very strong.|Le vent est très fort.
+week|wiːk|semaine|I work five days a week.|Je travaille cinq jours par semaine.
+tomorrow|təˈmɒrəʊ|demain|See you tomorrow!|À demain !
+yesterday|ˈjestədeɪ|hier|I called her yesterday.|Je l'ai appelée hier.
+early|ˈɜːli|tôt|I get up early.|Je me lève tôt.`},
+{id:"loisirs",name:"Les loisirs",raw:`
+music|ˈmjuːzɪk|musique|I listen to music every day.|J'écoute de la musique tous les jours.
+film|fɪlm|film|We watched a great film.|Nous avons regardé un super film.
+book|bʊk|livre|This book is really interesting.|Ce livre est vraiment intéressant.
+swim|swɪm|nager|I swim twice a week.|Je nage deux fois par semaine.
+dance|dɑːns|danser|Do you like to dance?|Tu aimes danser ?
+cook|kʊk|cuisiner|My brother likes to cook.|Mon frère aime cuisiner.
+holiday|ˈhɒlədeɪ|vacances|We're going on holiday in July.|Nous partons en vacances en juillet.
+game|ɡeɪm|jeu, match|Let's play a game.|Jouons à un jeu.
+draw|drɔː|dessiner|She draws very well.|Elle dessine très bien.
+weekend|ˌwiːkˈend|week-end|What are you doing this weekend?|Que fais-tu ce week-end ?`},
+{id:"courses",name:"Courses et magasins",raw:`
+shop|ʃɒp|magasin|The shop closes at seven.|Le magasin ferme à dix-neuf heures.
+price|praɪs|prix|What's the price of this bag?|Quel est le prix de ce sac ?
+cheap|tʃiːp|bon marché|This T-shirt is very cheap.|Ce tee-shirt est très bon marché.
+expensive|ɪkˈspensɪv|cher|London is an expensive city.|Londres est une ville chère.
+pay|peɪ|payer|Can I pay by card?|Puis-je payer par carte ?
+change|tʃeɪndʒ|monnaie (rendue)|Here's your change.|Voici votre monnaie.
+sell|sel|vendre|They sell fresh fruit.|Ils vendent des fruits frais.
+customer|ˈkʌstəmə|client|The customer is always right.|Le client est roi.
+sale|seɪl|soldes, vente|Everything is on sale today.|Tout est en solde aujourd'hui.
+market|ˈmɑːkɪt|marché|I buy vegetables at the market.|J'achète des légumes au marché.`},
+{id:"restaurant",name:"Au restaurant",raw:`
+menu|ˈmenjuː|carte, menu|Can I see the menu, please?|Puis-je voir la carte, s'il vous plaît ?
+waiter|ˈweɪtə|serveur|The waiter was very polite.|Le serveur était très poli.
+order|ˈɔːdə|commander|Are you ready to order?|Êtes-vous prêts à commander ?
+bill|bɪl|addition|Could we have the bill, please?|Pourrions-nous avoir l'addition, s'il vous plaît ?
+dessert|dɪˈzɜːt|dessert|What's for dessert?|Qu'y a-t-il comme dessert ?
+starter|ˈstɑːtə|entrée (plat)|I'll have soup as a starter.|Je prendrai une soupe en entrée.
+tip|tɪp|pourboire|We left a tip for the waiter.|Nous avons laissé un pourboire au serveur.
+spicy|ˈspaɪsi|épicé|This curry is too spicy.|Ce curry est trop épicé.
+delicious|dɪˈlɪʃəs|délicieux|The cake is delicious.|Le gâteau est délicieux.
+glass|ɡlɑːs|verre|A glass of water, please.|Un verre d'eau, s'il vous plaît.`},
+{id:"metiers",name:"Les métiers",raw:`
+nurse|nɜːs|infirmier, infirmière|My sister is a nurse.|Ma sœur est infirmière.
+engineer|ˌendʒɪˈnɪə|ingénieur|He works as an engineer.|Il travaille comme ingénieur.
+lawyer|ˈlɔːjə|avocat|You should call a lawyer.|Tu devrais appeler un avocat.
+chef|ʃef|chef cuisinier|The chef cooks amazing food.|Le chef prépare des plats incroyables.
+farmer|ˈfɑːmə|agriculteur|The farmer grows potatoes.|L'agriculteur cultive des pommes de terre.
+plumber|ˈplʌmə|plombier|We need a plumber for the kitchen.|Nous avons besoin d'un plombier pour la cuisine.
+pilot|ˈpaɪlət|pilote|The pilot spoke to the passengers.|Le pilote a parlé aux passagers.
+journalist|ˈdʒɜːnəlɪst|journaliste|She is a famous journalist.|C'est une journaliste célèbre.
+firefighter|ˈfaɪəfaɪtə|pompier|The firefighters saved the cat.|Les pompiers ont sauvé le chat.
+mechanic|məˈkænɪk|mécanicien|The mechanic fixed my car.|Le mécanicien a réparé ma voiture.`},
+{id:"routine",name:"La routine",raw:`
+wake up|ˌweɪk ˈʌp|se réveiller|I wake up at seven.|Je me réveille à sept heures.
+get dressed|ˌɡet ˈdrest|s'habiller|Get dressed, we're late!|Habille-toi, on est en retard !
+have a shower|ˌhæv ə ˈʃaʊə|prendre une douche|I have a shower every morning.|Je prends une douche tous les matins.
+catch|kætʃ|attraper, prendre (un transport)|I catch the bus at eight.|Je prends le bus à huit heures.
+wait|weɪt|attendre|Wait for me!|Attends-moi !
+arrive|əˈraɪv|arriver|What time do you arrive?|À quelle heure arrives-tu ?
+leave|liːv|partir, quitter|I leave work at five.|Je quitte le travail à dix-sept heures.
+remember|rɪˈmembə|se souvenir|I don't remember his name.|Je ne me souviens pas de son nom.
+forget|fəˈɡet|oublier|Don't forget your keys.|N'oublie pas tes clés.
+borrow|ˈbɒrəʊ|emprunter|Can I borrow your bike?|Puis-je emprunter ton vélo ?`}]},
+
+{id:"B1",name:"Intermédiaire",desc:"Voyager, travailler, se loger, parler de santé, de médias, d'environnement et de technologie.",themes:[
+{id:"voyage",name:"Le voyage",raw:`
+journey|ˈdʒɜːni|trajet, voyage|The journey takes three hours.|Le trajet dure trois heures.
+luggage|ˈlʌɡɪdʒ|bagages|Don't leave your luggage unattended.|Ne laissez pas vos bagages sans surveillance.
+passport|ˈpɑːspɔːt|passeport|Don't forget your passport.|N'oublie pas ton passeport.
+booking|ˈbʊkɪŋ|réservation|I made a booking for two nights.|J'ai fait une réservation pour deux nuits.
+delay|dɪˈleɪ|retard|There is a two-hour delay.|Il y a un retard de deux heures.
+abroad|əˈbrɔːd|à l'étranger|She studied abroad for a year.|Elle a étudié à l'étranger pendant un an.
+sightseeing|ˈsaɪtsiːɪŋ|tourisme, visites|We went sightseeing in Rome.|Nous avons visité Rome.
+departure|dɪˈpɑːtʃə|départ|Check the departure board.|Consulte le tableau des départs.
+currency|ˈkʌrənsi|monnaie, devise|What currency do they use in Japan?|Quelle monnaie utilise-t-on au Japon ?
+accommodation|əˌkɒməˈdeɪʃn|hébergement|Accommodation is expensive in London.|L'hébergement est cher à Londres.`},
+{id:"travail",name:"Le travail",raw:`
+meeting|ˈmiːtɪŋ|réunion|The meeting starts at ten.|La réunion commence à dix heures.
+colleague|ˈkɒliːɡ|collègue|My colleague helped me a lot.|Mon collègue m'a beaucoup aidé.
+deadline|ˈdedlaɪn|échéance, date limite|The deadline is next Friday.|L'échéance est vendredi prochain.
+salary|ˈsæləri|salaire|She asked for a higher salary.|Elle a demandé un salaire plus élevé.
+skill|skɪl|compétence|Communication is a key skill.|La communication est une compétence clé.
+manager|ˈmænɪdʒə|responsable, manager|I need to talk to my manager.|Je dois parler à mon responsable.
+apply|əˈplaɪ|postuler|I applied for a new job.|J'ai postulé à un nouvel emploi.
+schedule|ˈʃedjuːl|planning, emploi du temps|My schedule is full this week.|Mon planning est plein cette semaine.
+task|tɑːsk|tâche|This task is urgent.|Cette tâche est urgente.
+improve|ɪmˈpruːv|améliorer|We need to improve the process.|Nous devons améliorer le processus.`},
+{id:"emotions",name:"Émotions et caractère",raw:`
+proud|praʊd|fier|I'm proud of you.|Je suis fier de toi.
+worried|ˈwʌrid|inquiet|She looks worried.|Elle a l'air inquiète.
+angry|ˈæŋɡri|en colère|Why are you angry?|Pourquoi es-tu en colère ?
+embarrassed|ɪmˈbærəst|gêné|I was so embarrassed!|J'étais tellement gêné !
+lonely|ˈləʊnli|seul (sentiment)|He feels lonely in the big city.|Il se sent seul dans la grande ville.
+grateful|ˈɡreɪtfl|reconnaissant|I'm grateful for your help.|Je te suis reconnaissant pour ton aide.
+shy|ʃaɪ|timide|My son is a bit shy.|Mon fils est un peu timide.
+reliable|rɪˈlaɪəbl|fiable|She is a very reliable person.|C'est une personne très fiable.
+jealous|ˈdʒeləs|jaloux|Don't be jealous.|Ne sois pas jaloux.
+relieved|rɪˈliːvd|soulagé|I was relieved to hear the news.|J'ai été soulagé d'apprendre la nouvelle.`},
+{id:"nature",name:"Nature et environnement",raw:`
+environment|ɪnˈvaɪrənmənt|environnement|We must protect the environment.|Nous devons protéger l'environnement.
+pollution|pəˈluːʃn|pollution|Air pollution is a big problem.|La pollution de l'air est un gros problème.
+recycle|ˌriːˈsaɪkl|recycler|We recycle paper and glass.|Nous recyclons le papier et le verre.
+forest|ˈfɒrɪst|forêt|We walked through the forest.|Nous avons traversé la forêt à pied.
+climate|ˈklaɪmət|climat|The climate is changing.|Le climat change.
+waste|weɪst|déchets, gaspiller|Don't waste water.|Ne gaspille pas l'eau.
+energy|ˈenədʒi|énergie|Solar energy is clean.|L'énergie solaire est propre.
+coast|kəʊst|côte, littoral|We drove along the coast.|Nous avons longé la côte en voiture.
+mountain|ˈmaʊntən|montagne|They climbed the mountain.|Ils ont escaladé la montagne.
+species|ˈspiːʃiːz|espèce|Many species are in danger.|Beaucoup d'espèces sont en danger.`},
+{id:"techno",name:"La technologie",raw:`
+device|dɪˈvaɪs|appareil|Please turn off your device.|Merci d'éteindre votre appareil.
+download|ˌdaʊnˈləʊd|télécharger|Download the app for free.|Télécharge l'appli gratuitement.
+password|ˈpɑːswɜːd|mot de passe|Change your password regularly.|Change ton mot de passe régulièrement.
+screen|skriːn|écran|My phone screen is broken.|L'écran de mon téléphone est cassé.
+battery|ˈbætri|batterie|My battery is almost dead.|Ma batterie est presque vide.
+update|ˈʌpdeɪt|mise à jour|Install the latest update.|Installe la dernière mise à jour.
+search|sɜːtʃ|rechercher|Search for it online.|Cherche-le en ligne.
+keyboard|ˈkiːbɔːd|clavier|This keyboard is very quiet.|Ce clavier est très silencieux.
+upload|ˌʌpˈləʊd|mettre en ligne, téléverser|Upload your photos here.|Mets tes photos en ligne ici.
+settings|ˈsetɪŋz|paramètres|Open the settings menu.|Ouvre le menu des paramètres.`},
+{id:"bienetre",name:"Santé et bien-être",raw:`
+appointment|əˈpɔɪntmənt|rendez-vous|I have a doctor's appointment at ten.|J'ai rendez-vous chez le médecin à dix heures.
+symptom|ˈsɪmptəm|symptôme|What are your symptoms?|Quels sont vos symptômes ?
+injury|ˈɪndʒəri|blessure|He has a knee injury.|Il a une blessure au genou.
+pain|peɪn|douleur|I have a pain in my back.|J'ai une douleur dans le dos.
+prescription|prɪˈskrɪpʃn|ordonnance|The doctor gave me a prescription.|Le médecin m'a donné une ordonnance.
+recover|rɪˈkʌvə|se rétablir|She recovered quickly.|Elle s'est rétablie rapidement.
+healthy|ˈhelθi|sain, en bonne santé|Try to eat healthy food.|Essaie de manger sainement.
+exercise|ˈeksəsaɪz|faire de l'exercice|I exercise three times a week.|Je fais du sport trois fois par semaine.
+stress|stres|stress|Work causes a lot of stress.|Le travail cause beaucoup de stress.
+rest|rest|repos, se reposer|You need some rest.|Tu as besoin de repos.`},
+{id:"logement",name:"Le logement",raw:`
+rent|rent|loyer, louer|The rent is too high.|Le loyer est trop élevé.
+landlord|ˈlændlɔːd|propriétaire (bailleur)|I called the landlord about the heating.|J'ai appelé le propriétaire pour le chauffage.
+flat|flæt|appartement|They live in a small flat.|Ils vivent dans un petit appartement.
+furniture|ˈfɜːnɪtʃə|meubles|We bought new furniture.|Nous avons acheté de nouveaux meubles.
+neighbourhood|ˈneɪbəhʊd|quartier|It's a quiet neighbourhood.|C'est un quartier calme.
+move|muːv|déménager|We're moving next month.|Nous déménageons le mois prochain.
+heating|ˈhiːtɪŋ|chauffage|The heating doesn't work.|Le chauffage ne marche pas.
+tenant|ˈtenənt|locataire|The tenants pay every month.|Les locataires paient chaque mois.
+deposit|dɪˈpɒzɪt|caution, acompte|You have to pay a deposit.|Vous devez verser une caution.
+share|ʃeə|partager|I share a flat with two friends.|Je partage un appartement avec deux amis.`},
+{id:"medias",name:"Médias et communication",raw:`
+advertisement|ədˈvɜːtɪsmənt|publicité|I saw an advertisement for this phone.|J'ai vu une publicité pour ce téléphone.
+channel|ˈtʃænl|chaîne|Change the channel, please.|Change de chaîne, s'il te plaît.
+subscribe|səbˈskraɪb|s'abonner|Subscribe to our newsletter.|Abonne-toi à notre newsletter.
+audience|ˈɔːdiəns|public, audience|The audience loved the show.|Le public a adoré le spectacle.
+interview|ˈɪntəvjuː|entretien, interview|I have a job interview tomorrow.|J'ai un entretien d'embauche demain.
+news|njuːz|actualités, nouvelles|Did you watch the news?|As-tu regardé les infos ?
+article|ˈɑːtɪkl|article|I read an interesting article.|J'ai lu un article intéressant.
+review|rɪˈvjuː|critique, avis|The film got great reviews.|Le film a reçu d'excellentes critiques.
+message|ˈmesɪdʒ|message|I sent you a message.|Je t'ai envoyé un message.
+post|pəʊst|publier, publication|She posted a photo online.|Elle a publié une photo en ligne.`},
+{id:"verbesb1",name:"Verbes utiles",raw:`
+manage|ˈmænɪdʒ|réussir à, gérer|I managed to finish on time.|J'ai réussi à finir à temps.
+avoid|əˈvɔɪd|éviter|Avoid the motorway at rush hour.|Évite l'autoroute aux heures de pointe.
+suggest|səˈdʒest|suggérer|I suggest we leave early.|Je suggère que nous partions tôt.
+decide|dɪˈsaɪd|décider|We decided to stay.|Nous avons décidé de rester.
+realise|ˈriːəlaɪz|se rendre compte|I didn't realise it was so late.|Je ne m'étais pas rendu compte qu'il était si tard.
+explain|ɪkˈspleɪn|expliquer|Can you explain this rule?|Peux-tu expliquer cette règle ?
+expect|ɪkˈspekt|s'attendre à|I didn't expect so many people.|Je ne m'attendais pas à autant de monde.
+prefer|prɪˈfɜː|préférer|I prefer tea to coffee.|Je préfère le thé au café.
+afford|əˈfɔːd|avoir les moyens de|We can't afford a new car.|Nous n'avons pas les moyens d'acheter une nouvelle voiture.
+complain|kəmˈpleɪn|se plaindre|He always complains about the weather.|Il se plaint toujours du temps.`}]},
+
+{id:"B2",name:"Avancé",desc:"Business, informatique, e-mails professionnels, sciences, administration, verbes à particule et connecteurs.",themes:[
+{id:"business",name:"Business",raw:`
+negotiate|nɪˈɡəʊʃieɪt|négocier|We need to negotiate the price.|Nous devons négocier le prix.
+revenue|ˈrevənjuː|chiffre d'affaires|Revenue grew by ten percent.|Le chiffre d'affaires a augmenté de dix pour cent.
+stakeholder|ˈsteɪkhəʊldə|partie prenante|Keep all stakeholders informed.|Tenez toutes les parties prenantes informées.
+budget|ˈbʌdʒɪt|budget|The project is over budget.|Le projet dépasse le budget.
+supplier|səˈplaɪə|fournisseur|We changed suppliers last year.|Nous avons changé de fournisseur l'an dernier.
+invoice|ˈɪnvɔɪs|facture|Please send me the invoice.|Merci de m'envoyer la facture.
+forecast|ˈfɔːkɑːst|prévision|The sales forecast looks good.|Les prévisions de ventes sont bonnes.
+outsource|ˈaʊtsɔːs|externaliser|They outsource their IT support.|Ils externalisent leur support informatique.
+leverage|ˈliːvərɪdʒ|tirer parti de|We can leverage our experience.|Nous pouvons tirer parti de notre expérience.
+agreement|əˈɡriːmənt|accord, contrat|Both parties signed the agreement.|Les deux parties ont signé l'accord.`},
+{id:"it",name:"Informatique",raw:`
+troubleshoot|ˈtrʌblʃuːt|dépanner, diagnostiquer|I'm trying to troubleshoot the network.|J'essaie de diagnostiquer le réseau.
+bug|bʌɡ|bogue|We found a bug in the code.|Nous avons trouvé un bogue dans le code.
+server|ˈsɜːvə|serveur|The server is down.|Le serveur est en panne.
+backup|ˈbækʌp|sauvegarde|Always keep a recent backup.|Garde toujours une sauvegarde récente.
+deploy|dɪˈplɔɪ|déployer|We deploy every Friday.|Nous déployons chaque vendredi.
+issue|ˈɪʃuː|problème, incident|I opened an issue on GitHub.|J'ai ouvert un ticket sur GitHub.
+firewall|ˈfaɪəwɔːl|pare-feu|The firewall blocks this port.|Le pare-feu bloque ce port.
+outage|ˈaʊtɪdʒ|panne de service|The outage lasted two hours.|La panne a duré deux heures.
+credentials|krəˈdenʃlz|identifiants|Never share your credentials.|Ne partage jamais tes identifiants.
+breach|briːtʃ|faille, fuite de données|The company reported a data breach.|L'entreprise a signalé une fuite de données.`},
+{id:"societe",name:"Société et médias",raw:`
+headline|ˈhedlaɪn|gros titre|The story made the headlines.|L'histoire a fait les gros titres.
+debate|dɪˈbeɪt|débat|The debate was very heated.|Le débat a été très animé.
+government|ˈɡʌvənmənt|gouvernement|The government announced new measures.|Le gouvernement a annoncé de nouvelles mesures.
+inequality|ˌɪnɪˈkwɒləti|inégalité|Inequality is rising in many countries.|Les inégalités augmentent dans de nombreux pays.
+bias|ˈbaɪəs|parti pris, biais|The article shows a clear bias.|L'article montre un parti pris évident.
+claim|kleɪm|affirmer|He claims he is innocent.|Il affirme qu'il est innocent.
+widespread|ˈwaɪdspred|répandu|The problem is widespread.|Le problème est très répandu.
+outcome|ˈaʊtkʌm|résultat, issue|Nobody knows the outcome yet.|Personne ne connaît encore l'issue.
+awareness|əˈweənəs|sensibilisation, prise de conscience|We need to raise awareness.|Nous devons sensibiliser le public.
+threat|θret|menace|Climate change is a global threat.|Le changement climatique est une menace mondiale.`},
+{id:"phrasal",name:"Verbes à particule",raw:`
+give up|ɡɪv ˈʌp|abandonner|Never give up on your dreams.|N'abandonne jamais tes rêves.
+look forward to|lʊk ˈfɔːwəd tə|avoir hâte de|I look forward to meeting you.|J'ai hâte de vous rencontrer.
+find out|faɪnd ˈaʊt|découvrir, apprendre|I found out the truth.|J'ai découvert la vérité.
+carry on|ˌkæri ˈɒn|continuer|Carry on, you're doing great.|Continue, tu t'en sors très bien.
+set up|set ˈʌp|mettre en place, configurer|We set up a new server.|Nous avons configuré un nouveau serveur.
+turn down|tɜːn ˈdaʊn|refuser, baisser|She turned down the offer.|Elle a refusé l'offre.
+run out of|rʌn ˈaʊt əv|être à court de|We ran out of coffee.|Nous n'avons plus de café.
+put off|pʊt ˈɒf|reporter, remettre à plus tard|Don't put it off until tomorrow.|Ne le remets pas à demain.
+get along|ɡet əˈlɒŋ|bien s'entendre|I get along well with my boss.|Je m'entends bien avec mon chef.
+come up with|kʌm ˈʌp wɪð|trouver (une idée)|She came up with a brilliant idea.|Elle a trouvé une idée brillante.`},
+{id:"connecteurs",name:"Connecteurs logiques",raw:`
+however|haʊˈevə|cependant|It's expensive. However, it's worth it.|C'est cher. Cependant, ça vaut le coup.
+although|ɔːlˈðəʊ|bien que|Although it was late, we kept working.|Bien qu'il soit tard, nous avons continué à travailler.
+therefore|ˈðeəfɔː|par conséquent|The data is wrong; therefore, the report is wrong.|Les données sont fausses ; par conséquent, le rapport aussi.
+whereas|weərˈæz|alors que (opposition)|I like tea, whereas my wife prefers coffee.|J'aime le thé, alors que ma femme préfère le café.
+despite|dɪˈspaɪt|malgré|We went out despite the rain.|Nous sommes sortis malgré la pluie.
+moreover|mɔːrˈəʊvə|de plus|Moreover, the solution is cheaper.|De plus, la solution est moins chère.
+unless|ənˈles|à moins que|I'll come unless it rains.|Je viendrai à moins qu'il ne pleuve.
+meanwhile|ˈmiːnwaɪl|pendant ce temps|Meanwhile, the team kept testing.|Pendant ce temps, l'équipe a continué les tests.
+furthermore|ˌfɜːðəˈmɔː|en outre|Furthermore, it saves time.|En outre, cela fait gagner du temps.
+nevertheless|ˌnevəðəˈles|néanmoins|It was hard; nevertheless, we succeeded.|C'était difficile ; néanmoins, nous avons réussi.`},
+{id:"admin",name:"Administration et droit",raw:`
+requirement|rɪˈkwaɪəmənt|exigence, condition requise|Fluent English is a requirement.|Un anglais courant est exigé.
+regulation|ˌreɡjuˈleɪʃn|réglementation|New regulations come into force in May.|De nouvelles réglementations entrent en vigueur en mai.
+compliance|kəmˈplaɪəns|conformité|We must ensure compliance with the law.|Nous devons garantir la conformité avec la loi.
+tax|tæks|impôt, taxe|Prices include tax.|Les prix incluent les taxes.
+refund|ˈriːfʌnd|remboursement|I asked for a refund.|J'ai demandé un remboursement.
+complaint|kəmˈpleɪnt|réclamation, plainte|We received a complaint from a customer.|Nous avons reçu une réclamation d'un client.
+warranty|ˈwɒrənti|garantie|The laptop is still under warranty.|L'ordinateur portable est encore sous garantie.
+liability|ˌlaɪəˈbɪləti|responsabilité (juridique)|The company denied any liability.|L'entreprise a nié toute responsabilité.
+approval|əˈpruːvl|approbation, feu vert|We are waiting for approval.|Nous attendons le feu vert.
+fill in|ˌfɪl ˈɪn|remplir (un formulaire)|Please fill in this form.|Merci de remplir ce formulaire.`},
+{id:"sciences",name:"Sciences et recherche",raw:`
+research|rɪˈsɜːtʃ|recherche|She does research on climate change.|Elle fait des recherches sur le changement climatique.
+evidence|ˈevɪdəns|preuves|There is no evidence of that.|Il n'y a aucune preuve de cela.
+hypothesis|haɪˈpɒθəsɪs|hypothèse|The results confirm our hypothesis.|Les résultats confirment notre hypothèse.
+experiment|ɪkˈsperɪmənt|expérience (scientifique)|We repeated the experiment twice.|Nous avons répété l'expérience deux fois.
+data|ˈdeɪtə|données|We need more data.|Nous avons besoin de plus de données.
+findings|ˈfaɪndɪŋz|résultats, conclusions|The findings were published last week.|Les résultats ont été publiés la semaine dernière.
+survey|ˈsɜːveɪ|enquête, sondage|We asked five hundred people in a survey.|Nous avons interrogé cinq cents personnes dans un sondage.
+accurate|ˈækjərət|précis, exact|The figures are not accurate.|Les chiffres ne sont pas exacts.
+measure|ˈmeʒə|mesurer|Measure the temperature every hour.|Mesure la température toutes les heures.
+breakthrough|ˈbreɪkθruː|avancée majeure|This is a major breakthrough.|C'est une avancée majeure.`},
+{id:"emails",name:"E-mails et réunions",raw:`
+attach|əˈtætʃ|joindre (un fichier)|I've attached the report.|J'ai joint le rapport.
+follow up|ˌfɒləʊ ˈʌp|relancer, faire un suivi|I'll follow up next week.|Je ferai un suivi la semaine prochaine.
+agenda|əˈdʒendə|ordre du jour|What's on the agenda today?|Qu'y a-t-il à l'ordre du jour ?
+minutes|ˈmɪnɪts|compte rendu (de réunion)|Who is taking the minutes?|Qui rédige le compte rendu ?
+reschedule|ˌriːˈʃedjuːl|reprogrammer|Can we reschedule the call?|Pouvons-nous reprogrammer l'appel ?
+feedback|ˈfiːdbæk|retour, avis|Thanks for your feedback.|Merci pour ton retour.
+reminder|rɪˈmaɪndə|rappel|This is a friendly reminder.|Ceci est un petit rappel.
+available|əˈveɪləbl|disponible|Are you available on Monday?|Es-tu disponible lundi ?
+regarding|rɪˈɡɑːdɪŋ|concernant|I'm writing regarding your order.|Je vous écris concernant votre commande.
+kind regards|ˌkaɪnd rɪˈɡɑːdz|cordialement|Kind regards, Tom.|Cordialement, Tom.`},
+{id:"nuances",name:"Adjectifs nuancés",raw:`
+reluctant|rɪˈlʌktənt|réticent|He was reluctant to help.|Il était réticent à aider.
+eager|ˈiːɡə|désireux, impatient|She is eager to learn.|Elle a hâte d'apprendre.
+aware|əˈweə|conscient|Are you aware of the risks?|Es-tu conscient des risques ?
+keen|kiːn|passionné, enthousiaste|I'm keen on photography.|Je suis passionné de photographie.
+likely|ˈlaɪkli|probable|It's likely to rain later.|Il va probablement pleuvoir plus tard.
+tough|tʌf|difficile, dur|It was a tough decision.|C'était une décision difficile.
+worthwhile|ˌwɜːθˈwaɪl|qui en vaut la peine|The trip was worthwhile.|Le voyage en valait la peine.
+steady|ˈstedi|régulier, stable|We made steady progress.|Nous avons progressé régulièrement.
+overwhelming|ˌəʊvəˈwelmɪŋ|écrasant, accablant|The response was overwhelming.|La réponse a été écrasante.
+straightforward|ˌstreɪtˈfɔːwəd|simple, direct|The process is straightforward.|Le processus est simple.`}]},
+
+{id:"C1",name:"Expert",desc:"Faux amis, expressions idiomatiques, verbes et registre soutenus, mots dont la prononciation piège les francophones.",themes:[
+{id:"fauxamis",name:"Faux amis",raw:`
+actually|ˈæktʃuəli|en fait (pas « actuellement »)|Actually, I don't agree.|En fait, je ne suis pas d'accord.
+eventually|ɪˈventʃuəli|finalement (pas « éventuellement »)|Eventually, he found a job.|Il a fini par trouver un emploi.
+library|ˈlaɪbrəri|bibliothèque (pas « librairie »)|I study at the library.|J'étudie à la bibliothèque.
+sensible|ˈsensəbl|raisonnable (pas « sensible »)|That's a sensible decision.|C'est une décision raisonnable.
+lecture|ˈlektʃə|cours magistral (pas « lecture »)|The lecture lasted two hours.|Le cours a duré deux heures.
+actual|ˈæktʃuəl|réel (pas « actuel »)|The actual cost was much higher.|Le coût réel était bien plus élevé.
+attend|əˈtend|assister à (pas « attendre »)|Did you attend the meeting?|As-tu assisté à la réunion ?
+deception|dɪˈsepʃn|tromperie (pas « déception »)|The deal was based on deception.|L'accord reposait sur une tromperie.
+achieve|əˈtʃiːv|accomplir, atteindre (pas « achever »)|She achieved her goals.|Elle a atteint ses objectifs.
+resume|rɪˈzjuːm|reprendre (pas « résumer »)|The meeting will resume at two.|La réunion reprendra à quatorze heures.`},
+{id:"idiomes",name:"Expressions idiomatiques",raw:`
+break the ice|breɪk ði ˈaɪs|briser la glace|A joke can help break the ice.|Une blague peut aider à briser la glace.
+piece of cake|ˌpiːs əv ˈkeɪk|du gâteau (très facile)|The exam was a piece of cake.|L'examen était du gâteau.
+under the weather|ˌʌndə ðə ˈweðə|patraque|I'm feeling under the weather.|Je me sens un peu patraque.
+hit the sack|ˌhɪt ðə ˈsæk|aller se coucher|I'm exhausted, I'll hit the sack.|Je suis épuisé, je vais me coucher.
+cost an arm and a leg|ˌkɒst ən ˈɑːm ən ə ˈleɡ|coûter les yeux de la tête|That car cost an arm and a leg.|Cette voiture a coûté les yeux de la tête.
+once in a blue moon|ˌwʌns ɪn ə bluː ˈmuːn|tous les trente-six du mois|I go to the cinema once in a blue moon.|Je vais au cinéma tous les trente-six du mois.
+the last straw|ðə ˌlɑːst ˈstrɔː|la goutte d'eau qui fait déborder le vase|That was the last straw.|Ça a été la goutte d'eau qui fait déborder le vase.
+call it a day|ˌkɔːl ɪt ə ˈdeɪ|s'arrêter là pour aujourd'hui|Let's call it a day.|Arrêtons-nous là pour aujourd'hui.
+on the fence|ɒn ðə ˈfens|indécis|I'm still on the fence about it.|Je suis encore indécis à ce sujet.
+beat around the bush|ˌbiːt əˌraʊnd ðə ˈbʊʃ|tourner autour du pot|Stop beating around the bush.|Arrête de tourner autour du pot.`},
+{id:"soutenu",name:"Registre soutenu",raw:`
+thorough|ˈθʌrə|minutieux, approfondi|She did a thorough analysis.|Elle a fait une analyse approfondie.
+ubiquitous|juːˈbɪkwɪtəs|omniprésent|Smartphones are ubiquitous today.|Les smartphones sont omniprésents aujourd'hui.
+meticulous|məˈtɪkjələs|méticuleux|He is meticulous about details.|Il est méticuleux sur les détails.
+compelling|kəmˈpelɪŋ|convaincant, captivant|She made a compelling argument.|Elle a avancé un argument convaincant.
+nuance|ˈnjuːɑːns|nuance|The translation loses some nuance.|La traduction perd certaines nuances.
+mitigate|ˈmɪtɪɡeɪt|atténuer|We must mitigate the risks.|Nous devons atténuer les risques.
+foster|ˈfɒstə|favoriser, encourager|We want to foster innovation.|Nous voulons favoriser l'innovation.
+scrutiny|ˈskruːtəni|examen minutieux|The plan is under close scrutiny.|Le plan fait l'objet d'un examen minutieux.
+feasible|ˈfiːzəbl|faisable|Is this project feasible?|Ce projet est-il faisable ?
+pivotal|ˈpɪvətl|déterminant, crucial|This was a pivotal moment.|Ce fut un moment déterminant.`},
+{id:"pieges",name:"Pièges de prononciation",raw:`
+salmon|ˈsæmən|saumon|I'd like the grilled salmon.|Je voudrais le saumon grillé.
+colonel|ˈkɜːnl|colonel|The colonel gave the order.|Le colonel a donné l'ordre.
+island|ˈaɪlənd|île|They live on a small island.|Ils vivent sur une petite île.
+receipt|rɪˈsiːt|reçu, ticket de caisse|Can I have a receipt, please?|Puis-je avoir un reçu, s'il vous plaît ?
+comfortable|ˈkʌmftəbl|confortable|This sofa is very comfortable.|Ce canapé est très confortable.
+thought|θɔːt|pensée, pensé|I thought you were at home.|Je pensais que tu étais à la maison.
+queue|kjuː|file d'attente|There's a long queue outside.|Il y a une longue file d'attente dehors.
+clothes|kləʊðz|vêtements|I need to buy new clothes.|Je dois acheter de nouveaux vêtements.
+knowledge|ˈnɒlɪdʒ|connaissance, savoir|Knowledge is power.|Le savoir, c'est le pouvoir.
+choir|ˈkwaɪə|chorale|She sings in a choir.|Elle chante dans une chorale.`},
+{id:"fauxamis2",name:"Faux amis (suite)",raw:`
+large|lɑːdʒ|grand (pas « large »)|They have a large garden.|Ils ont un grand jardin.
+sympathetic|ˌsɪmpəˈθetɪk|compatissant (pas « sympathique »)|She was very sympathetic.|Elle s'est montrée très compatissante.
+assist|əˈsɪst|aider (pas « assister à »)|Can I assist you?|Puis-je vous aider ?
+location|ləʊˈkeɪʃn|emplacement (pas « location »)|The hotel is in a great location.|L'hôtel est très bien situé.
+preservative|prɪˈzɜːvətɪv|conservateur (pas « préservatif »)|This jam has no preservatives.|Cette confiture ne contient aucun conservateur.
+excited|ɪkˈsaɪtɪd|enthousiaste (pas « excité »)|I'm excited about the trip.|J'ai hâte de faire ce voyage.
+coin|kɔɪn|pièce de monnaie (pas « coin »)|I found a coin on the floor.|J'ai trouvé une pièce par terre.
+rude|ruːd|impoli (pas « rude »)|Don't be rude to the waiter.|Ne sois pas impoli avec le serveur.
+petrol|ˈpetrəl|essence (pas « pétrole »)|We need to buy petrol.|Nous devons acheter de l'essence.
+demand|dɪˈmɑːnd|exiger (pas « demander »)|They demanded an explanation.|Ils ont exigé une explication.`},
+{id:"idiomes2",name:"Expressions (suite)",raw:`
+spill the beans|ˌspɪl ðə ˈbiːnz|vendre la mèche|Who spilled the beans?|Qui a vendu la mèche ?
+bite the bullet|ˌbaɪt ðə ˈbʊlɪt|prendre son courage à deux mains|I decided to bite the bullet and call him.|J'ai pris mon courage à deux mains et je l'ai appelé.
+hit the nail on the head|ˌhɪt ðə ˈneɪl ɒn ðə ˈhed|mettre le doigt dessus|You've hit the nail on the head.|Tu as mis le doigt dessus.
+let the cat out of the bag|ˌlet ðə ˈkæt aʊt əv ðə ˈbæɡ|révéler un secret|She let the cat out of the bag.|Elle a révélé le secret.
+a blessing in disguise|ə ˌblesɪŋ ɪn dɪsˈɡaɪz|un mal pour un bien|Losing that job was a blessing in disguise.|Perdre cet emploi a été un mal pour un bien.
+get cold feet|ˌɡet kəʊld ˈfiːt|se dégonfler|He got cold feet before the wedding.|Il s'est dégonflé avant le mariage.
+cut corners|ˌkʌt ˈkɔːnəz|bâcler, rogner sur la qualité|Don't cut corners on safety.|Ne rogne pas sur la sécurité.
+in hot water|ɪn ˌhɒt ˈwɔːtə|dans le pétrin|He's in hot water with his boss.|Il est dans le pétrin avec son chef.
+the ball is in your court|ðə ˌbɔːl ɪz ɪn jə ˈkɔːt|la balle est dans ton camp|I've made my offer; the ball is in your court.|J'ai fait mon offre ; la balle est dans ton camp.
+by the skin of your teeth|baɪ ðə ˌskɪn əv jə ˈtiːθ|de justesse|I passed by the skin of my teeth.|J'ai réussi de justesse.`},
+{id:"verbessoutenus",name:"Verbes soutenus",raw:`
+undermine|ˌʌndəˈmaɪn|saper, fragiliser|These rumours undermine our credibility.|Ces rumeurs sapent notre crédibilité.
+enhance|ɪnˈhɑːns|améliorer, renforcer|The update enhances security.|La mise à jour renforce la sécurité.
+assess|əˈses|évaluer|We need to assess the damage.|Nous devons évaluer les dégâts.
+convey|kənˈveɪ|transmettre, exprimer|Words can't convey how grateful I am.|Les mots ne peuvent exprimer ma gratitude.
+endorse|ɪnˈdɔːs|approuver, soutenir|The board endorsed the proposal.|Le conseil a approuvé la proposition.
+emphasise|ˈemfəsaɪz|souligner|I want to emphasise this point.|Je tiens à souligner ce point.
+hinder|ˈhɪndə|entraver|Bad weather hindered the rescue.|Le mauvais temps a entravé les secours.
+comply|kəmˈplaɪ|se conformer|All products must comply with the rules.|Tous les produits doivent être conformes aux règles.
+acknowledge|əkˈnɒlɪdʒ|reconnaître, admettre|He acknowledged his mistake.|Il a reconnu son erreur.
+streamline|ˈstriːmlaɪn|simplifier, rationaliser|We streamlined the process.|Nous avons simplifié le processus.`}]}
+];
+
+/* Phrases pour le jeu « Phrases en désordre » : anglais | français */
+const SENT_RAW={
+A1:`I have a black cat.|J'ai un chat noir.
+She drinks milk every morning.|Elle boit du lait tous les matins.
+My father is in the garden.|Mon père est dans le jardin.
+We eat bread and cheese.|Nous mangeons du pain et du fromage.
+The dog is under the table.|Le chien est sous la table.
+Where is my blue key?|Où est ma clé bleue ?
+They have two children.|Ils ont deux enfants.
+Can I have some water, please?|Puis-je avoir de l'eau, s'il vous plaît ?
+I read a book every evening.|Je lis un livre tous les soirs.
+The school is closed on Sunday.|L'école est fermée le dimanche.
+My new phone is very small.|Mon nouveau téléphone est très petit.
+We walk to the park on Saturday.|Nous allons au parc à pied le samedi.`,
+A2:`I usually take the train to work.|Je prends généralement le train pour aller au travail.
+It rained a lot yesterday.|Il a beaucoup plu hier.
+Can I try on this jacket?|Puis-je essayer cette veste ?
+We went to the cinema last weekend.|Nous sommes allés au cinéma le week-end dernier.
+Turn left after the bridge.|Tourne à gauche après le pont.
+She doesn't feel very well today.|Elle ne se sent pas très bien aujourd'hui.
+How much does this ticket cost?|Combien coûte ce billet ?
+My neighbour has a beautiful garden.|Mon voisin a un beau jardin.
+Could we have the bill, please?|Pourrions-nous avoir l'addition, s'il vous plaît ?
+I wake up at seven every day.|Je me réveille à sept heures tous les jours.
+This jacket is too expensive for me.|Cette veste est trop chère pour moi.
+My brother wants to be a pilot.|Mon frère veut devenir pilote.`,
+B1:`I have been working here for two years.|Je travaille ici depuis deux ans.
+If it rains, we will stay at home.|S'il pleut, nous resterons à la maison.
+The meeting has been moved to Friday.|La réunion a été déplacée à vendredi.
+She asked me where I lived.|Elle m'a demandé où j'habitais.
+You should change your password regularly.|Tu devrais changer ton mot de passe régulièrement.
+We missed the train because of the traffic.|Nous avons raté le train à cause de la circulation.
+I'm looking for a cheaper hotel.|Je cherche un hôtel moins cher.
+He used to live abroad.|Avant, il vivait à l'étranger.
+I can't afford to go on holiday this year.|Je n'ai pas les moyens de partir en vacances cette année.
+We are moving to a bigger flat next month.|Nous déménageons dans un appartement plus grand le mois prochain.
+I didn't expect the exam to be so difficult.|Je ne m'attendais pas à ce que l'examen soit si difficile.
+She has an appointment with the doctor tomorrow.|Elle a rendez-vous chez le médecin demain.`,
+B2:`If I had known, I would have called you.|Si j'avais su, je t'aurais appelé.
+The report must be finished by Monday.|Le rapport doit être terminé d'ici lundi.
+We ran out of time before the end.|Nous avons manqué de temps avant la fin.
+Despite the delay, the project was a success.|Malgré le retard, le projet a été un succès.
+I'm not used to working at night.|Je n'ai pas l'habitude de travailler la nuit.
+She suggested postponing the meeting.|Elle a suggéré de reporter la réunion.
+The server went down during the update.|Le serveur est tombé en panne pendant la mise à jour.
+I wish I had more free time.|J'aimerais avoir plus de temps libre.
+I've attached the minutes of the meeting.|J'ai joint le compte rendu de la réunion.
+The findings are likely to change our strategy.|Les résultats vont probablement changer notre stratégie.
+He was reluctant to admit his mistake.|Il était réticent à admettre son erreur.
+Please fill in the form before Friday.|Merci de remplir le formulaire avant vendredi.`,
+C1:`Had I known earlier, I would have acted differently.|Si j'avais su plus tôt, j'aurais agi différemment.
+Not only did he apologise, but he also paid for dinner.|Non seulement il s'est excusé, mais il a aussi payé le dîner.
+It is high time we addressed this issue.|Il est grand temps que nous traitions ce problème.
+Rarely have I seen such a compelling argument.|J'ai rarement vu un argument aussi convaincant.
+The proposal is unlikely to be approved.|Il est peu probable que la proposition soit approuvée.
+Little did they know what was coming.|Ils étaient loin de se douter de ce qui les attendait.
+Were it not for your help, we would have failed.|Sans ton aide, nous aurions échoué.
+The sooner we start, the better.|Plus tôt nous commencerons, mieux ce sera.
+No sooner had we arrived than it started to rain.|À peine étions-nous arrivés qu'il s'est mis à pleuvoir.
+Under no circumstances should you share your password.|Tu ne dois en aucun cas partager ton mot de passe.
+Should you need any help, do not hesitate to contact me.|Si vous avez besoin d'aide, n'hésitez pas à me contacter.
+The new policy has been widely criticised by experts.|La nouvelle politique a été largement critiquée par les experts.`
+};
+
+/* ================= Données ================= */
+const WORDS=[],BYID={};
+LEVELS.forEach(L=>{L.words=[];L.themes.forEach(T=>{T.words=[];T.raw.trim().split("\n").forEach(line=>{const p=line.split("|").map(s=>s.trim());if(p.length<5)return;const w={id:L.id+":"+p[0],en:p[0],ipa:p[1],fr:p[2],ex:p[3],exFr:p[4],level:L.id,theme:T.id,themeName:T.name};WORDS.push(w);BYID[w.id]=w;L.words.push(w);T.words.push(w);});});});
+const SENT={};let SENT_TOTAL=0;
+Object.keys(SENT_RAW).forEach(k=>{SENT[k]=SENT_RAW[k].trim().split("\n").map(l=>{const[en,fr]=l.split("|");SENT_TOTAL++;return{en:en.trim(),fr:fr.trim(),toks:en.trim().split(/\s+/)};});});
+
+/* ================= Outils ================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;};
+const sample=(a,n)=>shuffle(a).slice(0,n);
+const uniqBy=(a,f)=>{const s=new Set();return a.filter(x=>{const k=f(x);if(s.has(k))return false;s.add(k);return true;});};
+const DAY=864e5;
+const fmtDay=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const today=()=>fmtDay(new Date());
+const yesterday=()=>fmtDay(new Date(Date.now()-DAY));
+const fmtN=n=>Number(n).toLocaleString("fr-FR");
+const plural=(n,w)=>n+" "+w+(n>1?"s":"");
+function norm(s){return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[\u2018\u2019`\u00b4]/g,"'").replace(/[^a-z0-9' ]+/g," ").replace(/\s+/g," ").trim();}
+function lev(a,b){if(a===b)return 0;const m=a.length,n=b.length;if(!m)return n;if(!n)return m;let prev=Array.from({length:n+1},(_,j)=>j);for(let i=1;i<=m;i++){const cur=[i];for(let j=1;j<=n;j++)cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1));prev=cur;}return prev[n];}
+const NUMW={0:"zero",1:"one",2:"two",3:"three",4:"four",5:"five",6:"six",7:"seven",8:"eight",9:"nine",10:"ten",11:"eleven",12:"twelve",13:"thirteen",14:"fourteen",15:"fifteen",16:"sixteen",17:"seventeen",18:"eighteen",19:"nineteen",20:"twenty",30:"thirty",40:"forty",50:"fifty",100:"hundred"};
+const numWords=s=>s.split(" ").map(t=>/^\d+$/.test(t)&&NUMW[+t]?NUMW[+t]:t).join(" ");
+
+const IC={
+learn:'<path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H19v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H19v-3"/>',
+games:'<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4M15.5 11.5h.01M18 14h.01"/>',
+review:'<path d="M20 12a8 8 0 0 1-14.9 4"/><path d="M4 12a8 8 0 0 1 14.9-4"/><path d="M19 3.5V8h-4.5"/><path d="M5 20.5V16h4.5"/>',
+stats:'<path d="M5 20V11M12 20V5M19 20v-6"/>',
+settings:'<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+speaker:'<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5z"/><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/>',
+mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/>',
+back:'<path d="M15 5l-7 7 7 7"/>',
+next:'<path d="M9 5l7 7-7 7"/>',
+quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .8-1 1.5v.4M12 16.8h.01"/>',
+dictee:'<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+memory:'<rect x="3" y="4" width="10" height="14" rx="2"/><path d="M15 6.5l3.8 1a2 2 0 0 1 1.4 2.4l-2.6 9.7a2 2 0 0 1-2.4 1.4L9.5 19.6"/>',
+phrases:'<path d="M4 7h6M13 7h7M4 12h9M16 12h4M4 17h4M11 17h9"/>',
+chrono:'<circle cx="12" cy="13.5" r="7.5"/><path d="M12 9.5v4l2.5 2M9.5 2.5h5M12 2.5V6"/>',
+pendu:'<path d="M4 21h9M7 21V3.5h9V6"/><circle cx="16" cy="8.5" r="2.5"/><path d="M16 11v5M13.5 13.5h5"/>',
+download:'<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/>',
+search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
+check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+offline:'<path d="M3 9.5a14 14 0 0 1 18 0M6.5 13a9 9 0 0 1 11 0M10 16.5a4 4 0 0 1 4 0M12 20h.01"/>',
+expand:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'
+};
+const icon=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||""}</svg>`;
+
+/* ================= État et sauvegarde locale ================= */
+const KEY="englishlab.v1";
+const DEFAULTS={level:"A1",theme:"all",settings:{accent:"en-GB",voice:"",rate:0.9,autoplay:true,sfx:true,goal:50,theme:"auto",hideFr:false},srs:{},xp:0,days:{},streak:{count:0,last:""},best:{},stats:{played:0}};
+const fresh=()=>JSON.parse(JSON.stringify(DEFAULTS));
+function merge(d){const b=fresh();if(!d||typeof d!=="object")return b;return Object.assign(b,d,{settings:Object.assign(b.settings,d.settings||{}),streak:Object.assign(b.streak,d.streak||{}),stats:Object.assign(b.stats,d.stats||{}),srs:d.srs&&typeof d.srs==="object"?d.srs:{},days:d.days&&typeof d.days==="object"?d.days:{},best:d.best&&typeof d.best==="object"?d.best:{}});}
+function load(){try{const raw=localStorage.getItem(KEY);if(raw)return merge(JSON.parse(raw));}catch(e){}return fresh();}
+let S=load();
+if(!LEVELS.some(L=>L.id===S.level))S.level="A1";
+let saveT=0;
+function flush(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function save(){clearTimeout(saveT);saveT=setTimeout(flush,200);}
+
+function streakNow(){return(S.streak.last===today()||S.streak.last===yesterday())?S.streak.count:0;}
+function addXP(n){n=Math.round(n);if(n<=0)return;const t=today();S.xp+=n;S.days[t]=(S.days[t]||0)+n;if(S.streak.last!==t){S.streak.count=S.streak.last===yesterday()?S.streak.count+1:1;S.streak.last=t;}save();renderHeader();}
+
+/* Répétition espacée (boîtes de Leitner) */
+const INT=[0,1,3,7,16,35];
+function srsOf(id){return S.srs[id]||(S.srs[id]={b:0,d:0,c:0,w:0});}
+function grade(w,ok){const r=srsOf(w.id),now=Date.now();if(ok){r.c++;r.b=Math.min(5,r.b+1);r.d=now+INT[r.b]*DAY;}else{r.w++;r.b=1;r.d=now+10*60e3;}save();updateBadge();}
+function queue(w){const r=srsOf(w.id);r.b=Math.min(Math.max(r.b,1),1);r.d=Date.now()+10*60e3;save();updateBadge();}
+const hardDays=r=>Math.max(.5,INT[Math.max(1,r.b)]/2);
+const goodDays=r=>INT[Math.min(5,r.b+1)];
+function gradeHard(w){const r=srsOf(w.id);r.c++;r.b=Math.max(1,r.b);r.d=Date.now()+hardDays(r)*DAY;save();updateBadge();}
+const fmtDays=d=>d<1?Math.round(d*24)+" h":Math.round(d)+" j";
+function dueWords(){const now=Date.now();return Object.keys(S.srs).filter(id=>BYID[id]&&S.srs[id].d<=now).map(id=>BYID[id]);}
+function statusOf(w){const r=S.srs[w.id];if(!r)return["Nouveau","st-new"];if(r.b>=4)return["Maîtrisé","st-master"];return["Mémorisation "+r.b+"/5",""];}
+
+/* ================= Voix (synthèse vocale) ================= */
+const JUNK=/compact|eloquence|novelty|bad news|bells|boing|bubbles|cellos|whisper|zarvox|trinoids|albert|jester|organ|superstar|wobble|bahh|good news|deranged|hysterical|pipe/i;
+const TTS={
+  ok:"speechSynthesis" in window&&"SpeechSynthesisUtterance" in window,voices:[],cur:null,tok:0,
+  init(){if(!this.ok)return;this.load();const h=()=>{this.load();if(tab==="settings"&&!inGame)fillVoices();};try{speechSynthesis.addEventListener("voiceschanged",h);}catch(e){speechSynthesis.onvoiceschanged=h;}},
+  load(){try{this.voices=speechSynthesis.getVoices().filter(v=>/^en([-_]|$)/i.test(v.lang));}catch(e){this.voices=[];}},
+  lang(v){return String(v.lang||"").replace("_","-").toLowerCase();},
+  score(v){const acc=S.settings.accent.toLowerCase(),l=this.lang(v),n=v.name||"";let s=0;if(l===acc)s+=100;else if(l.startsWith("en"))s+=30;if(/natural|neural/i.test(n))s+=45;if(/premium|enhanced/i.test(n))s+=35;if(/google/i.test(n))s+=25;if(/online/i.test(n))s+=15;if(/siri|samantha|daniel|serena|karen|moira/i.test(n))s+=12;if(v.default&&l===acc)s+=3;if(JUNK.test(n))s-=300;return s;},
+  ranked(){return this.voices.slice().sort((a,b)=>this.score(b)-this.score(a));},
+  pick(){if(S.settings.voice){const v=this.voices.find(x=>x.voiceURI===S.settings.voice);if(v)return v;}return this.ranked()[0]||null;},
+  stop(){if(this.ok){try{speechSynthesis.cancel();}catch(e){}}},
+  speak(text,o={}){
+    if(!this.ok){toast("La synthèse vocale n'est pas disponible dans ce navigateur.");return;}
+    if(!this.voices.length)this.load();
+    const u=new SpeechSynthesisUtterance(text),v=this.pick();
+    if(v){u.voice=v;u.lang=v.lang;}else u.lang=S.settings.accent;
+    u.rate=o.rate||S.settings.rate;u.pitch=1;u.volume=1;
+    const end=()=>{if(this.cur===u)this.cur=null;if(o.onend)o.onend();};
+    u.onstart=()=>{if(o.onstart)o.onstart();};u.onend=end;u.onerror=end;
+    if(o.onboundary)u.onboundary=o.onboundary;
+    this.cur=u;const t=++this.tok;
+    const go=()=>{if(t!==this.tok)return;try{if(speechSynthesis.paused)speechSynthesis.resume();speechSynthesis.speak(u);}catch(e){}};
+    if(speechSynthesis.speaking||speechSynthesis.pending){speechSynthesis.cancel();setTimeout(go,70);}else go();
+  }
+};
+const slowRate=()=>Math.max(.5,S.settings.rate*.62);
+function say(text,slow){TTS.speak(text,{rate:slow?slowRate():0,onstart:()=>{const hw=$("#hw");if(hw){hw.classList.remove("sweep");void hw.offsetWidth;hw.classList.add("sweep");}$$(".big-play").forEach(b=>b.classList.add("playing"));},onend:()=>$$(".big-play").forEach(b=>b.classList.remove("playing"))});}
+function karaoke(t){let out="",i=0;t.split(/(\s+)/).forEach(part=>{if(/^\s+$/.test(part))out+=part;else if(part)out+=`<span data-i="${i}">${esc(part)}</span>`;i+=part.length;});return out;}
+function sayExample(text,el){const spans=el?$$("span[data-i]",el):[];const clear=()=>spans.forEach(s=>s.classList.remove("on"));TTS.speak(text,{onboundary:e=>{if(e.name&&e.name!=="word")return;let cur=null;for(const s of spans){if(+s.dataset.i<=e.charIndex)cur=s;else break;}clear();if(cur)cur.classList.add("on");},onend:clear});}
+
+/* Effets sonores courts (Web Audio, aucun fichier externe) */
+let AC=null;
+function sfx(type){if(!S.settings.sfx)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==="suspended")AC.resume();const t=AC.currentTime;const tone=(f,st,d,vol,wave)=>{const o=AC.createOscillator(),g=AC.createGain();o.type=wave||"sine";o.frequency.value=f;g.gain.setValueAtTime(.0001,t+st);g.gain.exponentialRampToValueAtTime(vol||.06,t+st+.012);g.gain.exponentialRampToValueAtTime(.0001,t+st+d);o.connect(g);g.connect(AC.destination);o.start(t+st);o.stop(t+st+d+.03);};
+if(type==="ok"){tone(660,0,.09);tone(990,.07,.13);}else if(type==="bad"){tone(196,0,.2,.07,"triangle");if(navigator.vibrate)navigator.vibrate(35);}else if(type==="end"){tone(523,0,.1);tone(659,.09,.1);tone(784,.18,.2);}else if(type==="tick"){tone(880,0,.05,.03);}}catch(e){}}
+
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
+
+/* ================= Interface générale ================= */
+const V=$("#view");
+let tab="learn",inGame=false,onAct=null,onKey=null,cleanup=null,timers=[],interacted=false;
+["pointerdown","keydown"].forEach(ev=>addEventListener(ev,()=>{interacted=true;},{capture:true,once:true}));
+function later(fn,ms){const id=setTimeout(fn,ms);timers.push(id);return id;}
+let toastT=0;
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2800);}
+const lvl=()=>LEVELS.find(L=>L.id===S.level)||LEVELS[0];
+function themeWords(){const L=lvl();if(S.theme==="all")return L.words;const T=L.themes.find(t=>t.id===S.theme);return T?T.words:L.words;}
+function pool(min){const p=themeWords();return p.length>=(min||4)?p:lvl().words;}
+
+const LV_COL={A1:["#0E8A68","#DDF4EC","#4FD1A8","#12302A"],A2:["#0A7EA4","#DCEFF7","#5CC4EA","#10293A"],B1:["#2846C8","#E4E9FF","#8DA2FF","#1D2848"],B2:["#6D3BC9","#EEE6FB","#B795FF","#271C45"],C1:["#B02A6E","#FBE4EF","#FF8CC0","#3A1A2C"]};
+const DARK_MQ=window.matchMedia?matchMedia("(prefers-color-scheme: dark)"):null;
+const isDark=()=>S.settings.theme==="dark"||(S.settings.theme==="auto"&&!!DARK_MQ&&DARK_MQ.matches);
+function applyLevelColors(){const c=LV_COL[S.level]||LV_COL.A1,d=isDark(),st=document.documentElement.style;st.setProperty("--lv",d?c[2]:c[0]);st.setProperty("--lv-soft",d?c[3]:c[1]);st.setProperty("--lv-ink",d?"#0C1120":"#FFFFFF");const m=$('meta[name="theme-color"]');if(m)m.setAttribute("content",d?"#0C1120":"#F4F6FB");}
+function applyTheme(){const t=S.settings.theme;if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);applyLevelColors();}
+function renderLevels(){$("#levels").innerHTML=LEVELS.map(L=>`<button class="lvl" data-lvl="${L.id}" aria-pressed="${L.id===S.level}" title="${L.id} ${L.name}"><b>${L.id}</b><span>${L.name}</span></button>`).join("");}
+const TABS=[["learn","Apprendre"],["games","Jeux"],["review","Réviser"],["stats","Progrès"],["settings","Réglages"]];
+function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-current="${k===tab?"page":"false"}"><span class="ico">${icon(k)}</span><span>${l}</span>${k==="review"?'<span class="badge" id="dueBadge" hidden></span>':""}</button>`).join("");}
+function renderHeader(){const h=$("#todayStrip");if(h)h.outerHTML=todayStrip();updateBadge();}
+function todayStrip(){
+  const tx=S.days[today()]||0,goal=S.settings.goal,p=Math.min(1,tx/goal),st=streakNow(),C=2*Math.PI*23,L=lvl();
+  const m=L.words.filter(w=>{const r=S.srs[w.id];return r&&r.b>=4;}).length;
+  return `<section class="today" id="todayStrip"><div class="ringwrap" aria-hidden="true"><svg class="ring" viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="23"/><circle class="fg" cx="29" cy="29" r="23" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-p)).toFixed(1)}"/></svg><span>${Math.round(p*100)}%</span></div><div><p class="today-t">${tx>=goal?"Objectif du jour atteint":"Objectif du jour"} : <b>${tx} / ${goal} XP</b></p><p class="today-s">${st?"Série de "+plural(st,"jour")+".":"Commence ta série aujourd'hui."} ${m} sur ${L.words.length} mots maîtrisés en ${L.id}.</p></div></section>`;
+}
+function updateBadge(){const b=$("#dueBadge");if(!b)return;const n=dueWords().length;b.hidden=!n;b.textContent=n>99?"99+":String(n);}
+
+function teardown(){timers.forEach(clearTimeout);timers=[];if(cleanup){try{cleanup();}catch(e){}cleanup=null;}onAct=null;onKey=null;V.onchange=null;V.oninput=null;inGame=false;TTS.stop();}
+function go(t){teardown();if(t!=="review")R=null;tab=t;$$("#tabs button").forEach(b=>b.setAttribute("aria-current",b.dataset.tab===t?"page":"false"));VIEWS[t]();window.scrollTo(0,0);}
+
+V.addEventListener("click",e=>{
+  const t=e.target.closest("[data-act],[data-theme],[data-game]");
+  if(!t||!V.contains(t)||t.disabled)return;
+  if(t.dataset.act==="sayid"){const w=BYID[t.dataset.id];if(w)say(w.en);return;}
+  if(t.dataset.act==="quit"){go("games");return;}
+  if(t.dataset.theme){S.theme=t.dataset.theme;L_idx=0;L_order=null;save();const y=window.scrollY;go(tab);window.scrollTo(0,y);return;}
+  if(t.dataset.game){startGame(t.dataset.game);return;}
+  if(onAct)onAct(t,e);
+});
+document.addEventListener("keydown",e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey||!onKey)return;
+  const tag=(e.target&&e.target.tagName)||"";
+  if(/INPUT|TEXTAREA|SELECT/.test(tag))return;
+  if((e.key==="Enter"||e.key===" ")&&tag==="BUTTON")return;
+  onKey(e);
+});
+function bindSwipe(el,onLeft,onRight){if(!el)return;let x0=null,y0=0;el.addEventListener("touchstart",e=>{const t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});el.addEventListener("touchend",e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?onLeft():onRight();}},{passive:true});}
+function themeChips(){const L=lvl();const items=[{id:"all",name:"Tous les thèmes",words:L.words}].concat(L.themes);return `<div class="chips" role="group" aria-label="Thème">${items.map(t=>`<button class="chip" data-theme="${t.id}" aria-pressed="${S.theme===t.id}">${esc(t.name)}<small>${t.words.length}</small></button>`).join("")}</div>`;}
+const wordRow=(w,lv)=>`<li><button class="wrow" data-act="sayid" data-id="${esc(w.id)}" aria-label="Écouter ${esc(w.en)}"><span class="spk">${icon("speaker")}</span><span class="wcol"><span class="w" lang="en">${esc(w.en)}${lv===true?`<span class="lvtag">${w.level}</span>`:""}</span><span class="p" lang="en">/${esc(w.ipa)}/</span></span><span class="f">${esc(w.fr)}</span></button></li>`;
+
+/* ================= Apprendre ================= */
+let L_idx=0,L_mode="cards",L_shuf=false,L_order=null,L_key="",L_rev=false;
+function learnList(){const base=themeWords();if(!L_shuf)return base;const k=S.level+"/"+S.theme;if(!L_order||L_key!==k){L_order=shuffle(base);L_key=k;}return L_order;}
+function viewLearn(){
+  const L=lvl(),list=learnList();if(L_idx>=list.length)L_idx=0;
+  V.innerHTML=`${todayStrip()}<h1 class="view-title">Vocabulaire ${L.id}, ${L.name.toLowerCase()}</h1>
+  <p class="view-sub">${esc(L.desc)}</p>
+  ${themeChips()}
+  <div class="toolbar">
+    <div class="seg" role="group" aria-label="Affichage"><button data-act="mode" data-v="cards" aria-pressed="${L_mode==="cards"}">Cartes</button><button data-act="mode" data-v="list" aria-pressed="${L_mode==="list"}">Liste</button></div>
+    ${L_mode==="cards"?`<div class="tools"><button class="btn btn-quiet sm" data-act="shuffle" aria-pressed="${L_shuf}">${L_shuf?"Ordre normal":"Mélanger"}</button><button class="btn btn-quiet sm" data-act="hidefr" aria-pressed="${S.settings.hideFr}">${S.settings.hideFr?"Afficher le français":"Mode test"}</button></div>`:""}
+  </div>
+  <div id="learnBody"></div>`;
+  if(L_mode==="cards")renderCard(false);else renderList();
+  onAct=t=>{const a=t.dataset.act,w=learnList()[L_idx];
+    switch(a){
+      case"mode":L_mode=t.dataset.v;viewLearn();break;
+      case"shuffle":L_shuf=!L_shuf;L_order=null;L_idx=0;viewLearn();break;
+      case"hidefr":S.settings.hideFr=!S.settings.hideFr;L_rev=false;save();viewLearn();break;
+      case"say":say(w.en);break;
+      case"slow":say(w.en,true);break;
+      case"ex":sayExample(w.ex,$("#exEn"));break;
+      case"reveal":L_rev=true;renderCard(false);break;
+      case"prev":step(-1);break;
+      case"next":step(1);break;
+      case"know":grade(w,true);addXP(2);step(1);break;
+      case"again":queue(w);toast("Ajouté à ta révision");step(1);break;
+    }};
+  onKey=e=>{if(L_mode!=="cards")return;if(e.key==="ArrowRight")step(1);else if(e.key==="ArrowLeft")step(-1);else if(e.key===" "){e.preventDefault();say(learnList()[L_idx].en);}};
+}
+function step(d){const n=learnList().length;L_idx=(L_idx+d+n)%n;L_rev=false;renderCard(true,d);}
+let L_q="";
+function renderList(){
+  $("#learnBody").innerHTML=`<label class="search">${icon("search")}<input id="q" type="search" placeholder="Rechercher parmi les ${WORDS.length} mots" value="${esc(L_q)}" autocomplete="off" aria-label="Rechercher un mot en anglais ou en français"></label><div id="listOut"></div>`;
+  fillList();$("#q").addEventListener("input",e=>{L_q=e.target.value;fillList();});
+}
+function fillList(){
+  const q=norm(L_q),list=q?WORDS.filter(w=>norm(w.en).includes(q)||norm(w.fr).includes(q)).slice(0,100):themeWords();
+  $("#listOut").innerHTML=list.length?(q?`<p class="counter" style="text-align:left;margin:0 0 8px">${plural(list.length,"résultat")} dans tous les niveaux</p>`:"")+`<ul class="wlist">${list.map(w=>wordRow(w,!!q)).join("")}</ul>`:`<div class="empty"><p>Aucun mot trouvé.</p><span>Essaie un autre mot, en anglais ou en français.</span></div>`;
+}
+function renderCard(auto,dir){
+  const list=learnList(),w=list[L_idx],st=statusOf(w),hide=S.settings.hideFr&&!L_rev;
+  $("#learnBody").innerHTML=`<article class="entry ${dir>0?"from-r":dir<0?"from-l":""}" id="entry">
+    <div class="entry-band"><span class="tag">${w.level}</span><span>${esc(w.themeName)}</span><span class="status ${st[1]}">${st[0]}</span></div>
+    <div class="entry-body"><h2 class="headword" lang="en"><span class="hl" id="hw">${esc(w.en)}</span></h2>
+    <p class="ipa" lang="en">/${esc(w.ipa)}/</p>
+    <div class="audio-row"><button class="btn btn-primary" data-act="say">${icon("speaker")}Écouter</button><button class="btn" data-act="slow">Lentement</button></div>
+    <div class="meaning">${hide?'<button class="btn sm" data-act="reveal">Afficher la traduction</button>':esc(w.fr)}</div>
+    <div class="example"><button class="icon-btn" data-act="ex" aria-label="Écouter l'exemple">${icon("speaker")}</button><p class="ex-en" id="exEn" lang="en">${karaoke(w.ex)}</p>${hide?"":`<p class="ex-fr">${esc(w.exFr)}</p>`}</div>
+  </div></article>
+  <div class="card-nav"><button class="icon-btn" data-act="prev" aria-label="Mot précédent">${icon("back")}</button><div class="mid"><button class="btn btn-bad" data-act="again">À revoir</button><button class="btn btn-ok" data-act="know">Je connais</button></div><button class="icon-btn" data-act="next" aria-label="Mot suivant">${icon("next")}</button></div>
+  <p class="counter">${L_idx+1} / ${list.length}<span class="only-touch">. Glisse la carte pour changer de mot.</span><span class="only-mouse">. Flèches pour naviguer, Espace pour écouter.</span></p>`;
+  bindSwipe($("#entry"),()=>step(1),()=>step(-1));
+  if(auto&&S.settings.autoplay&&interacted)say(w.en);
+}
+
+/* ================= Jeux ================= */
+const GAMES=[
+{id:"quiz",name:"Quiz express",icon:"quiz",hue:"#2846C8",fn:gameQuiz,desc:"Dix questions : traduire, retrouver le mot anglais ou le reconnaître à l'oreille."},
+{id:"dictee",name:"Dictée",icon:"dictee",hue:"#0A7EA4",fn:gameDictee,desc:"Écoute le mot et écris-le sans faute d'orthographe."},
+{id:"memory",name:"Memory",icon:"memory",hue:"#6D3BC9",fn:gameMemory,desc:"Retrouve les paires anglais et français. Chaque mot anglais retourné est prononcé."},
+{id:"phrases",name:"Phrases en désordre",icon:"phrases",hue:"#0E8A68",fn:gamePhrases,desc:"Remets les mots dans l'ordre pour traduire une phrase du niveau."},
+{id:"chrono",name:"Chrono 60 secondes",icon:"chrono",hue:"#D9480F",fn:gameChrono,desc:"Vrai ou faux ? Enchaîne le plus de bonnes réponses en une minute."},
+{id:"pendu",name:"Pendu",icon:"pendu",hue:"#B02A6E",fn:gamePendu,desc:"Devine le mot anglais lettre par lettre à partir de sa traduction."},
+{id:"parle",name:"Prononciation",icon:"mic",hue:"#B7791F",fn:gameParle,needSR:true,desc:"Dis le mot au micro : l'appli vérifie qu'elle te comprend."}
+];
+function viewGames(){
+  const L=lvl();
+  V.innerHTML=`<h1 class="view-title">Jeux</h1><p class="view-sub">Vocabulaire du niveau ${L.id} et du thème choisi. Chaque erreur est ajoutée à ta révision pour revenir au bon moment.</p>${themeChips()}
+  <ul class="games">${GAMES.map(g=>{const dis=g.needSR&&!SR,b=S.best[g.id];return `<li><button class="gtile" style="--g:${g.hue}" data-game="${g.id}" ${dis?"disabled":""}><span class="gi">${icon(g.icon)}</span><span class="gt">${g.name}</span><span class="gd">${dis?"Reconnaissance vocale indisponible ici. Utilise Chrome ou Edge.":g.desc}</span><span class="best">${b?`Record : <b>${esc(b.t)}</b>`:"Pas encore joué"}</span></button></li>`;}).join("")}</ul>`;
+}
+function startGame(id){const g=GAMES.find(x=>x.id===id);if(!g)return;teardown();inGame=true;tab="games";
+  V.innerHTML=`<div class="game"><div class="game-top"><button class="icon-btn" data-act="quit" aria-label="Quitter le jeu">${icon("back")}</button><h2>${g.name}</h2><div class="game-score" id="gScore"></div></div><div class="bar" id="gBarWrap" aria-hidden="true"><span id="gBar"></span></div><div id="gBody"></div></div>`;
+  g.fn(g);window.scrollTo(0,0);}
+const setProg=(i,n)=>{const b=$("#gBar");if(b)b.style.width=(n?i/n*100:0)+"%";};
+const setScore=t=>{const s=$("#gScore");if(s)s.textContent=t;};
+const verdict=p=>p>=.9?"Excellent travail.":p>=.7?"Très bien, continue comme ça.":p>=.4?"Bon début. Les mots ratés reviendront en révision.":"Les mots ratés ont été ajoutés à ta révision.";
+function endGame(g,o){
+  timers.forEach(clearTimeout);timers=[];if(cleanup){try{cleanup();}catch(e){}cleanup=null;}onKey=null;
+  S.stats.played=(S.stats.played||0)+1;
+  const prev=S.best[g.id],better=!prev||(o.lower?o.score<prev.v:o.score>prev.v);
+  if(better)S.best[g.id]={v:o.score,t:o.label};
+  addXP(o.xp);save();setProg(1,1);sfx("end");
+  const good=o.lower?o.score<=9:(o.max?o.score/o.max>=.8:o.score>=20);if(good||(prev&&better))later(confetti,150);
+  const missed=uniqBy(o.missed||[],w=>w.id);
+  $("#gBody").innerHTML=`<div class="end"><p class="end-score">${esc(o.label)}</p><p class="end-msg">${prev&&better?"Nouveau record.":esc(o.msg||verdict(o.score/(o.max||1)))}</p>${o.extra||""}<p class="end-xp">+${Math.round(o.xp)} XP</p>
+  ${missed.length?`<h3 class="sub">À retravailler</h3><ul class="wlist">${missed.map(wordRow).join("")}</ul>`:""}
+  <div class="actions"><button class="btn btn-primary grow" data-act="replay">Rejouer</button><button class="btn grow" data-act="quit">Autres jeux</button></div></div>`;
+  onAct=t=>{if(t.dataset.act==="replay")startGame(g.id);};
+}
+
+/* --- Quiz express --- */
+function gameQuiz(g){
+  const all=lvl().words,words=sample(pool(),10),n=words.length;
+  let i=0,score=0,missed=[],locked=false,cur=null,timer=0;
+  function show(){
+    locked=false;clearTimeout(timer);
+    const w=words[i],type=["en2fr","fr2en","audio"][Math.random()*3|0];
+    const others=sample(all.filter(x=>x.id!==w.id&&x.fr!==w.fr&&x.en!==w.en),3),opts=shuffle([w].concat(others));
+    cur={w,type,opts};setProg(i,n);setScore(score+" / "+n);
+    let p;
+    if(type==="en2fr")p=`<p class="ask">Que signifie ce mot ?</p><div class="prompt-word" lang="en"><span class="hl" id="hw">${esc(w.en)}</span></div><p class="ipa" lang="en">/${esc(w.ipa)}/</p><div class="row-c" style="justify-content:flex-start"><button class="btn btn-quiet sm" data-act="say">${icon("speaker")}Écouter</button></div>`;
+    else if(type==="fr2en")p=`<p class="ask">Comment dit-on en anglais ?</p><div class="prompt-word">${esc(w.fr)}</div>`;
+    else p=`<p class="ask">Écoute et choisis la traduction.</p><button class="big-play" data-act="say" aria-label="Réécouter">${icon("speaker")}</button><div class="row-c"><button class="btn btn-quiet sm" data-act="slow">Lentement</button></div>`;
+    $("#gBody").innerHTML=`<div class="prompt ${type==="audio"?"center":""}">${p}</div>
+    <div class="options">${opts.map((o,k)=>`<button class="btn opt" data-act="pick" data-k="${k}"><kbd>${k+1}</kbd>${type==="fr2en"?`<span class="serif" lang="en">${esc(o.en)}</span>`:`<span>${esc(o.fr)}</span>`}</button>`).join("")}</div>
+    <div class="feedback" id="fb" role="status"></div>
+    <div class="actions" id="nextRow" hidden><button class="btn btn-primary grow" data-act="next">${i+1<n?"Question suivante":"Voir le résultat"}</button></div>`;
+    if(type==="audio"||(type==="en2fr"&&S.settings.autoplay))say(w.en);
+  }
+  function pick(k){
+    if(locked)return;locked=true;
+    const w=cur.w,ok=cur.opts[k]===w;
+    $$(".opt").forEach((b,j)=>{b.disabled=true;if(cur.opts[j]===w)b.classList.add("is-ok");else if(j===k)b.classList.add("is-bad");});
+    grade(w,ok);const fb=$("#fb");
+    if(ok){score++;fb.className="feedback ok";fb.innerHTML=`Bonne réponse : <span class="serif" lang="en">${esc(w.en)}</span> signifie « ${esc(w.fr)} ».`;sfx("ok");}
+    else{missed.push(w);fb.className="feedback bad";fb.innerHTML=`La bonne réponse était <strong>${esc(cur.type==="fr2en"?w.en:w.fr)}</strong>. <span class="serif" lang="en">${esc(w.en)}</span> se prononce /${esc(w.ipa)}/.`;sfx("bad");}
+    setScore(score+" / "+n);later(()=>say(w.en),220);
+    $("#nextRow").hidden=false;
+    if(ok)timer=later(next,1700);
+  }
+  function next(){clearTimeout(timer);if(!locked)return;i++;if(i>=n)return endGame(g,{score,max:n,xp:score*10,missed,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act;if(a==="say")say(cur.w.en);else if(a==="slow")say(cur.w.en,true);else if(a==="pick")pick(+t.dataset.k);else if(a==="next")next();};
+  onKey=e=>{if(e.key>="1"&&e.key<="4"&&!locked)pick(+e.key-1);else if(e.key==="Enter"&&locked)next();else if(e.key===" "){e.preventDefault();say(cur.w.en);}};
+  show();
+}
+
+/* --- Dictée --- */
+function gameDictee(g){
+  let base=pool().filter(w=>w.en.length<=22);if(base.length<4)base=lvl().words;
+  const words=sample(base,8),n=words.length;
+  let i=0,score=0,xp=0,missed=[],hints=0,done=false,showFr=false;
+  const mask=(w,h)=>{let k=0;return w.en.split("").map(c=>{if(!/[a-z]/i.test(c))return c===" "?"\u2003":c;const s=k<h?c:"_";k++;return s;}).join("");};
+  function show(){
+    const w=words[i];hints=0;done=false;showFr=false;setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt center"><p class="ask">Écoute et écris le mot en anglais.</p><button class="big-play" data-act="say" aria-label="Réécouter">${icon("speaker")}</button>
+      <div class="row-c"><button class="btn btn-quiet sm" data-act="slow">Lentement</button><button class="btn btn-quiet sm" data-act="fr">Voir la traduction</button></div><p class="clue" id="clue"></p><p class="mask" id="mask" lang="en"></p></div>
+    <input class="field" id="ans" type="text" lang="en" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="done" placeholder="Tape ce que tu entends" aria-label="Ta réponse">
+    <div class="feedback" id="fb" role="status"></div>
+    <div class="actions" id="act1"><button class="btn" data-act="hint">Indice</button><button class="btn btn-primary grow" data-act="check">Valider</button></div>
+    <div class="actions" id="act2" hidden><button class="btn btn-primary grow" data-act="next">${i+1<n?"Mot suivant":"Voir le résultat"}</button></div>`;
+    say(w.en);
+    const inp=$("#ans");
+    inp.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();e.stopPropagation();check();}});
+    later(()=>{try{inp.focus({preventScroll:true});}catch(e){}},60);
+  }
+  function check(){
+    if(done)return;const w=words[i],inp=$("#ans"),v=inp.value;
+    if(!v.trim()){inp.focus();return;}
+    done=true;const ok=spellEq(v,w.en);grade(w,ok);const fb=$("#fb");
+    if(ok){score++;const gain=Math.max(5,15-hints*3-(showFr?2:0));xp+=gain;fb.className="feedback ok";fb.innerHTML=`Parfait : <span class="serif" lang="en">${esc(w.en)}</span> (${esc(w.fr)}). +${gain} XP`;sfx("ok");}
+    else{missed.push(w);const close=lev(norm(v),norm(w.en))<=Math.max(1,w.en.length/5|0);fb.className="feedback bad";fb.innerHTML=`${close?"Presque !":"Pas tout à fait."} Tu as écrit « ${esc(v)} ». La bonne orthographe est <span class="serif" lang="en">${esc(w.en)}</span> (${esc(w.fr)}).`;sfx("bad");}
+    inp.disabled=true;$("#act1").hidden=true;$("#act2").hidden=false;setScore(score+" / "+n);later(()=>say(w.en),250);
+    later(()=>{const b=$("#act2 button");if(b)b.focus();},30);
+  }
+  function next(){if(!done)return;i++;if(i>=n)return endGame(g,{score,max:n,xp,missed,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act,w=words[i];
+    if(a==="say")say(w.en);else if(a==="slow")say(w.en,true);
+    else if(a==="fr"){showFr=true;$("#clue").textContent="Traduction : "+w.fr;}
+    else if(a==="hint"){const letters=w.en.replace(/[^a-z]/gi,"").length;if(hints<letters-1){hints++;$("#mask").textContent=mask(w,hints);}}
+    else if(a==="check")check();else if(a==="next")next();};
+  onKey=e=>{if(e.key==="Enter"&&done)next();};
+  show();
+}
+
+/* --- Memory --- */
+function gameMemory(g){
+  let base=uniqBy(uniqBy(pool(),w=>w.fr),w=>w.en);if(base.length<6)base=uniqBy(lvl().words,w=>w.fr);
+  const words=sample(base,6),cards=shuffle(words.flatMap(w=>[{w,side:"en"},{w,side:"fr"}]));
+  let open=[],moves=0,found=0,busy=false;const t0=Date.now();
+  setScore("0 coup");setProg(0,6);
+  $("#gBody").innerHTML=`<p class="ask">Retourne deux cartes : un mot anglais et sa traduction.</p><div class="mem">${cards.map((c,k)=>`<button class="mcard" data-act="flip" data-k="${k}" aria-label="Carte ${k+1}, face cachée"><span class="in"><span class="fc"></span><span class="bc ${c.side}" ${c.side==="en"?'lang="en"':""}><span class="lg">${c.side==="en"?"EN":"FR"}</span>${esc(c.side==="en"?c.w.en:c.w.fr)}</span></span></button>`).join("")}</div>`;
+  const el=k=>$(`.mcard[data-k="${k}"]`);
+  function flip(k){
+    if(busy)return;const e=el(k),c=cards[k];if(!e||e.classList.contains("up"))return;
+    e.classList.add("up");e.setAttribute("aria-label",(c.side==="en"?c.w.en:c.w.fr));
+    if(c.side==="en")say(c.w.en);
+    open.push(k);if(open.length<2)return;
+    moves++;setScore(plural(moves,"coup"));const a=open[0],b=open[1];open=[];
+    if(cards[a].w===cards[b].w){
+      found++;grade(cards[a].w,true);[a,b].forEach(x=>el(x).classList.add("done"));setProg(found,6);sfx("ok");
+      if(c.side==="fr")later(()=>say(c.w.en),150);
+      if(found===6)later(()=>{const sec=Math.round((Date.now()-t0)/1000);endGame(g,{score:moves,lower:true,xp:Math.max(10,70-(moves-6)*5),label:plural(moves,"coup"),msg:moves<=8?"Mémoire impressionnante.":moves<=12?"Bien joué.":"Rejoue pour faire moins de coups.",extra:`<p class="end-msg">Temps : ${sec} s</p>`});},800);
+    }else{
+      busy=true;[a,b].forEach(x=>el(x).classList.add("miss"));
+      later(()=>{[a,b].forEach(x=>{const m=el(x);if(m){m.classList.remove("up","miss");m.setAttribute("aria-label","Carte "+(x+1)+", face cachée");}});busy=false;},950);
+    }
+  }
+  onAct=t=>{if(t.dataset.act==="flip")flip(+t.dataset.k);};
+}
+
+/* --- Phrases en désordre --- */
+function gamePhrases(g){
+  const list=sample(SENT[S.level]||SENT.A1,6),n=list.length;
+  let i=0,score=0,xp=0,placed=[],solved=false,attempts=0,order=[],msg=null,shake=false;
+  function show(){const s=list[i];placed=[];solved=false;attempts=0;msg=null;order=shuffle(s.toks.map((_,k)=>k));if(order.length>1&&order.every((v,k)=>v===k))order.reverse();render();}
+  function render(){
+    const s=list[i];setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt"><p class="ask">Traduis en remettant les mots dans l'ordre.</p><p class="prompt-fr">${esc(s.fr)}</p><button class="btn btn-quiet sm" data-act="listen">${icon("speaker")}Écouter la phrase</button></div>
+    <div class="slot ${solved?"ok":""} ${shake?"bad":""}" lang="en" aria-label="Ta phrase">${placed.length?placed.map((k,p)=>`<button class="tok" data-act="unplace" data-p="${p}" ${solved?"disabled":""}>${esc(s.toks[k])}</button>`).join(""):'<span class="slot-ph">Touche les mots dans l\'ordre</span>'}</div>
+    <div class="bank" lang="en">${order.map(k=>{const u=placed.includes(k);return `<button class="tok ${u?"used":""}" data-act="place" data-k="${k}" ${u||solved?'disabled tabindex="-1"':""}>${esc(s.toks[k])}</button>`;}).join("")}</div>
+    <div class="feedback ${msg?msg.c:""}" id="fb" role="status">${msg?msg.h:""}</div>
+    <div class="actions">${solved?`<button class="btn btn-primary grow" data-act="next">${i+1<n?"Phrase suivante":"Voir le résultat"}</button>`:`<button class="btn" data-act="clear">Effacer</button><button class="btn" data-act="solution">Solution</button><button class="btn btn-primary grow" data-act="check" ${placed.length===s.toks.length?"":"disabled"}>Vérifier</button>`}</div>`;
+    shake=false;
+  }
+  function check(){
+    const s=list[i],built=placed.map(k=>s.toks[k]).join(" ");
+    if(built===s.en){solved=true;score++;const gain=attempts===0?20:10;xp+=gain;msg={c:"ok",h:`Bravo. +${gain} XP`};sfx("ok");render();say(s.en);}
+    else{attempts++;msg={c:"bad",h:"Pas encore : vérifie l'ordre des mots, ou écoute la phrase."};shake=true;sfx("bad");render();}
+  }
+  onAct=t=>{const a=t.dataset.act,s=list[i];
+    if(a==="place"&&!solved){const k=+t.dataset.k;if(!placed.includes(k)){placed.push(k);msg=null;render();if(placed.length===s.toks.length)check();}}
+    else if(a==="unplace"&&!solved){placed.splice(+t.dataset.p,1);msg=null;render();}
+    else if(a==="clear"){placed=[];msg=null;render();}
+    else if(a==="listen")say(s.en);
+    else if(a==="solution"){placed=s.toks.map((_,k)=>k);solved=true;msg={c:"bad",h:"Voici la phrase correcte. Écoute-la et retiens sa construction."};render();say(s.en);}
+    else if(a==="check")check();
+    else if(a==="next"){i++;if(i>=n)return endGame(g,{score,max:n,xp,label:score+" / "+n});show();}};
+  onKey=e=>{if(e.key==="Enter"&&solved){i++;if(i>=n)return endGame(g,{score,max:n,xp,label:score+" / "+n});show();}};
+  show();
+}
+
+/* --- Chrono 60 s --- */
+function gameChrono(g){
+  const words=pool(6),lw=lvl().words,DUR=60000;
+  let score=0,combo=0,bestCombo=0,end=0,cur=null,running=false,raf=0,missed=[];
+  setScore("0");setProg(1,1);
+  $("#gBody").innerHTML=`<div class="prompt center"><p class="ask">Une minute pour dire si la traduction proposée est juste.</p><p class="only-mouse lives">Clavier : flèche gauche pour Faux, flèche droite pour Vrai.</p><button class="btn btn-primary wide" data-act="start">Démarrer</button></div>`;
+  function nextQ(){
+    const w=words[Math.random()*words.length|0],truth=Math.random()<.5;
+    let fr=w.fr;if(!truth){const o=sample(lw.filter(x=>x.fr!==w.fr&&x.id!==w.id),1)[0];if(o)fr=o.fr;}
+    cur={w,truth,fr};
+    $("#pp").innerHTML=`<div class="pair"><div class="en" lang="en">${esc(w.en)}</div><div class="eq">veut dire</div><div class="fr">${esc(fr)}</div></div><p class="combo">${combo>=3?"Série de "+combo:""}</p>`;
+  }
+  function answer(v){
+    if(!running||!cur)return;const ok=v===cur.truth,pp=$("#pp");
+    pp.classList.remove("flash-ok","flash-bad");void pp.offsetWidth;pp.classList.add(ok?"flash-ok":"flash-bad");
+    if(ok){score++;combo++;bestCombo=Math.max(bestCombo,combo);sfx("tick");}
+    else{combo=0;missed.push(cur.w);grade(cur.w,false);sfx("bad");}
+    setScore(String(score));nextQ();
+  }
+  function tick(){
+    const left=end-Date.now();if(left<=0)return finish();
+    $("#gBar").style.width=(left/DUR*100)+"%";$("#gBarWrap").classList.toggle("low",left<10000);
+    const t=$("#time");if(t)t.textContent=Math.ceil(left/1000)+" s";
+    raf=requestAnimationFrame(tick);
+  }
+  function start(){
+    running=true;end=Date.now()+DUR;
+    $("#gBody").innerHTML=`<div class="prompt center" id="pp"></div><div class="tf"><button class="btn btn-bad" data-act="no">Faux</button><button class="btn btn-ok" data-act="yes">Vrai</button></div><p class="time" id="time">60 s</p>`;
+    nextQ();raf=requestAnimationFrame(tick);
+  }
+  function finish(){running=false;cancelAnimationFrame(raf);const gw=$("#gBarWrap");if(gw)gw.classList.remove("low");
+    endGame(g,{score,xp:score*2,missed,label:plural(score,"point"),msg:score>=25?"Réflexes impressionnants.":score>=15?"Belle vitesse.":"Entraîne-toi pour battre ton record.",extra:`<p class="end-msg">Meilleure série : ${bestCombo}</p>`});}
+  cleanup=()=>{running=false;cancelAnimationFrame(raf);};
+  onAct=t=>{const a=t.dataset.act;if(a==="start")start();else if(a==="yes")answer(true);else if(a==="no")answer(false);};
+  onKey=e=>{if(!running)return;if(e.key==="ArrowRight"||e.key==="v"){e.preventDefault();answer(true);}else if(e.key==="ArrowLeft"||e.key==="f"){e.preventDefault();answer(false);}};
+}
+
+/* --- Pendu --- */
+function gamePendu(g){
+  const okW=w=>/^[a-z]+$/i.test(w.en)&&w.en.length>=4&&w.en.length<=12;
+  let base=pool().filter(okW);if(base.length<5)base=lvl().words.filter(okW);
+  const words=sample(base,5),n=words.length,MAXE=6;
+  let i=0,score=0,xp=0,missed=[],guessed=new Set(),errors=0,over=false,msg=null;
+  const parts=['<circle class="pt" cx="74" cy="31" r="9"/>','<path class="pt" d="M74 40v30"/>','<path class="pt" d="M74 48l-13 11"/>','<path class="pt" d="M74 48l13 11"/>','<path class="pt" d="M74 70l-11 20"/>','<path class="pt" d="M74 70l11 20"/>'];
+  function show(){guessed=new Set();errors=0;over=false;msg=null;render();}
+  function render(){
+    const w=words[i],low=w.en.toLowerCase();setProg(i,n);setScore(score+" / "+n);
+    const masked=w.en.split("").map(c=>over||guessed.has(c.toLowerCase())?c:"_").join("");
+    $("#gBody").innerHTML=`<div class="prompt"><div class="hang"><svg viewBox="0 0 100 120" aria-hidden="true"><path d="M8 112h56M24 112V8h50v14"/>${parts.map((p,k)=>k<errors?p.replace('class="pt"','class="pt on"'):p).join("")}</svg>
+      <div><p class="ask">Indice : ${esc(w.fr)}</p><p class="word-mask" lang="en" aria-label="Mot à trouver : ${masked.length} lettres">${esc(masked)}</p><p class="lives">${over?"&nbsp;":plural(MAXE-errors,"essai")+" restant"+(MAXE-errors>1?"s":"")}</p></div></div></div>
+    <div class="kb">${"abcdefghijklmnopqrstuvwxyz".split("").map(c=>{const u=guessed.has(c);return `<button data-act="letter" data-c="${c}" class="${u?(low.includes(c)?"hit":"miss"):""}" ${u||over?"disabled":""} aria-label="Lettre ${c.toUpperCase()}">${c.toUpperCase()}</button>`;}).join("")}</div>
+    <div class="feedback ${msg?msg.c:""}" role="status">${msg?msg.h:""}</div>
+    ${over?`<div class="actions"><button class="btn btn-primary grow" data-act="next">${i+1<n?"Mot suivant":"Voir le résultat"}</button></div>`:""}`;
+  }
+  function guess(c){
+    if(over||guessed.has(c))return;const w=words[i],low=w.en.toLowerCase();guessed.add(c);
+    if(!low.includes(c)){errors++;sfx("bad");}else sfx("tick");
+    const win=low.split("").every(ch=>guessed.has(ch));
+    if(win){over=true;score++;const gain=Math.max(5,15-errors*2);xp+=gain;grade(w,true);msg={c:"ok",h:`Trouvé : <span class="serif" lang="en">${esc(w.en)}</span> /${esc(w.ipa)}/. +${gain} XP`};sfx("ok");later(()=>say(w.en),200);}
+    else if(errors>=MAXE){over=true;missed.push(w);grade(w,false);msg={c:"bad",h:`Le mot était <span class="serif" lang="en">${esc(w.en)}</span> /${esc(w.ipa)}/.`};later(()=>say(w.en),200);}
+    render();
+  }
+  function next(){if(!over)return;i++;if(i>=n)return endGame(g,{score,max:n,xp,missed,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act;if(a==="letter")guess(t.dataset.c);else if(a==="next")next();};
+  onKey=e=>{const k=e.key.toLowerCase();if(/^[a-z]$/.test(k))guess(k);else if(e.key==="Enter")next();};
+  show();
+}
+
+/* --- Prononciation (reconnaissance vocale) --- */
+function gameParle(g){
+  if(!SR){$("#gBody").innerHTML=`<div class="empty"><p>Reconnaissance vocale indisponible.</p><span>Ouvre l'appli dans Chrome ou Edge pour utiliser ce jeu.</span></div>`;return;}
+  const words=sample(pool(),8),n=words.length;
+  let i=0,score=0,xp=0,missed=[],tries=0,rec=null,listening=false,done=false;
+  function show(){
+    tries=0;done=false;const w=words[i];setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt center"><p class="ask">Écoute le modèle, puis prononce le mot.</p><div class="prompt-word" lang="en"><span class="hl" id="hw">${esc(w.en)}</span></div><p class="ipa" lang="en">/${esc(w.ipa)}/</p><p class="lives">${esc(w.fr)}</p>
+      <div class="row-c"><button class="btn sm" data-act="say">${icon("speaker")}Écouter</button><button class="btn btn-quiet sm" data-act="slow">Lentement</button></div></div>
+    <button class="mic" data-act="mic" id="mic" aria-label="Parler">${icon("mic")}</button>
+    <p class="heard" id="heard" role="status">Touche le micro, puis parle.</p>
+    <div class="feedback" id="fb"></div>
+    <div class="actions" id="acts"><button class="btn grow" data-act="skip">Passer ce mot</button></div>`;
+    if(S.settings.autoplay&&interacted)say(w.en);
+  }
+  function finishWord(){$("#acts").innerHTML=`<button class="btn btn-primary grow" data-act="next">${i+1<n?"Mot suivant":"Voir le résultat"}</button>`;}
+  function listen(){
+    if(listening){try{rec.stop();}catch(e){}return;}
+    if(done)return;TTS.stop();
+    rec=new SR();rec.lang=S.settings.accent;rec.interimResults=false;rec.maxAlternatives=5;rec.continuous=false;
+    const heard=$("#heard"),mic=$("#mic");
+    rec.onstart=()=>{listening=true;if(mic)mic.classList.add("on");if(heard)heard.textContent="Je t'écoute…";};
+    rec.onerror=e=>{const m={"not-allowed":"Accès au micro refusé. Autorise le micro pour cette page, ou ouvre le fichier directement dans Chrome.","service-not-allowed":"Reconnaissance vocale bloquée ici. Ouvre le fichier directement dans Chrome.","no-speech":"Je n'ai rien entendu. Rapproche-toi du micro et réessaie.","audio-capture":"Aucun micro détecté sur cet appareil.","network":"La reconnaissance vocale a besoin d'une connexion internet."}[e.error];if(m&&heard)heard.textContent=m;};
+    rec.onend=()=>{listening=false;if(mic)mic.classList.remove("on");};
+    rec.onresult=e=>{const alts=Array.from(e.results[0]).map(a=>a.transcript);evaluate(alts);};
+    try{rec.start();}catch(err){if(heard)heard.textContent="Impossible de démarrer le micro. Réessaie.";}
+  }
+  function evaluate(alts){
+    const w=words[i],target=norm(w.en),cands=alts.map(a=>numWords(norm(a)));
+    const ok=cands.some(h=>h===target||(" "+h+" ").includes(" "+target+" "));
+    const heardTxt=alts[0]||"";tries++;const fb=$("#fb");
+    $("#heard").textContent=heardTxt?`Entendu : « ${heardTxt} »`:"";
+    if(ok){done=true;score++;const gain=tries===1?15:10;xp+=gain;grade(w,true);fb.className="feedback ok";fb.innerHTML=`Bien prononcé. +${gain} XP`;sfx("ok");finishWord();}
+    else{
+      const sim=1-lev(cands[0]||"",target)/Math.max(target.length,1);
+      if(tries>=3){done=true;missed.push(w);grade(w,false);fb.className="feedback bad";fb.innerHTML=`Pas encore reconnu. Ce mot reviendra en révision : écoute bien le modèle.`;sfx("bad");finishWord();later(()=>say(w.en,true),300);}
+      else{fb.className="feedback bad";fb.innerHTML=`${sim>=.6?"Presque.":"Pas encore."} Écoute le modèle et réessaie (essai ${tries} sur 3).`;sfx("bad");}
+    }
+    setScore(score+" / "+n);
+  }
+  onAct=t=>{const a=t.dataset.act,w=words[i];
+    if(a==="say")say(w.en);else if(a==="slow")say(w.en,true);else if(a==="mic")listen();
+    else if(a==="skip"){if(rec)try{rec.abort();}catch(e){}missed.push(w);grade(w,false);i++;if(i>=n)return endGame(g,{score,max:n,xp,missed,label:score+" / "+n});show();}
+    else if(a==="next"){i++;if(i>=n)return endGame(g,{score,max:n,xp,missed,label:score+" / "+n});show();}};
+  cleanup=()=>{if(rec){try{rec.abort();}catch(e){}}};
+  show();
+}
+
+/* ================= Révision ================= */
+let R=null;
+function relTime(ts){const d=ts-Date.now();if(d<=0)return"maintenant";const h=d/36e5;if(h<1)return"dans "+Math.max(1,Math.round(d/6e4))+" min";if(h<24)return"dans "+Math.round(h)+" h";return"dans "+plural(Math.round(h/24),"jour");}
+function viewReview(){
+  if(R)return renderReview();
+  const due=dueWords(),known=Object.keys(S.srs).filter(id=>BYID[id]);
+  let h=`<h1 class="view-title">Révision</h1>`;
+  if(due.length)h+=`<p class="view-sub">${plural(due.length,"mot")} à revoir maintenant. Chaque bonne réponse espace la prochaine révision : 1 jour, 3 jours, une semaine, puis un mois.</p><button class="btn btn-primary wide" data-act="start">Commencer la révision</button><h2 class="sub">Au programme</h2><ul class="wlist">${due.slice(0,12).map(wordRow).join("")}</ul>${due.length>12?`<p class="counter">et ${due.length-12} de plus</p>`:""}`;
+  else if(known.length){const nx=Math.min.apply(null,known.map(id=>S.srs[id].d));h+=`<div class="empty"><p>Rien à revoir pour le moment.</p><span>Prochaine révision ${relTime(nx)}. Tu peux retravailler dès maintenant les mots les plus fragiles.</span></div><div class="actions"><button class="btn btn-primary grow" data-act="weak">Réviser les mots fragiles</button><button class="btn grow" data-act="learn">Apprendre de nouveaux mots</button></div>`;}
+  else h+=`<div class="empty"><p>Ta liste de révision est vide.</p><span>Les mots s'y ajoutent dès que tu les étudies ou que tu joues, puis reviennent au bon moment pour être mémorisés.</span></div><div class="actions"><button class="btn btn-primary grow" data-act="learn">Commencer à apprendre</button></div>`;
+  V.innerHTML=h;
+  onAct=t=>{const a=t.dataset.act;
+    if(a==="start")startReview(dueWords());
+    else if(a==="weak")startReview(Object.keys(S.srs).filter(id=>BYID[id]).sort((x,y)=>(S.srs[x].b-S.srs[y].b)||(S.srs[y].w-S.srs[x].w)).slice(0,15).map(id=>BYID[id]));
+    else if(a==="learn")go("learn");};
+}
+function startReview(ws){if(!ws.length)return;R={list:shuffle(ws).slice(0,20),i:0,shown:false,n:{a:0,h:0,g:0},xp:0};window.scrollTo(0,0);renderReview();}
+function renderReview(){
+  if(R.i>=R.list.length)return endReview();
+  const w=R.list[R.i],r=srsOf(w.id);
+  V.innerHTML=`<div class="game-top"><button class="icon-btn" data-act="rquit" aria-label="Arrêter la révision">${icon("back")}</button><h2>Révision</h2><div class="game-score">${R.i+1} / ${R.list.length}</div></div><div class="bar"><span style="width:${R.i/R.list.length*100}%"></span></div>
+  <article class="entry"><div class="entry-band"><span class="tag">${w.level}</span><span>${esc(w.themeName)}</span></div>
+    <div class="entry-body"><h2 class="headword" lang="en"><span class="hl" id="hw">${esc(w.en)}</span></h2><p class="ipa" lang="en">/${esc(w.ipa)}/</p>
+    <div class="audio-row"><button class="btn" data-act="say">${icon("speaker")}Écouter</button><button class="btn btn-quiet" data-act="slow">Lentement</button></div>
+    ${R.shown?`<div class="meaning">${esc(w.fr)}</div><div class="example"><button class="icon-btn" data-act="ex" aria-label="Écouter l'exemple">${icon("speaker")}</button><p class="ex-en" id="exEn" lang="en">${karaoke(w.ex)}</p><p class="ex-fr">${esc(w.exFr)}</p></div>`:""}
+  </div></article>
+  ${R.shown?`<div class="grades"><button class="btn btn-bad" data-act="g" data-v="0">Raté<small>10 min</small></button><button class="btn" data-act="g" data-v="1">Difficile<small>${fmtDays(hardDays(r))}</small></button><button class="btn btn-ok" data-act="g" data-v="2">Facile<small>${fmtDays(goodDays(r))}</small></button></div>`:`<button class="btn btn-primary wide" data-act="show">Afficher la réponse</button><p class="counter">Essaie de retrouver la traduction avant d'afficher la réponse.</p>`}`;
+  onAct=t=>{const a=t.dataset.act;
+    if(a==="rquit"){R=null;go("review");}else if(a==="say")say(w.en);else if(a==="slow")say(w.en,true);
+    else if(a==="ex")sayExample(w.ex,$("#exEn"));else if(a==="show"){R.shown=true;renderReview();}else if(a==="g")rate(+t.dataset.v);};
+  onKey=e=>{if(e.key===" "&&!R.shown){e.preventDefault();R.shown=true;renderReview();}else if(R.shown&&["1","2","3"].includes(e.key))rate(+e.key-1);};
+  if(!R.shown&&S.settings.autoplay&&interacted)say(w.en);
+}
+function rate(v){const w=R.list[R.i];if(v===0){grade(w,false);R.n.a++;}else if(v===1){gradeHard(w);R.n.h++;R.xp+=1;addXP(1);}else{grade(w,true);R.n.g++;R.xp+=3;addXP(3);}R.i++;R.shown=false;window.scrollTo(0,0);renderReview();}
+function endReview(){
+  const n=R.n,tot=R.list.length,xp=R.xp;R=null;sfx("end");
+  V.innerHTML=`<div class="end"><h1 class="view-title">Révision terminée</h1><p class="end-score">${n.g+n.h}<small> / ${tot}</small></p><p class="end-msg">${n.g} facile${n.g>1?"s":""}, ${n.h} difficile${n.h>1?"s":""}, ${n.a} raté${n.a>1?"s":""}.</p><p class="end-xp">+${xp} XP</p><div class="actions"><button class="btn btn-primary grow" data-act="back">Terminer</button><button class="btn grow" data-act="games">Jouer pour consolider</button></div></div>`;
+  onAct=t=>{if(t.dataset.act==="back")go("review");else if(t.dataset.act==="games")go("games");};
+}
+
+/* ================= Progrès ================= */
+function viewStats(){
+  const tx=S.days[today()]||0,goal=S.settings.goal,pct=Math.min(100,tx/goal*100),st=streakNow();
+  const recs=Object.keys(S.srs).filter(id=>BYID[id]).map(id=>S.srs[id]);
+  const c=recs.reduce((a,r)=>a+r.c,0),w=recs.reduce((a,r)=>a+r.w,0),mastered=recs.filter(r=>r.b>=4).length;
+  const days=[0,1,2,3,4,5,6].map(k=>{const d=new Date(Date.now()-(6-k)*DAY),key=fmtDay(d);return{v:S.days[key]||0,l:d.toLocaleDateString("fr-FR",{weekday:"short"}).replace(".","")};});
+  const mx=Math.max(goal,...days.map(d=>d.v));
+  V.innerHTML=`<h1 class="view-title">Progrès</h1>
+  <div class="goal"><p>${tx>=goal?`Objectif du jour atteint : ${tx} XP.`:`Aujourd'hui : ${tx} XP sur ${goal}.`}</p><div class="bar big"><span style="width:${pct}%"></span></div></div>
+  <dl class="kv"><dt>Série en cours</dt><dd>${plural(st,"jour")}</dd><dt>XP total</dt><dd>${fmtN(S.xp)}</dd><dt>Mots maîtrisés</dt><dd>${mastered} / ${WORDS.length}</dd><dt>Précision des réponses</dt><dd>${c+w?Math.round(c/(c+w)*100)+" %":"pas encore de données"}</dd><dt>Parties jouées</dt><dd>${S.stats.played||0}</dd></dl>
+  <h2 class="sub">Vocabulaire par niveau</h2><div class="legend"><span><i class="m"></i>Maîtrisé</span><span><i class="l"></i>En cours</span></div>
+  ${LEVELS.map(L=>{const tot=L.words.length;let m=0,l=0;L.words.forEach(x=>{const r=S.srs[x.id];if(r){if(r.b>=4)m++;else l++;}});return `<div class="lvlrow"><b>${L.id}</b><div class="stack" role="img" aria-label="${L.id} : ${m} maîtrisés, ${l} en cours sur ${tot}"><span class="m" style="width:${m/tot*100}%"></span><span class="l" style="width:${l/tot*100}%"></span></div><span class="n">${m+l} / ${tot}</span></div>`;}).join("")}
+  <h2 class="sub">XP des 7 derniers jours</h2>
+  <div class="week">${days.map((d,k)=>`<div class="col ${k===6?"today":""}"><span>${d.v||""}</span><span class="track"><i style="height:${d.v/mx*100}%"></i></span><span>${d.l}</span></div>`).join("")}</div>
+  <h2 class="sub">Records</h2><dl class="kv" style="margin-top:0">${GAMES.map(g=>`<dt>${g.name}</dt><dd>${S.best[g.id]?esc(S.best[g.id].t):"pas encore joué"}</dd>`).join("")}</dl>`;
+}
+
+/* ================= Réglages ================= */
+const rateLabel=r=>(+r).toFixed(2).replace(".",",")+"× ("+(r<.8?"lente":r<=1.05?"naturelle":"rapide")+")";
+function fillVoices(){
+  const sel=$("#voiceSel");if(!sel)return;
+  const acc=S.settings.accent.toLowerCase(),best=TTS.ranked()[0];
+  const list=TTS.voices.slice().sort((a,b)=>((TTS.lang(a)===acc?0:1)-(TTS.lang(b)===acc?0:1))||a.name.localeCompare(b.name));
+  sel.innerHTML=`<option value="">Automatique${best?" ("+esc(best.name)+")":""}</option>`+list.map(v=>`<option value="${esc(v.voiceURI)}" ${S.settings.voice===v.voiceURI?"selected":""}>${esc(v.name)} (${esc(v.lang)})</option>`).join("");
+  const p=TTS.pick();$("#voiceHint").textContent=p?"Voix utilisée : "+p.name:"";
+  const note=$("#voiceNote");note.hidden=false;note.className="note warn";
+  if(!TTS.ok)note.textContent="Ce navigateur ne propose pas de synthèse vocale. Utilise Chrome, Edge ou Safari.";
+  else if(!TTS.voices.length)note.textContent="Aucune voix anglaise détectée pour l'instant. Sur Android, installe les données vocales anglaises du moteur Google dans les réglages de synthèse vocale du téléphone.";
+  else if(!TTS.voices.some(v=>TTS.lang(v)===acc)){note.className="note";note.textContent="Aucune voix pour cet accent sur l'appareil : une autre voix anglaise est utilisée.";}
+  else note.hidden=true;
+}
+async function copyText(t){try{await navigator.clipboard.writeText(t);return true;}catch(e){return false;}}
+function exportData(){
+  const data=JSON.stringify(S);
+  try{const blob=new Blob([data],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="english-lab-"+today()+".json";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),4000);}catch(e){}
+  copyText(data).then(ok=>toast(ok?"Sauvegarde exportée et copiée dans le presse-papiers.":"Export lancé. Si aucun fichier n'apparaît, utilise le copier-coller."));
+}
+function importData(text){
+  try{const d=JSON.parse(text);if(!d||typeof d!=="object"||typeof d.srs!=="object")throw 0;S=merge(d);if(!LEVELS.some(L=>L.id===S.level))S.level="A1";flush();applyTheme();renderLevels();renderHeader();toast("Progression importée.");go("settings");}
+  catch(e){toast("Ce fichier n'est pas une sauvegarde English Lab valide.");}
+}
+function viewSettings(){
+  const s=S.settings;
+  const inst=isStandalone();
+  V.innerHTML=`<h1 class="view-title">Réglages</h1>
+  <section class="set-group"><h2>Application</h2><div class="set"><div class="set-row"><span class="lbl">${inst?"Application installée":"Installer sur cet appareil"}<span class="hint">${inst?"Tu utilises English Lab en mode application.":"Icône sur l'écran d'accueil, plein écran, utilisable sans connexion."}</span></span>${inst?icon("check"):`<button class="btn sm btn-primary" data-act="install">${icon("download")}Installer</button>`}</div></div></section>
+  <section class="set-group"><h2>Voix et prononciation</h2><div class="set">
+    <div class="set-row"><span class="lbl">Accent<span class="hint">La transcription phonétique suit l'anglais britannique.</span></span><div class="seg" role="group" aria-label="Accent"><button data-act="accent" data-v="en-GB" aria-pressed="${s.accent==="en-GB"}">Britannique</button><button data-act="accent" data-v="en-US" aria-pressed="${s.accent==="en-US"}">Américain</button></div></div>
+    <div class="set-row"><label class="lbl" for="voiceSel">Voix<span class="hint" id="voiceHint"></span></label><select id="voiceSel"></select></div>
+    <div class="set-row"><label class="lbl" for="rate">Vitesse<span class="hint" id="rateVal">${rateLabel(s.rate)}</span></label><input type="range" id="rate" min="0.5" max="1.3" step="0.05" value="${s.rate}"></div>
+    <div class="set-row"><span class="lbl">Tester la voix<span class="hint" lang="en">Hello! This is how English words will sound.</span></span><button class="btn sm" data-act="test">${icon("speaker")}Tester</button></div>
+    <div class="set-row"><label class="lbl" for="auto">Lecture automatique<span class="hint">Prononce chaque nouveau mot dès qu'il s'affiche.</span></label><input type="checkbox" role="switch" class="sw" id="auto" ${s.autoplay?"checked":""}></div>
+    <p class="note" id="voiceNote" hidden></p>
+  </div></section>
+  <section class="set-group"><h2>Apprentissage</h2><div class="set">
+    <div class="set-row"><label class="lbl" for="goal">Objectif quotidien</label><select id="goal">${[20,50,100,150].map(v=>`<option value="${v}" ${+s.goal===v?"selected":""}>${v} XP</option>`).join("")}</select></div>
+    <div class="set-row"><label class="lbl" for="sfx">Effets sonores<span class="hint">Signal court pour les bonnes et mauvaises réponses.</span></label><input type="checkbox" role="switch" class="sw" id="sfx" ${s.sfx?"checked":""}></div>
+  </div></section>
+  <section class="set-group"><h2>Affichage</h2><div class="set">
+    <div class="set-row"><span class="lbl">Thème</span><div class="seg" role="group" aria-label="Thème d'affichage">${[["auto","Auto"],["light","Clair"],["dark","Sombre"]].map(([v,l])=>`<button data-act="theme" data-v="${v}" aria-pressed="${s.theme===v}">${l}</button>`).join("")}</div></div>
+  </div></section>
+  <section class="set-group"><h2>Sauvegarde</h2><div class="set">
+    <p class="note">Ta progression reste sur cet appareil, dans ce navigateur. Aucune donnée n'est envoyée ailleurs.</p>
+    <div class="set-row"><span class="lbl">Exporter<span class="hint">Fichier .json, copié aussi dans le presse-papiers.</span></span><button class="btn sm" data-act="export">Exporter</button></div>
+    <div class="set-row"><span class="lbl">Importer<span class="hint">Restaure une sauvegarde .json.</span></span><label class="btn sm" for="importFile">Choisir un fichier</label><input type="file" id="importFile" accept="application/json,.json" hidden></div>
+    <details class="det" id="det"><summary>Copier-coller la sauvegarde</summary><textarea id="dataTxt" spellcheck="false" aria-label="Sauvegarde au format JSON"></textarea><div class="actions"><button class="btn sm" data-act="copy">Copier</button><button class="btn sm" data-act="paste">Importer ce texte</button></div></details>
+    <div class="set-row"><span class="lbl">Réinitialiser<span class="hint">Efface toute la progression et les records.</span></span><button class="btn sm btn-bad" data-act="reset">Réinitialiser</button></div>
+  </div></section>
+  <p class="foot">English Lab : ${WORDS.length} mots et expressions, ${SENT_TOTAL} phrases, 5 niveaux, 7 jeux. Une fois installée, l'appli fonctionne sans connexion, sauf le jeu de prononciation.</p>`;
+  fillVoices();
+  $("#det").addEventListener("toggle",e=>{if(e.target.open)$("#dataTxt").value=JSON.stringify(S);});
+  V.onchange=e=>{const id=e.target.id;
+    if(id==="voiceSel"){S.settings.voice=e.target.value;save();fillVoices();say("Hello! This is how English words will sound.");}
+    else if(id==="auto"){S.settings.autoplay=e.target.checked;save();}
+    else if(id==="sfx"){S.settings.sfx=e.target.checked;save();if(e.target.checked)sfx("ok");}
+    else if(id==="goal"){S.settings.goal=+e.target.value;save();renderHeader();}
+    else if(id==="importFile"){const f=e.target.files&&e.target.files[0];if(f)f.text().then(importData).catch(()=>toast("Lecture du fichier impossible."));}};
+  V.oninput=e=>{if(e.target.id==="rate"){S.settings.rate=+e.target.value;$("#rateVal").textContent=rateLabel(S.settings.rate);save();}};
+  onAct=t=>{const a=t.dataset.act;
+    if(a==="install"){doInstall();return;}
+    if(a==="accent"){S.settings.accent=t.dataset.v;S.settings.voice="";save();viewSettings();say("Hello! This is how English words will sound.");}
+    else if(a==="test")say("Hello! This is how English words will sound.");
+    else if(a==="theme"){S.settings.theme=t.dataset.v;save();applyTheme();viewSettings();}
+    else if(a==="export")exportData();
+    else if(a==="copy"){const ta=$("#dataTxt");copyText(ta.value).then(ok=>{if(ok)toast("Sauvegarde copiée.");else{ta.focus();ta.select();try{document.execCommand("copy");toast("Sauvegarde copiée.");}catch(e){toast("Sélectionne le texte et copie-le manuellement.");}}});}
+    else if(a==="paste")importData($("#dataTxt").value);
+    else if(a==="reset"){if(t.dataset.armed){S=fresh();flush();applyTheme();renderLevels();renderHeader();toast("Progression réinitialisée.");go("settings");}else{t.dataset.armed="1";t.textContent="Confirmer";later(()=>{if(t.isConnected){delete t.dataset.armed;t.textContent="Réinitialiser";}},4000);}}};
+}
+
+/* ================= Démarrage ================= */
+const VIEWS={learn:viewLearn,games:viewGames,review:viewReview,stats:viewStats,settings:viewSettings};
+$("#tabs").addEventListener("click",e=>{const b=e.target.closest("[data-tab]");if(b)go(b.dataset.tab);});
+$("#levels").addEventListener("click",e=>{const b=e.target.closest("[data-lvl]");if(!b||b.dataset.lvl===S.level)return;S.level=b.dataset.lvl;S.theme="all";L_idx=0;L_order=null;save();renderLevels();applyLevelColors();if(tab==="review"&&R)return;go(inGame?"games":tab);});
+addEventListener("pagehide",flush);
+document.addEventListener("visibilitychange",()=>{if(document.hidden){flush();TTS.stop();}});
+setInterval(updateBadge,60000);
+
+/* ================= Orthographe britannique / américaine ================= */
+const usSpell=s=>s.replace(/isation/g,"ization").replace(/is(e|ed|es|ing)\b/g,"iz$1").replace(/our\b/g,"or").replace(/tre\b/g,"ter").replace(/ogue\b/g,"og").replace(/lled\b/g,"led");
+function spellEq(a,b){a=norm(a);b=norm(b);return a===b||usSpell(a)===usSpell(b);}
+
+/* ================= Confettis (fin de partie réussie) ================= */
+function confetti(){
+  try{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;}catch(e){}
+  const c=document.createElement("canvas");c.className="confetti";document.body.appendChild(c);
+  const dpr=Math.min(2,window.devicePixelRatio||1),W=innerWidth,H=innerHeight;c.width=W*dpr;c.height=H*dpr;
+  const x=c.getContext("2d");if(!x){c.remove();return;}x.scale(dpr,dpr);
+  const lv=getComputedStyle(document.documentElement).getPropertyValue("--lv").trim()||"#2846C8";
+  const cols=[lv,"#FFE15A","#FF7D93","#4FD1A8","#8DA2FF","#FFB347"];
+  const P=Array.from({length:140},()=>({x:W/2+(Math.random()-.5)*W*.3,y:H*.32,vx:(Math.random()-.5)*11,vy:-Math.random()*11-5,r:Math.random()*6,vr:(Math.random()-.5)*.35,w:6+Math.random()*6,h:9+Math.random()*8,c:cols[Math.random()*cols.length|0]}));
+  const t0=performance.now();let last=t0;
+  (function f(t){const dt=Math.min(32,t-last)/16;last=t;x.clearRect(0,0,W,H);
+    P.forEach(p=>{p.vy+=.32*dt;p.vx*=.992;p.x+=p.vx*dt;p.y+=p.vy*dt;p.r+=p.vr*dt;x.save();x.translate(p.x,p.y);x.rotate(p.r);x.fillStyle=p.c;x.fillRect(-p.w/2,-p.h/2,p.w,p.h*Math.max(.25,Math.abs(Math.cos(p.r*1.7))));x.restore();});
+    if(t-t0<2800)requestAnimationFrame(f);else c.remove();})(t0);
+}
+
+/* ================= Application installable (PWA) ================= */
+let deferredPrompt=null;
+function isStandalone(){try{return matchMedia("(display-mode: standalone)").matches||matchMedia("(display-mode: fullscreen)").matches||matchMedia("(display-mode: minimal-ui)").matches||navigator.standalone===true;}catch(e){return false;}}
+function renderInstall(){const b=$("#installBtn");if(b)b.hidden=isStandalone();}
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;renderInstall();});
+addEventListener("appinstalled",()=>{deferredPrompt=null;renderInstall();toast("English Lab est installée sur ton appareil.");if(tab==="settings"&&!inGame)viewSettings();});
+async function doInstall(){
+  if(deferredPrompt){const p=deferredPrompt;deferredPrompt=null;try{p.prompt();const r=await p.userChoice;if(r&&r.outcome==="accepted")toast("Installation en cours…");}catch(e){openInstallHelp();}renderInstall();return;}
+  openInstallHelp();
+}
+function openInstallHelp(){
+  const ua=navigator.userAgent||"",ios=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1),android=/android/i.test(ua),firefox=/firefox|fxios/i.test(ua),samsung=/samsungbrowser/i.test(ua);
+  let framed=false;try{framed=window.top!==window.self;}catch(e){framed=true;}
+  const perks=`<ul class="perks"><li>${icon("check")}<span>Icône sur l'écran d'accueil, ouverture en plein écran.</span></li><li>${icon("offline")}<span>Utilisable sans connexion une fois installée.</span></li><li>${icon("check")}<span>Ta progression reste sur l'appareil.</span></li></ul>`;
+  let how;
+  if(location.protocol==="file:")how=`<p>Ouverte comme fichier local, la page ne peut pas être installée : le navigateur exige une adresse https.</p><ol><li>Crée un dépôt GitHub et dépose tous les fichiers du dossier English Lab (index.html, manifest.webmanifest, sw.js et les icônes).</li><li>Dans Settings, section Pages, active GitHub Pages sur la branche principale.</li><li>Ouvre l'adresse https obtenue dans Chrome, puis touche Installer.</li></ol>`;
+  else if(framed)how=`<p>L'appli est affichée dans un aperçu intégré. Ouvre-la dans un onglet à part, puis touche Installer.</p>`;
+  else if(ios)how=`<ol><li>Ouvre cette page dans Safari.</li><li>Touche le bouton Partager.</li><li>Choisis « Sur l'écran d'accueil », puis Ajouter.</li></ol>`;
+  else if(samsung)how=`<ol><li>Ouvre le menu du navigateur (trois traits en bas).</li><li>Choisis « Ajouter la page à », puis « Écran d'accueil ».</li></ol>`;
+  else if(android)how=`<ol><li>Ouvre le menu ⋮ de Chrome, en haut à droite.</li><li>Choisis « Installer l'application » ou « Ajouter à l'écran d'accueil ».</li><li>Confirme : l'icône English Lab apparaît sur ton écran d'accueil.</li></ol><p>Si l'option n'apparaît pas, recharge la page une fois puis réessaie.</p>`;
+  else if(firefox)how=`<p>Firefox pour ordinateur ne sait pas installer d'applications web. Ouvre cette page dans Chrome ou Edge, puis clique sur Installer.</p>`;
+  else how=`<ol><li>Clique sur l'icône d'installation à droite de la barre d'adresse.</li><li>Ou ouvre le menu du navigateur et choisis « Installer English Lab ».</li></ol><p>Si l'option n'apparaît pas, recharge la page une fois puis réessaie.</p>`;
+  $("#sheetBody").innerHTML=perks+how;$("#sheet").hidden=false;$("#sheetClose").focus();
+}
+function closeSheet(){$("#sheet").hidden=true;}
+$("#installBtn").addEventListener("click",doInstall);
+$("#sheetClose").addEventListener("click",closeSheet);
+$("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet")closeSheet();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!$("#sheet").hidden)closeSheet();});
+function drawIcon(size,maskable){
+  const c=document.createElement("canvas");c.width=c.height=size;const x=c.getContext("2d"),k=size/512;
+  x.fillStyle="#FFFFFF";
+  if(maskable)x.fillRect(0,0,size,size);else{const r=112*k;x.beginPath();x.moveTo(r,0);x.arcTo(size,0,size,size,r);x.arcTo(size,size,0,size,r);x.arcTo(0,size,0,0,r);x.arcTo(0,0,size,0,r);x.closePath();x.fill();}
+  const z=maskable?.78:1;x.translate(size/2,size/2);x.scale(z,z);x.translate(-size/2,-size/2);
+  x.fillStyle="#FFE15A";x.fillRect(92*k,292*k,328*k,86*k);
+  x.fillStyle="#141A30";x.font=`700 ${268*k}px Georgia,"Noto Serif","Times New Roman",serif`;x.textAlign="center";x.textBaseline="alphabetic";x.fillText("en",256*k,352*k);
+  x.fillStyle="#2846C8";x.beginPath();x.arc(404*k,128*k,34*k,0,Math.PI*2);x.fill();
+  return c.toDataURL("image/png");
+}
+function initPWA(){
+  renderInstall();
+  if(!/^https?:$/.test(location.protocol)||typeof fetch!=="function")return;
+  fetch("manifest.webmanifest",{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;}).catch(()=>{
+    try{
+      const base=location.href.split("#")[0].split("?")[0],scope=base.slice(0,base.lastIndexOf("/")+1);
+      const m={name:"English Lab",short_name:"English Lab",description:"Apprendre l'anglais du niveau A1 au C1",lang:"fr",id:base,start_url:base,scope,display:"standalone",orientation:"portrait",background_color:"#F4F6FB",theme_color:"#F4F6FB",icons:[{src:drawIcon(192),sizes:"192x192",type:"image/png"},{src:drawIcon(512),sizes:"512x512",type:"image/png"},{src:drawIcon(512,true),sizes:"512x512",type:"image/png",purpose:"maskable"}]};
+      $("#manifestLink").href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:"application/manifest+json"}));
+      $("#appleIcon").href=drawIcon(180,true);
+    }catch(e){}
+  });
+  if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+}
+if(DARK_MQ){const h=()=>applyLevelColors();if(DARK_MQ.addEventListener)DARK_MQ.addEventListener("change",h);else if(DARK_MQ.addListener)DARK_MQ.addListener(h);}
+try{matchMedia("(display-mode: standalone)").addEventListener("change",renderInstall);}catch(e){}
+
+applyTheme();TTS.init();renderLevels();renderTabs();renderHeader();go("learn");initPWA();
+</script>
+</body>
+</html>
