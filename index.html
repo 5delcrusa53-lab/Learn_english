@@ -65,12 +65,13 @@ svg.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 .install{grid-area:install;display:inline-flex;align-items:center;gap:7px;height:40px;padding:0 16px 0 12px;border-radius:999px;border:0;background:var(--lv);color:var(--lv-ink);font-weight:700;font-size:14.5px;cursor:pointer;box-shadow:0 6px 16px -8px var(--lv)}
 .install svg{width:19px;height:19px;stroke-width:2.2}
 .install:active{transform:scale(.97)}
-.levels{grid-area:levels;display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.levels{grid-area:levels;display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
 .lvl{border:1px solid var(--line);background:var(--surface);border-radius:var(--r1);padding:6px 3px 7px;display:flex;flex-direction:column;align-items:center;line-height:1.15;cursor:pointer;min-width:0;transition:background .2s,color .2s,border-color .2s}
 .lvl b{font-size:16px}
 .lvl span{font-size:11px;line-height:1.4;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .lvl[aria-pressed="true"]{background:var(--lv);color:var(--lv-ink);border-color:var(--lv)}
 .lvl[aria-pressed="true"] span{color:inherit;opacity:.85}
+@media (max-width:479px){.lvl span{display:none}.lvl{padding:10px 2px}.lvl b{font-size:16px}}
 .tabs{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);border-top:1px solid var(--line);padding:6px 0 calc(6px + env(safe-area-inset-bottom,0px))}
 .tabs button{border:0;background:none;padding:2px 2px 4px;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11.5px;color:var(--muted);cursor:pointer;position:relative}
 .tabs .ico{display:grid;place-items:center;width:58px;height:32px;border-radius:16px;transition:background .2s}
@@ -81,7 +82,7 @@ main{display:block;padding:18px 16px 112px;max-width:780px;margin:0 auto;outline
 @media (min-width:900px){
   .app{display:grid;grid-template-columns:230px minmax(0,1fr);grid-template-areas:"top top" "nav main"}
   .topbar{grid-area:top;grid-template-columns:206px 1fr auto;grid-template-areas:"brand levels install";padding:14px 24px}
-  .levels{max-width:580px}
+  .levels{max-width:680px}
   .tabs{grid-area:nav;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px);align-self:start;display:flex;flex-direction:column;gap:4px;border:0;background:none;padding:20px 14px}
   .tabs button{flex-direction:row;gap:10px;font-size:15px;padding:4px 10px 4px 4px;border-radius:20px;justify-content:flex-start}
   .tabs .ico{width:44px;height:36px;border-radius:18px}
@@ -336,6 +337,46 @@ input[type=range]{width:42%;max-width:220px;accent-color:var(--lv)}
 .det summary{cursor:pointer;font-weight:600}
 .det textarea{width:100%;min-height:110px;margin-top:10px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;border:1px solid var(--line);border-radius:8px;background:var(--sunk);padding:8px}
 .foot{color:var(--muted);font-size:13px;margin:4px 0 0}
+
+/* ---------- Maintenance games ---------- */
+.sec{display:flex;align-items:center;gap:10px;margin:30px 0 4px;font-family:var(--serif);font-size:23px;line-height:1.2}
+.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+.options.one{grid-template-columns:1fr}
+.prompt-en{font-family:var(--serif);font-size:21px;line-height:1.35;margin:0 0 6px;font-weight:600}
+.wcol .w.ph{font-size:17px;line-height:1.35}
+.wcol .p.sans{font-family:var(--sans)}
+.plan{display:block;width:100%;max-width:460px;margin:0 auto;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+.plan .floor{fill:var(--surface);stroke:var(--ink);stroke-width:3}
+.plan .room{fill:var(--sunk);stroke:var(--ink);stroke-width:2}
+.plan .eq{fill:var(--lv-soft);stroke:var(--ink);stroke-width:1.5}
+.plan .fx{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
+.plan .ln{fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.plan .bolt{fill:#F2B705}
+.plan .aisle{fill:rgba(255,213,74,.2)}
+.plan .dash{fill:none;stroke:#E0A800;stroke-width:3;stroke-dasharray:10 7}
+.plan .walk{fill:rgba(16,138,104,.14);stroke:#0E8A68;stroke-width:1.5;stroke-dasharray:4 3}
+.plan .step{fill:#0E8A68;opacity:.55}
+.plan .ext{fill:#D62F3C}
+.plan .exit{fill:#12A150}
+.plan .exit-l{fill:none;stroke:#12A150;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.plan .dock{fill:var(--sunk);stroke:var(--ink);stroke-width:1.5}
+.plan .chev{fill:none;stroke:#E0A800;stroke-width:2.5}
+.plan .pz{cursor:pointer}
+.plan .hit{fill:transparent;pointer-events:all;stroke:transparent;stroke-width:2.5;transition:fill .2s,stroke .2s}
+.plan .pz:hover .hit{stroke:var(--lv);stroke-dasharray:5 4}
+.plan .pz.sel .hit{fill:rgba(120,140,255,.14);stroke:var(--lv);stroke-dasharray:none}
+.plan .pz.ok .hit{fill:rgba(15,160,100,.22);stroke:var(--ok);stroke-dasharray:none}
+.plan .pz.bad .hit{fill:rgba(220,50,80,.2);stroke:var(--bad);stroke-dasharray:none}
+.plan .plab{font:700 11px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--surface);stroke-width:3.5px;stroke-linejoin:round;pointer-events:none}
+.plan .plab.on{fill:var(--lv)}
+.plan .plab.ok{fill:var(--ok)}
+.plan .plab.bad{fill:var(--bad)}
+.cap{min-height:26px;margin:6px 0 0;font-size:16px}
+.plan-q{padding:16px 18px}
+.plan-q .actions{margin-top:10px}
+.pq-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pq-row .ask{margin-bottom:4px}
+.cap .serif{font-size:19px;font-weight:600}
 
 /* ---------- Overlays ---------- */
 #toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s,transform .25s;z-index:60;max-width:calc(100% - 32px);text-align:center}
@@ -864,7 +905,126 @@ emphasise|ˈemfəsaɪz|souligner|I want to emphasise this point.|Je tiens à sou
 hinder|ˈhɪndə|entraver|Bad weather hindered the rescue.|Le mauvais temps a entravé les secours.
 comply|kəmˈplaɪ|se conformer|All products must comply with the rules.|Tous les produits doivent être conformes aux règles.
 acknowledge|əkˈnɒlɪdʒ|reconnaître, admettre|He acknowledged his mistake.|Il a reconnu son erreur.
-streamline|ˈstriːmlaɪn|simplifier, rationaliser|We streamlined the process.|Nous avons simplifié le processus.`}]}
+streamline|ˈstriːmlaɪn|simplifier, rationaliser|We streamlined the process.|Nous avons simplifié le processus.`}]},
+{id:"PRO",name:"Maintenance",short:"Métier",title:"Anglais technique : maintenance",desc:"L'anglais de l'atelier et de l'usine : machines, outillage, pannes, sécurité, électricité, gestion de la maintenance, implantation et production.",themes:[
+{id:"atelier",name:"Machines et organes",raw:`
+machine|məˈʃiːn|machine|The machine is running again.|La machine tourne à nouveau.
+conveyor|kənˈveɪə|convoyeur|The conveyor has stopped.|Le convoyeur s'est arrêté.
+motor|ˈməʊtə|moteur (électrique)|The motor is overheating.|Le moteur chauffe.
+gearbox|ˈɡɪəbɒks|réducteur, boîte de vitesses|The gearbox is leaking oil.|Le réducteur fuit.
+bearing|ˈbeərɪŋ|roulement|We need to replace the bearing.|Nous devons remplacer le roulement.
+belt|belt|courroie|The belt is worn out.|La courroie est usée.
+shaft|ʃɑːft|arbre (mécanique)|The shaft is misaligned.|L'arbre est désaligné.
+pump|pʌmp|pompe|The pump makes a strange noise.|La pompe fait un bruit étrange.
+valve|vælv|vanne, distributeur|Close the valve before you start.|Ferme la vanne avant de commencer.
+sensor|ˈsensə|capteur|The sensor is dirty.|Le capteur est encrassé.
+spindle|ˈspɪndl|broche|The spindle speed is too high.|La vitesse de broche est trop élevée.
+control panel|kənˈtrəʊl ˌpænl|pupitre de commande|Check the alarm on the control panel.|Vérifie l'alarme sur le pupitre de commande.`},
+{id:"outillage",name:"Outillage",raw:`
+spanner|ˈspænə|clé plate|Pass me the thirteen spanner.|Passe-moi la clé de treize.
+wrench|rentʃ|clé à molette, clé (US)|I need an adjustable wrench.|J'ai besoin d'une clé à molette.
+screwdriver|ˈskruːdraɪvə|tournevis|Use a flat screwdriver.|Utilise un tournevis plat.
+pliers|ˈplaɪəz|pince|Hand me the pliers, please.|Passe-moi la pince, s'il te plaît.
+hammer|ˈhæmə|marteau|Don't use a hammer on the bearing.|N'utilise pas de marteau sur le roulement.
+drill|drɪl|perceuse, percer|Drill a hole here.|Perce un trou ici.
+torque wrench|ˈtɔːk rentʃ|clé dynamométrique|Tighten the bolts with a torque wrench.|Serre les boulons avec une clé dynamométrique.
+multimeter|ˈmʌltimiːtə|multimètre|Check the voltage with a multimeter.|Vérifie la tension avec un multimètre.
+bolt|bəʊlt|boulon|One bolt is missing.|Il manque un boulon.
+nut|nʌt|écrou|Tighten the nut.|Serre l'écrou.
+washer|ˈwɒʃə|rondelle|Put a washer under the nut.|Mets une rondelle sous l'écrou.
+grease|ɡriːs|graisse, graisser|Grease the bearings every week.|Graisse les roulements chaque semaine.`},
+{id:"pannes",name:"Pannes et diagnostic",raw:`
+breakdown|ˈbreɪkdaʊn|panne|We had a breakdown on line two.|Nous avons eu une panne sur la ligne deux.
+failure|ˈfeɪljə|défaillance|It was an electrical failure.|C'était une défaillance électrique.
+fault|fɔːlt|défaut|The display shows a fault code.|L'écran affiche un code défaut.
+leak|liːk|fuite, fuir|There is an oil leak under the press.|Il y a une fuite d'huile sous la presse.
+worn|wɔːn|usé|The cutting tool is worn.|L'outil de coupe est usé.
+vibration|vaɪˈbreɪʃn|vibration|There is too much vibration on the pump.|Il y a trop de vibrations sur la pompe.
+overheat|ˌəʊvəˈhiːt|surchauffer|The motor overheats after an hour.|Le moteur surchauffe au bout d'une heure.
+jam|dʒæm|bourrage, se coincer|The parts jam at the entry.|Les pièces se coincent à l'entrée.
+short circuit|ˌʃɔːt ˈsɜːkɪt|court-circuit|A short circuit tripped the breaker.|Un court-circuit a fait sauter le disjoncteur.
+root cause|ˌruːt ˈkɔːz|cause racine|We must find the root cause.|Nous devons trouver la cause racine.
+reset|ˌriːˈset|réarmer, réinitialiser|Reset the machine after the alarm.|Réarme la machine après l'alarme.
+downtime|ˈdaʊntaɪm|temps d'arrêt|Downtime was two hours last night.|L'arrêt a duré deux heures cette nuit.`},
+{id:"securite",name:"Sécurité",raw:`
+lockout|ˈlɒkaʊt|consignation|Lockout is mandatory before any work.|La consignation est obligatoire avant toute intervention.
+padlock|ˈpædlɒk|cadenas|Put your padlock on the isolator.|Mets ton cadenas sur le sectionneur.
+isolate|ˈaɪsəleɪt|isoler, couper (une énergie)|Isolate the power supply first.|Coupe d'abord l'alimentation.
+emergency stop|ɪˌmɜːdʒənsi ˈstɒp|arrêt d'urgence|Press the emergency stop!|Appuie sur l'arrêt d'urgence !
+hazard|ˈhæzəd|danger|This area has an electrical hazard.|Cette zone présente un danger électrique.
+safety glasses|ˈseɪfti ˌɡlɑːsɪz|lunettes de sécurité|Wear safety glasses in the workshop.|Porte des lunettes de sécurité dans l'atelier.
+gloves|ɡlʌvz|gants|Put on your gloves.|Mets tes gants.
+guard|ɡɑːd|carter de protection|Never remove the guard while it is running.|Ne retire jamais le carter en marche.
+permit|ˈpɜːmɪt|permis, autorisation|You need a hot work permit.|Il te faut un permis de feu.
+near miss|ˌnɪə ˈmɪs|presque-accident|Report every near miss.|Signale chaque presque-accident.
+fire extinguisher|ˈfaɪər ɪkˌstɪŋɡwɪʃə|extincteur|Where is the fire extinguisher?|Où est l'extincteur ?
+risk assessment|ˈrɪsk əˌsesmənt|évaluation des risques|Do a risk assessment first.|Fais d'abord une évaluation des risques.`},
+{id:"energies",name:"Électricité et fluides",raw:`
+voltage|ˈvəʊltɪdʒ|tension (électrique)|What is the voltage?|Quelle est la tension ?
+current|ˈkʌrənt|courant (électrique)|The current is too high.|Le courant est trop élevé.
+wiring|ˈwaɪərɪŋ|câblage|The wiring is damaged.|Le câblage est endommagé.
+circuit breaker|ˈsɜːkɪt ˌbreɪkə|disjoncteur|The circuit breaker has tripped.|Le disjoncteur a sauté.
+fuse|fjuːz|fusible|Replace the blown fuse.|Remplace le fusible grillé.
+earth|ɜːθ|terre (électrique)|Check the earth connection.|Vérifie la mise à la terre.
+pressure|ˈpreʃə|pression|The air pressure is too low.|La pression d'air est trop basse.
+hose|həʊz|flexible, tuyau|The hydraulic hose is cracked.|Le flexible hydraulique est fissuré.
+cylinder|ˈsɪlɪndə|vérin|The cylinder doesn't extend.|Le vérin ne sort pas.
+seal|siːl|joint (d'étanchéité)|Change the seal on the cylinder.|Change le joint du vérin.
+compressor|kəmˈpresə|compresseur|The compressor is running all the time.|Le compresseur tourne en permanence.
+PLC|ˌpiː el ˈsiː|automate (API)|The PLC lost its program.|L'automate a perdu son programme.`},
+{id:"responsable",name:"Responsable maintenance",raw:`
+preventive maintenance|prɪˈventɪv ˌmeɪntənəns|maintenance préventive|Preventive maintenance is planned every month.|La maintenance préventive est planifiée chaque mois.
+corrective maintenance|kəˈrektɪv ˌmeɪntənəns|maintenance corrective|Corrective maintenance costs us too much.|La maintenance corrective nous coûte trop cher.
+work order|ˈwɜːk ˌɔːdə|ordre de travail, bon d'intervention|Create a work order in the system.|Crée un ordre de travail dans le système.
+spare parts|ˌspeə ˈpɑːts|pièces de rechange|We are short of spare parts.|Nous manquons de pièces de rechange.
+CMMS|ˌsiː em em ˈes|GMAO|Log the job in the CMMS.|Enregistre l'intervention dans la GMAO.
+uptime|ˈʌptaɪm|temps de fonctionnement|We want to increase uptime.|Nous voulons augmenter le temps de fonctionnement.
+OEE|ˌəʊ iː ˈiː|TRS (taux de rendement synthétique)|Our OEE is eighty-five percent.|Notre TRS est de quatre-vingt-cinq pour cent.
+MTBF|ˌem tiː biː ˈef|temps moyen entre pannes|The MTBF of this press has improved.|Le temps moyen entre pannes de cette presse s'est amélioré.
+MTTR|ˌem tiː tiː ˈɑː|temps moyen de réparation|We need to reduce the MTTR.|Nous devons réduire le temps moyen de réparation.
+backlog|ˈbæklɒɡ|travaux en attente|The maintenance backlog is growing.|Le volume de travaux en attente augmente.
+shift|ʃɪft|poste, équipe|The night shift reported a problem.|L'équipe de nuit a signalé un problème.
+on call|ˌɒn ˈkɔːl|d'astreinte|Who is on call this weekend?|Qui est d'astreinte ce week-end ?
+contractor|kənˈtræktə|prestataire, sous-traitant|A contractor will repair the roof.|Un prestataire va réparer le toit.
+shutdown|ˈʃʌtdaʊn|arrêt technique|The annual shutdown is in August.|L'arrêt technique annuel est en août.
+KPI|ˌkeɪ piː ˈaɪ|indicateur clé de performance|We review our KPIs every Monday.|Nous revoyons nos indicateurs chaque lundi.`},
+{id:"implantation",name:"Implantation",raw:`
+layout|ˈleɪaʊt|implantation, agencement|We are changing the layout of the workshop.|Nous modifions l'implantation de l'atelier.
+floor plan|ˈflɔː ˌplæn|plan au sol|Send me the floor plan.|Envoie-moi le plan au sol.
+footprint|ˈfʊtprɪnt|emprise au sol|The new press has a larger footprint.|La nouvelle presse a une plus grande emprise au sol.
+aisle|aɪl|allée|Keep the aisles clear.|Garde les allées dégagées.
+clearance|ˈklɪərəns|dégagement, espace libre|Leave one metre of clearance around the machine.|Laisse un mètre de dégagement autour de la machine.
+anchor|ˈæŋkə|ancrer, fixer au sol|Anchor the machine to the floor.|Ancre la machine au sol.
+level|ˈlevl|mettre de niveau|Level the machine before start-up.|Mets la machine de niveau avant le démarrage.
+utilities|juːˈtɪlətiz|fluides et énergies|Bring power, air and water to the new line: the utilities.|Amène l'électricité, l'air et l'eau à la nouvelle ligne : les fluides.
+commissioning|kəˈmɪʃənɪŋ|mise en service|Commissioning is planned for next week.|La mise en service est prévue la semaine prochaine.
+installation|ˌɪnstəˈleɪʃn|installation|The installation took three days.|L'installation a pris trois jours.
+cable tray|ˈkeɪbl ˌtreɪ|chemin de câbles|Run the cables in the cable tray.|Passe les câbles dans le chemin de câbles.
+floor marking|ˈflɔː ˌmɑːkɪŋ|marquage au sol|The floor marking shows the walkways.|Le marquage au sol indique les passages piétons.`},
+{id:"usine",name:"Zones de l'usine",raw:`
+forklift|ˈfɔːklɪft|chariot élévateur|Use the forklift to move the machine.|Utilise le chariot élévateur pour déplacer la machine.
+loading bay|ˈləʊdɪŋ ˌbeɪ|quai de chargement|The truck is at the loading bay.|Le camion est au quai de chargement.
+workstation|ˈwɜːksteɪʃn|poste de travail|Each workstation has its own tools.|Chaque poste de travail a ses propres outils.
+rack|ræk|rayonnage|Store the parts on the rack.|Range les pièces sur le rayonnage.
+emergency exit|ɪˌmɜːdʒənsi ˈeksɪt|sortie de secours|Keep the emergency exit clear.|Garde la sortie de secours dégagée.
+electrical cabinet|ɪˈlektrɪkl ˌkæbɪnət|armoire électrique|The electrical cabinet must stay closed.|L'armoire électrique doit rester fermée.
+workbench|ˈwɜːkbentʃ|établi|Put the tools back on the workbench.|Remets les outils sur l'établi.
+press|pres|presse|The press runs twenty-four hours a day.|La presse tourne vingt-quatre heures sur vingt-quatre.
+walkway|ˈwɔːkweɪ|passage piéton|Stay on the walkway.|Reste sur le passage piéton.
+storeroom|ˈstɔːruːm|magasin (pièces détachées)|The spare parts are in the storeroom.|Les pièces de rechange sont au magasin.`},
+{id:"production",name:"Production et amélioration",raw:`
+production line|prəˈdʌkʃn ˌlaɪn|ligne de production|The production line runs in three shifts.|La ligne de production tourne en trois équipes.
+output|ˈaʊtpʊt|production, volume produit|Output is down this week.|La production est en baisse cette semaine.
+cycle time|ˈsaɪkl ˌtaɪm|temps de cycle|The cycle time is forty seconds.|Le temps de cycle est de quarante secondes.
+changeover|ˈtʃeɪndʒəʊvə|changement de série|The changeover takes too long.|Le changement de série prend trop de temps.
+bottleneck|ˈbɒtlnek|goulot d'étranglement|This machine is the bottleneck.|Cette machine est le goulot d'étranglement.
+scrap|skræp|rebut|We have too much scrap today.|Nous avons trop de rebuts aujourd'hui.
+quality check|ˈkwɒləti ˌtʃek|contrôle qualité|Do a quality check every hour.|Fais un contrôle qualité toutes les heures.
+stock|stɒk|stock|Check the stock of filters.|Vérifie le stock de filtres.
+continuous improvement|kənˌtɪnjuəs ɪmˈpruːvmənt|amélioration continue|We work on continuous improvement.|Nous travaillons sur l'amélioration continue.
+standard operating procedure|ˌstændəd ˈɒpəreɪtɪŋ prəˌsiːdʒə|mode opératoire standard|Follow the standard operating procedure.|Suis le mode opératoire standard.
+handover|ˈhændəʊvə|passation, relève|Write a short handover for the next shift.|Rédige une courte passation pour l'équipe suivante.
+line stop|ˈlaɪn ˌstɒp|arrêt de ligne|We had three line stops this morning.|Nous avons eu trois arrêts de ligne ce matin.`}]}
 ];
 
 /* Phrases pour le jeu « Phrases en désordre » : anglais | français */
@@ -928,13 +1088,76 @@ The sooner we start, the better.|Plus tôt nous commencerons, mieux ce sera.
 No sooner had we arrived than it started to rain.|À peine étions-nous arrivés qu'il s'est mis à pleuvoir.
 Under no circumstances should you share your password.|Tu ne dois en aucun cas partager ton mot de passe.
 Should you need any help, do not hesitate to contact me.|Si vous avez besoin d'aide, n'hésitez pas à me contacter.
-The new policy has been widely criticised by experts.|La nouvelle politique a été largement critiquée par les experts.`
+The new policy has been widely criticised by experts.|La nouvelle politique a été largement critiquée par les experts.`,
+PRO:`The machine is locked out.|La machine est consignée.
+Please create a work order for this leak.|Merci de créer un ordre de travail pour cette fuite.
+The bearing needs to be replaced today.|Le roulement doit être remplacé aujourd'hui.
+We are waiting for spare parts.|Nous attendons des pièces de rechange.
+The line has been down for two hours.|La ligne est à l'arrêt depuis deux heures.
+Check the pressure before you start the pump.|Vérifie la pression avant de démarrer la pompe.
+Our OEE has improved since the last shutdown.|Notre TRS s'est amélioré depuis le dernier arrêt technique.
+Leave enough clearance around the new press.|Laisse assez de dégagement autour de la nouvelle presse.
+The root cause was a worn belt.|La cause racine était une courroie usée.
+Commissioning is planned for next Monday.|La mise en service est prévue lundi prochain.
+Never remove the guard while the machine is running.|Ne retire jamais le carter quand la machine tourne.
+Can you send me the new floor plan?|Peux-tu m'envoyer le nouveau plan au sol ?`
 };
+
+/* Jeux métier : situations terrain (situation | bonne phrase | fausse | fausse) */
+const SITU_RAW=`Dire que la machine est consignée.|The machine is locked out.|The machine is consigned.|The machine is closed with a key.
+Demander depuis combien de temps la machine est en panne.|How long has the machine been down?|Since when the machine is in breakdown?|How long the machine is broken?
+Annoncer que tu vas remplacer le roulement.|I'm going to replace the bearing.|I go to change the rolling.|I will replace the rolling.
+Demander à l'opérateur de couper l'alimentation.|Could you isolate the power supply?|Could you cut the alimentation?|Can you close the current?
+Signaler une fuite d'huile sous la machine.|There's an oil leak under the machine.|There's an oil escape under the machine.|The machine is leaking of oil.
+Dire qu'il n'y a plus cette pièce de rechange en stock.|We're out of this spare part.|We miss a spare piece.|The rechange piece is missing.
+Expliquer que la machine redémarre après réarmement.|The machine restarts after a reset.|The machine restarts after a rearmament.|The machine rearms itself after a stop.
+Demander où se trouve l'arrêt d'urgence.|Where is the emergency stop?|Where is the urgency stop?|Where is the urgent arrest?
+Proposer de planifier l'intervention pendant l'arrêt technique.|Let's schedule the job during the shutdown.|Let's plan the intervention during the technical arrest.|We plan it in the technical stop.
+Dire que le capteur est encrassé.|The sensor is dirty.|The captor is dirty.|The sensor is encrassed.
+Annoncer la mise en service de la nouvelle ligne la semaine prochaine.|The new line will be commissioned next week.|The new line will be serviced next week.|The new line will be in service putting next week.
+Demander de garder les allées dégagées.|Please keep the aisles clear.|Please let the alleys free.|Please keep the allees disengaged.
+Dire que le moteur chauffe.|The motor is overheating.|The motor is chauffing.|The motor makes hot.
+Demander une passation écrite à l'équipe de nuit.|Could the night shift write a handover?|Could the night team write a passation?|Can the night equipment do a handover?
+Dire que la courroie est usée.|The belt is worn.|The belt is used.|The belt is usured.
+Expliquer que la réparation a pris deux heures.|The repair took two hours.|The repair lasted during two hours.|The repair has taken two hours long.`;
+
+/* Jeux métier : diagnostic (symptôme | traduction | cause | traduction | fausse | fausse) */
+const DIAG_RAW=`The motor is overheating and smells of burning.|Le moteur surchauffe et sent le brûlé.|The cooling fan is blocked.|Le ventilateur de refroidissement est bloqué.|The safety glasses are scratched.|The floor marking has faded.
+The pump is noisy and the pressure keeps dropping.|La pompe est bruyante et la pression ne cesse de chuter.|Air is getting into the suction line.|De l'air entre dans la conduite d'aspiration.|The printer is out of paper.|The forklift battery is low.
+The conveyor belt keeps slipping.|La bande du convoyeur patine sans arrêt.|The belt tension is too low.|La tension de la bande est trop faible.|The PLC clock is wrong.|The emergency exit is locked.
+The cylinder moves very slowly.|Le vérin se déplace très lentement.|The air pressure is too low.|La pression d'air est trop basse.|The paint is too thick.|The workbench is too high.
+The circuit breaker trips every time we start the machine.|Le disjoncteur saute à chaque démarrage de la machine.|There is a short circuit in the motor wiring.|Il y a un court-circuit dans le câblage du moteur.|The aisle is too narrow.|The work order was printed twice.
+There is a pool of oil under the hydraulic unit.|Il y a une flaque d'huile sous la centrale hydraulique.|A hose or a seal is leaking.|Un flexible ou un joint fuit.|The sensor needs a new label.|The shift started late.
+The bearing is noisy and very hot.|Le roulement est bruyant et très chaud.|It lacks grease or it is worn.|Il manque de graisse ou il est usé.|The floor plan is out of date.|The gloves are too big.
+The sensor no longer detects the parts.|Le capteur ne détecte plus les pièces.|The sensor is dirty or misaligned.|Le capteur est encrassé ou désaligné.|The compressor is too quiet.|The canteen is closed.
+The machine vibrates a lot at high speed.|La machine vibre beaucoup à haute vitesse.|The rotor is unbalanced or the anchors are loose.|Le rotor est déséquilibré ou les ancrages sont desserrés.|The screen brightness is too low.|The spare parts are on the wrong rack.
+The screen shows a low air pressure alarm.|L'écran affiche une alarme de pression d'air basse.|Check the compressor and look for air leaks.|Vérifie le compresseur et cherche les fuites d'air.|Replace the keyboard.|Clean the windows.
+Parts keep jamming at the entry of the machine.|Les pièces se coincent sans arrêt à l'entrée de la machine.|The guide rails are misaligned.|Les guides sont désalignés.|The fire extinguisher is empty.|The lights are too bright.
+The fuse blows again right after you replace it.|Le fusible grille de nouveau juste après son remplacement.|Find the cause of the overload before replacing it again.|Cherche la cause de la surcharge avant de le remplacer encore.|Fit a bigger fuse.|Remove the fuse completely.`;
+
+/* Jeux métier : réunion maintenance (anglais | bon sens | faux | faux) */
+const MEET_RAW=`Let's go through the maintenance backlog.|Passons en revue les travaux en attente.|Annulons la maintenance de demain.|Rangeons l'atelier ensemble.
+Our MTTR went down by twenty percent.|Notre temps moyen de réparation a baissé de vingt pour cent.|Nos pannes ont augmenté de vingt pour cent.|Nous avons vingt réparations en attente.
+We need to order spare parts before the shutdown.|Nous devons commander des pièces avant l'arrêt technique.|Nous devons arrêter de commander des pièces.|Les pièces sont arrivées pendant l'arrêt technique.
+Who is on call this weekend?|Qui est d'astreinte ce week-end ?|Qui appelle le client ce week-end ?|Qui travaille de nuit ce soir ?
+The contractor will start on Monday.|Le prestataire commencera lundi.|Le contrat sera signé lundi.|Le chef d'équipe partira lundi.
+Please update the work orders in the CMMS.|Merci de mettre à jour les ordres de travail dans la GMAO.|Merci d'imprimer les ordres de travail.|Merci de supprimer les anciens ordres de travail.
+We had three breakdowns on line two last night.|Nous avons eu trois pannes sur la ligne deux cette nuit.|La ligne deux a produit trois séries cette nuit.|Trois techniciens ont réparé la ligne deux hier.
+Preventive maintenance must not be skipped.|La maintenance préventive ne doit pas être sautée.|La maintenance préventive peut être reportée.|La maintenance préventive est terminée.
+I want a root cause analysis by Friday.|Je veux une analyse des causes racines d'ici vendredi.|Je veux le rapport de production vendredi.|Je veux que la machine soit réparée vendredi.
+The new layout will free up space for a second line.|La nouvelle implantation libérera de la place pour une deuxième ligne.|La nouvelle ligne sera installée dans un autre bâtiment.|L'ancienne implantation était plus spacieuse.
+Safety comes first: no work without lockout.|La sécurité d'abord : aucune intervention sans consignation.|La sécurité est assurée par le chef d'équipe.|Aucun travail n'est prévu ce matin.
+Our OEE target for this quarter is eighty percent.|Notre objectif de TRS ce trimestre est de quatre-vingts pour cent.|Notre TRS a baissé de quatre-vingts pour cent.|Quatre-vingts pour cent des machines sont à l'arrêt.
+Can you estimate the downtime for this repair?|Peux-tu estimer le temps d'arrêt pour cette réparation ?|Peux-tu réduire le coût de cette réparation ?|Peux-tu commencer la réparation maintenant ?
+The installation team needs the floor plan by Wednesday.|L'équipe d'installation a besoin du plan au sol d'ici mercredi.|L'équipe d'installation arrive mercredi.|Le plan au sol a été modifié mercredi.`;
 
 /* ================= Données ================= */
 const WORDS=[],BYID={};
 LEVELS.forEach(L=>{L.words=[];L.themes.forEach(T=>{T.words=[];T.raw.trim().split("\n").forEach(line=>{const p=line.split("|").map(s=>s.trim());if(p.length<5)return;const w={id:L.id+":"+p[0],en:p[0],ipa:p[1],fr:p[2],ex:p[3],exFr:p[4],level:L.id,theme:T.id,themeName:T.name};WORDS.push(w);BYID[w.id]=w;L.words.push(w);T.words.push(w);});});});
 const SENT={};let SENT_TOTAL=0;
+const SITU=SITU_RAW.trim().split("\n").map(l=>{const p=l.split("|");return{fr:p[0],ok:p[1],bad:[p[2],p[3]]};});
+const DIAG=DIAG_RAW.trim().split("\n").map(l=>{const p=l.split("|");return{sym:p[0],symFr:p[1],ok:p[2],okFr:p[3],bad:[p[4],p[5]]};});
+const MEET=MEET_RAW.trim().split("\n").map(l=>{const p=l.split("|");return{en:p[0],ok:p[1],bad:[p[2],p[3]]};});
 Object.keys(SENT_RAW).forEach(k=>{SENT[k]=SENT_RAW[k].trim().split("\n").map(l=>{const[en,fr]=l.split("|");SENT_TOTAL++;return{en:en.trim(),fr:fr.trim(),toks:en.trim().split(/\s+/)};});});
 
 /* ================= Outils ================= */
@@ -975,7 +1198,11 @@ download:'<path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/>',
 search:'<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/>',
 check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
 offline:'<path d="M3 9.5a14 14 0 0 1 18 0M6.5 13a9 9 0 0 1 11 0M10 16.5a4 4 0 0 1 4 0M12 20h.01"/>',
-expand:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>'
+expand:'<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/>',
+helmet:'<path d="M3.5 17.5h17M5 17.5a7 7 0 0 1 14 0M10 10.5V6h4v4.5"/>',
+wrench:'<path d="M14.7 6.3a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.7-7.7z"/><path d="M14.7 6.3l2.1 2.1 2.9-2.9"/>',
+meeting:'<path d="M4 5.5h16v10H10l-4.5 3.5v-3.5H4z"/><path d="M8 9.5h8M8 12.5h5"/>',
+plan:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 10h7V3M10 21v-6h11M15 15v-5h6"/>'
 };
 const icon=n=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||""}</svg>`;
 
@@ -1054,12 +1281,12 @@ const lvl=()=>LEVELS.find(L=>L.id===S.level)||LEVELS[0];
 function themeWords(){const L=lvl();if(S.theme==="all")return L.words;const T=L.themes.find(t=>t.id===S.theme);return T?T.words:L.words;}
 function pool(min){const p=themeWords();return p.length>=(min||4)?p:lvl().words;}
 
-const LV_COL={A1:["#0E8A68","#DDF4EC","#4FD1A8","#12302A"],A2:["#0A7EA4","#DCEFF7","#5CC4EA","#10293A"],B1:["#2846C8","#E4E9FF","#8DA2FF","#1D2848"],B2:["#6D3BC9","#EEE6FB","#B795FF","#271C45"],C1:["#B02A6E","#FBE4EF","#FF8CC0","#3A1A2C"]};
+const LV_COL={A1:["#0E8A68","#DDF4EC","#4FD1A8","#12302A"],A2:["#0A7EA4","#DCEFF7","#5CC4EA","#10293A"],B1:["#2846C8","#E4E9FF","#8DA2FF","#1D2848"],B2:["#6D3BC9","#EEE6FB","#B795FF","#271C45"],C1:["#B02A6E","#FBE4EF","#FF8CC0","#3A1A2C"],PRO:["#C2410C","#FDEBDD","#FF9B5C","#3A2214"]};
 const DARK_MQ=window.matchMedia?matchMedia("(prefers-color-scheme: dark)"):null;
 const isDark=()=>S.settings.theme==="dark"||(S.settings.theme==="auto"&&!!DARK_MQ&&DARK_MQ.matches);
 function applyLevelColors(){const c=LV_COL[S.level]||LV_COL.A1,d=isDark(),st=document.documentElement.style;st.setProperty("--lv",d?c[2]:c[0]);st.setProperty("--lv-soft",d?c[3]:c[1]);st.setProperty("--lv-ink",d?"#0C1120":"#FFFFFF");const m=$('meta[name="theme-color"]');if(m)m.setAttribute("content",d?"#0C1120":"#F4F6FB");}
 function applyTheme(){const t=S.settings.theme;if(t==="auto")document.documentElement.removeAttribute("data-theme");else document.documentElement.setAttribute("data-theme",t);applyLevelColors();}
-function renderLevels(){$("#levels").innerHTML=LEVELS.map(L=>`<button class="lvl" data-lvl="${L.id}" aria-pressed="${L.id===S.level}" title="${L.id} ${L.name}"><b>${L.id}</b><span>${L.name}</span></button>`).join("");}
+function renderLevels(){$("#levels").innerHTML=LEVELS.map(L=>`<button class="lvl" data-lvl="${L.id}" aria-pressed="${L.id===S.level}" title="${L.id} ${L.name}"><b>${L.id}</b><span>${L.short||L.name}</span></button>`).join("");}
 const TABS=[["learn","Apprendre"],["games","Jeux"],["review","Réviser"],["stats","Progrès"],["settings","Réglages"]];
 function renderTabs(){$("#tabs").innerHTML=TABS.map(([k,l])=>`<button data-tab="${k}" aria-current="${k===tab?"page":"false"}"><span class="ico">${icon(k)}</span><span>${l}</span>${k==="review"?'<span class="badge" id="dueBadge" hidden></span>':""}</button>`).join("");}
 function renderHeader(){const h=$("#todayStrip");if(h)h.outerHTML=todayStrip();updateBadge();}
@@ -1077,6 +1304,7 @@ V.addEventListener("click",e=>{
   const t=e.target.closest("[data-act],[data-theme],[data-game]");
   if(!t||!V.contains(t)||t.disabled)return;
   if(t.dataset.act==="sayid"){const w=BYID[t.dataset.id];if(w)say(w.en);return;}
+  if(t.dataset.act==="saytext"){say(t.dataset.t);return;}
   if(t.dataset.act==="quit"){go("games");return;}
   if(t.dataset.theme){S.theme=t.dataset.theme;L_idx=0;L_order=null;save();const y=window.scrollY;go(tab);window.scrollTo(0,y);return;}
   if(t.dataset.game){startGame(t.dataset.game);return;}
@@ -1091,6 +1319,7 @@ document.addEventListener("keydown",e=>{
 });
 function bindSwipe(el,onLeft,onRight){if(!el)return;let x0=null,y0=0;el.addEventListener("touchstart",e=>{const t=e.touches[0];x0=t.clientX;y0=t.clientY;},{passive:true});el.addEventListener("touchend",e=>{if(x0===null)return;const t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){dx<0?onLeft():onRight();}},{passive:true});}
 function themeChips(){const L=lvl();const items=[{id:"all",name:"Tous les thèmes",words:L.words}].concat(L.themes);return `<div class="chips" role="group" aria-label="Thème">${items.map(t=>`<button class="chip" data-theme="${t.id}" aria-pressed="${S.theme===t.id}">${esc(t.name)}<small>${t.words.length}</small></button>`).join("")}</div>`;}
+const phraseRow=p=>`<li><button class="wrow" data-act="saytext" data-t="${esc(p.en)}" aria-label="Écouter la phrase"><span class="spk">${icon("speaker")}</span><span class="wcol"><span class="w ph" lang="en">${esc(p.en)}</span><span class="p sans">${esc(p.fr)}</span></span><span></span></button></li>`;
 const wordRow=(w,lv)=>`<li><button class="wrow" data-act="sayid" data-id="${esc(w.id)}" aria-label="Écouter ${esc(w.en)}"><span class="spk">${icon("speaker")}</span><span class="wcol"><span class="w" lang="en">${esc(w.en)}${lv===true?`<span class="lvtag">${w.level}</span>`:""}</span><span class="p" lang="en">/${esc(w.ipa)}/</span></span><span class="f">${esc(w.fr)}</span></button></li>`;
 
 /* ================= Apprendre ================= */
@@ -1098,7 +1327,7 @@ let L_idx=0,L_mode="cards",L_shuf=false,L_order=null,L_key="",L_rev=false;
 function learnList(){const base=themeWords();if(!L_shuf)return base;const k=S.level+"/"+S.theme;if(!L_order||L_key!==k){L_order=shuffle(base);L_key=k;}return L_order;}
 function viewLearn(){
   const L=lvl(),list=learnList();if(L_idx>=list.length)L_idx=0;
-  V.innerHTML=`${todayStrip()}<h1 class="view-title">Vocabulaire ${L.id}, ${L.name.toLowerCase()}</h1>
+  V.innerHTML=`${todayStrip()}<h1 class="view-title">${L.title||"Vocabulaire "+L.id+", "+L.name.toLowerCase()}</h1>
   <p class="view-sub">${esc(L.desc)}</p>
   ${themeChips()}
   <div class="toolbar">
@@ -1157,12 +1386,19 @@ const GAMES=[
 {id:"phrases",name:"Phrases en désordre",icon:"phrases",hue:"#0E8A68",fn:gamePhrases,desc:"Remets les mots dans l'ordre pour traduire une phrase du niveau."},
 {id:"chrono",name:"Chrono 60 secondes",icon:"chrono",hue:"#D9480F",fn:gameChrono,desc:"Vrai ou faux ? Enchaîne le plus de bonnes réponses en une minute."},
 {id:"pendu",name:"Pendu",icon:"pendu",hue:"#B02A6E",fn:gamePendu,desc:"Devine le mot anglais lettre par lettre à partir de sa traduction."},
-{id:"parle",name:"Prononciation",icon:"mic",hue:"#B7791F",fn:gameParle,needSR:true,desc:"Dis le mot au micro : l'appli vérifie qu'elle te comprend."}
+{id:"parle",name:"Prononciation",icon:"mic",hue:"#B7791F",fn:gameParle,needSR:true,desc:"Dis le mot au micro : l'appli vérifie qu'elle te comprend."},
+{id:"terrain",pro:true,name:"Situations terrain",icon:"helmet",hue:"#C2410C",fn:gameTerrain,desc:"Choisis la phrase qu'un anglophone dirait vraiment à l'atelier."},
+{id:"diag",pro:true,name:"Diagnostic de panne",icon:"wrench",hue:"#9F1239",fn:gameDiag,desc:"Lis ou écoute le symptôme et trouve la cause la plus probable."},
+{id:"reunion",pro:true,name:"Réunion maintenance",icon:"meeting",hue:"#334155",fn:gameReunion,desc:"Écoute ton responsable et comprends ce qu'il demande."},
+{id:"plan",pro:true,name:"Plan d'implantation",icon:"plan",hue:"#0F766E",fn:gamePlan,desc:"Explore le plan de l'atelier puis retrouve chaque zone à l'oreille."}
 ];
 function viewGames(){
   const L=lvl();
+  const tile=g=>{const dis=g.needSR&&!SR,b=S.best[g.id];return `<li><button class="gtile" style="--g:${g.hue}" data-game="${g.id}" ${dis?"disabled":""}><span class="gi">${icon(g.icon)}</span><span class="gt">${g.name}</span><span class="gd">${dis?"Reconnaissance vocale indisponible ici. Utilise Chrome ou Edge.":g.desc}</span><span class="best">${b?`Record : <b>${esc(b.t)}</b>`:"Pas encore joué"}</span></button></li>`;};
   V.innerHTML=`<h1 class="view-title">Jeux</h1><p class="view-sub">Vocabulaire du niveau ${L.id} et du thème choisi. Chaque erreur est ajoutée à ta révision pour revenir au bon moment.</p>${themeChips()}
-  <ul class="games">${GAMES.map(g=>{const dis=g.needSR&&!SR,b=S.best[g.id];return `<li><button class="gtile" style="--g:${g.hue}" data-game="${g.id}" ${dis?"disabled":""}><span class="gi">${icon(g.icon)}</span><span class="gt">${g.name}</span><span class="gd">${dis?"Reconnaissance vocale indisponible ici. Utilise Chrome ou Edge.":g.desc}</span><span class="best">${b?`Record : <b>${esc(b.t)}</b>`:"Pas encore joué"}</span></button></li>`;}).join("")}</ul>`;
+  <ul class="games">${GAMES.filter(g=>!g.pro).map(tile).join("")}</ul>
+  <h2 class="sec">Maintenance et industrie</h2><p class="view-sub">Technicien, responsable maintenance, implantation : des mises en situation d'atelier, disponibles quel que soit le niveau choisi. Le vocabulaire complet est dans le niveau PRO.</p>
+  <ul class="games">${GAMES.filter(g=>g.pro).map(tile).join("")}</ul>`;
 }
 function startGame(id){const g=GAMES.find(x=>x.id===id);if(!g)return;teardown();inGame=true;tab="games";
   V.innerHTML=`<div class="game"><div class="game-top"><button class="icon-btn" data-act="quit" aria-label="Quitter le jeu">${icon("back")}</button><h2>${g.name}</h2><div class="game-score" id="gScore"></div></div><div class="bar" id="gBarWrap" aria-hidden="true"><span id="gBar"></span></div><div id="gBody"></div></div>`;
@@ -1180,6 +1416,7 @@ function endGame(g,o){
   const missed=uniqBy(o.missed||[],w=>w.id);
   $("#gBody").innerHTML=`<div class="end"><p class="end-score">${esc(o.label)}</p><p class="end-msg">${prev&&better?"Nouveau record.":esc(o.msg||verdict(o.score/(o.max||1)))}</p>${o.extra||""}<p class="end-xp">+${Math.round(o.xp)} XP</p>
   ${missed.length?`<h3 class="sub">À retravailler</h3><ul class="wlist">${missed.map(wordRow).join("")}</ul>`:""}
+  ${o.missedP&&o.missedP.length?`<h3 class="sub">À retravailler</h3><ul class="wlist">${uniqBy(o.missedP,p=>p.en).map(phraseRow).join("")}</ul>`:""}
   <div class="actions"><button class="btn btn-primary grow" data-act="replay">Rejouer</button><button class="btn grow" data-act="quit">Autres jeux</button></div></div>`;
   onAct=t=>{if(t.dataset.act==="replay")startGame(g.id);};
 }
@@ -1354,7 +1591,7 @@ function gameChrono(g){
 
 /* --- Pendu --- */
 function gamePendu(g){
-  const okW=w=>/^[a-z]+$/i.test(w.en)&&w.en.length>=4&&w.en.length<=12;
+  const okW=w=>/^[a-z]+$/i.test(w.en)&&w.en.length>=4&&w.en.length<=12&&!norm(w.fr).includes(norm(w.en));
   let base=pool().filter(okW);if(base.length<5)base=lvl().words.filter(okW);
   const words=sample(base,5),n=words.length,MAXE=6;
   let i=0,score=0,xp=0,missed=[],guessed=new Set(),errors=0,over=false,msg=null;
@@ -1429,6 +1666,142 @@ function gameParle(g){
     else if(a==="next"){i++;if(i>=n)return endGame(g,{score,max:n,xp,missed,label:score+" / "+n});show();}};
   cleanup=()=>{if(rec){try{rec.abort();}catch(e){}}};
   show();
+}
+
+/* ================= Jeux métier : maintenance ================= */
+/* --- Situations terrain --- */
+function gameTerrain(g){
+  const items=sample(SITU,10),n=items.length;let i=0,score=0,missedP=[],locked=false,cur=null,timer=0;
+  function show(){
+    locked=false;const it=items[i],opts=shuffle([it.ok].concat(it.bad));cur={it,opts};setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt"><p class="ask">À l'atelier, comment le dirais-tu en anglais ?</p><p class="prompt-fr">${esc(it.fr)}</p></div>
+    <div class="options one">${opts.map((o,k)=>`<button class="btn opt" data-act="pick" data-k="${k}"><kbd>${k+1}</kbd><span class="serif" lang="en">${esc(o)}</span></button>`).join("")}</div>
+    <div class="feedback" id="fb" role="status"></div>
+    <div class="actions" id="nextRow" hidden><button class="btn" data-act="say">${icon("speaker")}Réécouter</button><button class="btn btn-primary grow" data-act="next">${i+1<n?"Situation suivante":"Voir le résultat"}</button></div>`;
+  }
+  function pick(k){
+    if(locked)return;locked=true;const ok=cur.opts[k]===cur.it.ok;
+    $$(".opt").forEach((b,j)=>{b.disabled=true;if(cur.opts[j]===cur.it.ok)b.classList.add("is-ok");else if(j===k)b.classList.add("is-bad");});
+    const fb=$("#fb");
+    if(ok){score++;fb.className="feedback ok";fb.textContent="Exact, c'est la formulation naturelle.";sfx("ok");}
+    else{missedP.push({en:cur.it.ok,fr:cur.it.fr});fb.className="feedback bad";fb.innerHTML=`On dit : <span class="serif" lang="en">${esc(cur.it.ok)}</span>`;sfx("bad");}
+    setScore(score+" / "+n);later(()=>say(cur.it.ok),250);$("#nextRow").hidden=false;
+  }
+  function next(){if(!locked)return;i++;if(i>=n)return endGame(g,{score,max:n,xp:score*10,missedP,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act;if(a==="pick")pick(+t.dataset.k);else if(a==="next")next();else if(a==="say")say(cur.it.ok);};
+  onKey=e=>{if(e.key>="1"&&e.key<="3"&&!locked)pick(+e.key-1);else if(e.key==="Enter"&&locked)next();};
+  show();
+}
+
+/* --- Diagnostic de panne --- */
+function gameDiag(g){
+  const items=sample(DIAG,8),n=items.length;let i=0,score=0,xp=0,missedP=[],locked=false,cur=null,usedFr=false;
+  function show(){
+    locked=false;usedFr=false;const it=items[i],opts=shuffle([it.ok].concat(it.bad));cur={it,opts};setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt"><p class="ask">Symptôme signalé par la production</p><p class="prompt-en" lang="en">${esc(it.sym)}</p>
+      <div class="row-c" style="justify-content:flex-start"><button class="btn btn-quiet sm" data-act="say">${icon("speaker")}Écouter</button><button class="btn btn-quiet sm" data-act="fr">Traduction</button></div><p class="clue" id="clue"></p></div>
+    <p class="ask">Quelle est la cause ou l'action la plus probable ?</p>
+    <div class="options one">${opts.map((o,k)=>`<button class="btn opt" data-act="pick" data-k="${k}"><kbd>${k+1}</kbd><span class="serif" lang="en">${esc(o)}</span></button>`).join("")}</div>
+    <div class="feedback" id="fb" role="status"></div>
+    <div class="actions" id="nextRow" hidden><button class="btn btn-primary grow" data-act="next">${i+1<n?"Panne suivante":"Voir le résultat"}</button></div>`;
+    if(S.settings.autoplay&&interacted)say(it.sym);
+  }
+  function pick(k){
+    if(locked)return;locked=true;const it=cur.it,ok=cur.opts[k]===it.ok;
+    $$(".opt").forEach((b,j)=>{b.disabled=true;if(cur.opts[j]===it.ok)b.classList.add("is-ok");else if(j===k)b.classList.add("is-bad");});
+    $("#clue").textContent=it.symFr;const fb=$("#fb");
+    if(ok){score++;const gain=usedFr?8:12;xp+=gain;fb.className="feedback ok";fb.innerHTML=`Bon diagnostic. ${esc(it.okFr)} +${gain} XP`;sfx("ok");}
+    else{missedP.push({en:it.ok,fr:it.okFr});fb.className="feedback bad";fb.innerHTML=`Cause probable : <span class="serif" lang="en">${esc(it.ok)}</span><br>${esc(it.okFr)}`;sfx("bad");}
+    setScore(score+" / "+n);later(()=>say(it.ok),250);$("#nextRow").hidden=false;
+  }
+  function next(){if(!locked)return;i++;if(i>=n)return endGame(g,{score,max:n,xp,missedP,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act;if(a==="pick")pick(+t.dataset.k);else if(a==="next")next();else if(a==="say")say(cur.it.sym);else if(a==="fr"){usedFr=true;$("#clue").textContent=cur.it.symFr;}};
+  onKey=e=>{if(e.key>="1"&&e.key<="3"&&!locked)pick(+e.key-1);else if(e.key==="Enter"&&locked)next();else if(e.key===" "){e.preventDefault();say(cur.it.sym);}};
+  show();
+}
+
+/* --- Réunion maintenance (compréhension orale) --- */
+function gameReunion(g){
+  const items=sample(MEET,8),n=items.length;let i=0,score=0,xp=0,missedP=[],locked=false,cur=null,shown=false;
+  function show(){
+    locked=false;shown=false;const it=items[i],opts=shuffle([it.ok].concat(it.bad));cur={it,opts};setProg(i,n);setScore(score+" / "+n);
+    $("#gBody").innerHTML=`<div class="prompt center"><p class="ask">Ton responsable prend la parole. Que veut-il dire ?</p><button class="big-play" data-act="say" aria-label="Réécouter">${icon("speaker")}</button>
+      <div class="row-c"><button class="btn btn-quiet sm" data-act="slow">Lentement</button><button class="btn btn-quiet sm" data-act="text">Afficher le texte</button></div><p class="prompt-en" id="txt" lang="en" hidden style="margin-top:12px">${esc(it.en)}</p></div>
+    <div class="options one">${opts.map((o,k)=>`<button class="btn opt" data-act="pick" data-k="${k}"><kbd>${k+1}</kbd><span>${esc(o)}</span></button>`).join("")}</div>
+    <div class="feedback" id="fb" role="status"></div>
+    <div class="actions" id="nextRow" hidden><button class="btn btn-primary grow" data-act="next">${i+1<n?"Phrase suivante":"Voir le résultat"}</button></div>`;
+    if(interacted)say(it.en);
+  }
+  function pick(k){
+    if(locked)return;locked=true;const it=cur.it,ok=cur.opts[k]===it.ok;
+    $$(".opt").forEach((b,j)=>{b.disabled=true;if(cur.opts[j]===it.ok)b.classList.add("is-ok");else if(j===k)b.classList.add("is-bad");});
+    $("#txt").hidden=false;const fb=$("#fb");
+    if(ok){score++;const gain=shown?6:12;xp+=gain;fb.className="feedback ok";fb.textContent=`Bien compris. +${gain} XP`;sfx("ok");}
+    else{missedP.push({en:it.en,fr:it.ok});fb.className="feedback bad";fb.innerHTML=`Il voulait dire : <strong>${esc(it.ok)}</strong>`;sfx("bad");}
+    setScore(score+" / "+n);$("#nextRow").hidden=false;
+  }
+  function next(){if(!locked)return;i++;if(i>=n)return endGame(g,{score,max:n,xp,missedP,label:score+" / "+n});show();}
+  onAct=t=>{const a=t.dataset.act;if(a==="pick")pick(+t.dataset.k);else if(a==="next")next();else if(a==="say")say(cur.it.en);else if(a==="slow")say(cur.it.en,true);else if(a==="text"){shown=true;$("#txt").hidden=false;}};
+  onKey=e=>{if(e.key>="1"&&e.key<="3"&&!locked)pick(+e.key-1);else if(e.key==="Enter"&&locked)next();else if(e.key===" "){e.preventDefault();say(cur.it.en);}};
+  show();
+}
+
+/* --- Plan d'implantation --- */
+const PLAN=[
+{en:"office",fr:"bureau",ipa:"ˈɒfɪs",lx:70,ly:96,hit:[18,18,104,84],svg:'<rect class="room" x="18" y="18" width="104" height="84"/><rect class="fx" x="34" y="36" width="46" height="22" rx="2"/><circle class="fx" cx="57" cy="70" r="7"/>'},
+{en:"storeroom",lx:180,ly:96,hit:[128,18,104,84],svg:'<rect class="room" x="128" y="18" width="104" height="84"/><path class="ln" d="M140 32h80M140 46h80M140 60h80M140 74h80M140 28v50M220 28v50"/>'},
+{en:"compressor",lx:290,ly:96,hit:[238,18,104,84],svg:'<rect class="room" x="238" y="18" width="104" height="84"/><rect class="fx" x="256" y="32" width="68" height="30" rx="15"/><circle class="fx" cx="272" cy="74" r="8"/><path class="ln" d="M280 74h26M306 62v12"/>'},
+{en:"electrical cabinet",lx:18,ly:117,anchor:"start",hit:[16,120,30,72],svg:'<rect class="eq" x="18" y="122" width="26" height="68"/><path class="bolt" d="M34 134l-9 16h7l-4 16 12-20h-7l5-12z"/>'},
+{en:"press",lx:104,ly:207,hit:[56,120,96,94],svg:'<rect class="eq" x="58" y="122" width="92" height="90" rx="4"/><rect class="fx" x="76" y="136" width="56" height="54"/><path class="ln" d="M76 136l56 54M132 136l-56 54"/>'},
+{en:"conveyor",lx:253,ly:189,hit:[164,136,178,42],svg:'<rect class="eq" x="166" y="140" width="174" height="34" rx="4"/><path class="ln" d="M180 140v34M194 140v34M208 140v34M222 140v34M236 140v34M250 140v34M264 140v34M278 140v34M292 140v34M306 140v34M320 140v34"/>'},
+{en:"workbench",lx:296,ly:216,hit:[224,194,118,34],svg:'<rect class="eq" x="226" y="196" width="114" height="30" rx="3"/><rect class="fx" x="234" y="202" width="16" height="18" rx="2"/><path class="ln" d="M238 208h8M238 214h8"/>'},
+{en:"aisle",lx:90,ly:271,hit:[18,236,324,62],svg:'<rect class="aisle" x="18" y="236" width="324" height="62"/><path class="dash" d="M18 239h324M18 295h324"/><path class="ln" d="M130 267h36M158 261l8 6-8 6"/>'},
+{en:"walkway",lx:39,ly:384,rot:-90,hit:[18,306,36,156],svg:'<rect class="walk" x="18" y="306" width="34" height="156"/><ellipse class="step" cx="30" cy="326" rx="4" ry="6"/><ellipse class="step" cx="40" cy="342" rx="4" ry="6"/><ellipse class="step" cx="30" cy="358" rx="4" ry="6"/><ellipse class="step" cx="40" cy="410" rx="4" ry="6"/><ellipse class="step" cx="30" cy="426" rx="4" ry="6"/><ellipse class="step" cx="40" cy="442" rx="4" ry="6"/>'},
+{en:"rack",lx:113,ly:458,hit:[62,308,104,136],svg:'<rect class="eq" x="66" y="312" width="18" height="126"/><rect class="eq" x="104" y="312" width="18" height="126"/><rect class="eq" x="142" y="312" width="18" height="126"/><path class="ln" d="M66 344h18M66 376h18M66 408h18M104 344h18M104 376h18M104 408h18M142 344h18M142 376h18M142 408h18"/>'},
+{en:"fire extinguisher",lx:320,ly:332,anchor:"end",hit:[318,304,30,44],svg:'<rect class="ext" x="326" y="314" width="12" height="26" rx="4"/><path class="ln" d="M330 314v-5h7"/>'},
+{en:"emergency exit",lx:336,ly:428,anchor:"end",hit:[296,354,52,64],svg:'<rect class="exit" x="338" y="362" width="8" height="48"/><path class="exit-l" d="M302 386h28M322 378l8 8-8 8"/>'},
+{en:"loading bay",lx:266,ly:457,hit:[194,436,146,30],svg:'<rect class="dock" x="196" y="440" width="140" height="24"/><path class="chev" d="M214 444l10 8-10 8M244 444l10 8-10 8M274 444l10 8-10 8M304 444l10 8-10 8"/>'},
+{en:"forklift",lx:230,ly:271,anchor:"end",hit:[234,244,58,40],svg:'<rect class="fx" x="240" y="252" width="30" height="18" rx="3"/><path class="ln" d="M246 252v-8h14v8M272 244v30M272 274h16"/><circle class="fx" cx="248" cy="273" r="4.5"/><circle class="fx" cx="264" cy="273" r="4.5"/>'}
+];
+PLAN.forEach(p=>{const w=WORDS.find(x=>x.level==="PRO"&&x.en===p.en);p.w=w||null;if(w){p.fr=w.fr;p.ipa=w.ipa;}});
+function planSVG(){
+  return `<svg class="plan" id="plan" viewBox="0 0 360 480" role="img" aria-label="Plan de l'atelier"><rect class="floor" x="10" y="10" width="340" height="460" rx="6"/>${PLAN.map((p,k)=>`<g class="pz" data-act="zone" data-k="${k}">${p.svg}<rect class="hit" x="${p.hit[0]}" y="${p.hit[1]}" width="${p.hit[2]}" height="${p.hit[3]}" rx="4"/></g>`).join("")}<g id="planLabels"></g></svg>`;
+}
+function planLabel(k,cls){
+  const gl=$("#planLabels");if(!gl)return;const p=PLAN[k];
+  const old=gl.querySelector(`[data-l="${k}"]`);if(old)old.remove();
+  const t=document.createElementNS("http://www.w3.org/2000/svg","text");
+  t.setAttribute("class","plab "+(cls||""));t.setAttribute("data-l",k);t.setAttribute("x",p.lx);t.setAttribute("y",p.ly);t.setAttribute("text-anchor",p.anchor||"middle");
+  if(p.rot)t.setAttribute("transform",`rotate(${p.rot} ${p.lx} ${p.ly})`);
+  t.textContent=p.en;gl.appendChild(t);
+}
+function gamePlan(g){
+  const N=10;let mode="explore",order=[],i=0,score=0,missedP=[],locked=false,timer=0;
+  function explore(){
+    mode="explore";setProg(0,1);setScore("");
+    $("#gBody").innerHTML=`<div class="prompt plan-q"><p class="ask">Découvre l'atelier : touche une zone pour entendre son nom anglais, puis lance le jeu.</p><p class="cap" id="cap">&nbsp;</p><div class="actions"><button class="btn btn-primary grow" data-act="start">Commencer le jeu</button></div></div>${planSVG()}`;
+    PLAN.forEach((_,k)=>planLabel(k,""));
+  }
+  function round(){
+    locked=false;mode="play";const p=PLAN[order[i]];setProg(i,N);setScore(score+" / "+N);
+    $("#gBody").innerHTML=`<div class="prompt plan-q"><div class="pq-row"><div><p class="ask">Touche cette zone sur le plan :</p><div class="prompt-word" lang="en" style="font-size:clamp(26px,7vw,34px)"><span class="hl" id="hw">${esc(p.en)}</span></div></div><button class="icon-btn" data-act="say" aria-label="Écouter">${icon("speaker")}</button></div><div class="feedback" id="fb" role="status"></div><div class="actions" id="nextRow" hidden><button class="btn btn-primary grow" data-act="next">${i+1<N?"Zone suivante":"Voir le résultat"}</button></div></div>${planSVG()}`;
+    if(interacted)say(p.en);
+  }
+  function mark(k,c){const el=$(`.pz[data-k="${k}"]`);if(el)el.classList.add(c);}
+  function zone(k){
+    const p=PLAN[k];
+    if(mode==="explore"){$$(".pz").forEach(z=>z.classList.toggle("sel",+z.dataset.k===k));$$("#planLabels text").forEach(t=>t.classList.toggle("on",+t.getAttribute("data-l")===k));$("#cap").innerHTML=`<span class="serif" lang="en">${esc(p.en)}</span> /${esc(p.ipa||"")}/ : ${esc(p.fr)}`;say(p.en);return;}
+    if(locked)return;locked=true;const target=order[i],tp=PLAN[target],ok=k===target;
+    mark(target,"ok");planLabel(target,"ok");if(tp.w)grade(tp.w,ok);
+    const fb=$("#fb");
+    if(ok){score++;fb.className="feedback ok";fb.innerHTML=`Exact : <span class="serif" lang="en">${esc(tp.en)}</span> (${esc(tp.fr)}).`;sfx("ok");say(tp.en);timer=later(next,1400);}
+    else{mark(k,"bad");planLabel(k,"bad");missedP.push({en:tp.en,fr:tp.fr});fb.className="feedback bad";fb.innerHTML=`Tu as touché <span class="serif" lang="en">${esc(p.en)}</span> (${esc(p.fr)}). <span class="serif" lang="en">${esc(tp.en)}</span> est en vert.`;sfx("bad");later(()=>say(tp.en),250);}
+    setScore(score+" / "+N);$("#nextRow").hidden=false;
+  }
+  function next(){clearTimeout(timer);if(!locked)return;i++;if(i>=N)return endGame(g,{score,max:N,xp:score*10,missedP,label:score+" / "+N});round();}
+  onAct=t=>{const a=t.dataset.act;if(a==="zone")zone(+t.dataset.k);else if(a==="start"){order=sample(PLAN.map((_,k)=>k),N);i=0;score=0;missedP=[];round();}else if(a==="next")next();else if(a==="say")say(PLAN[order[i]].en);};
+  onKey=e=>{if(e.key==="Enter"&&mode==="play"&&locked)next();};
+  explore();
 }
 
 /* ================= Révision ================= */
